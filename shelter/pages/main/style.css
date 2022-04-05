@@ -321,3 +321,62 @@
 	line-height: 18px;
 	color: var(--color-dark-m);
 }
+
+/* Footer */
+.footer { 
+	background: url('../../assets/images/noise-transparent.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+	background-size: cover;
+}
+.footer-container { 
+	padding-top: 40px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-contacts { 
+	padding-top: 15px;
+	padding-bottom: 60px;
+	max-width: 280px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.footer__subtitle { 
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+	color: var(--color-light);
+}
+.footer__item { 
+	display: flex;
+	align-items: center;
+}
+.footer-item-icon {
+	flex-shrink: 0;
+}
+.item__link { 
+	margin-left: 20px;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 115%;
+	letter-spacing: 0.06em;
+	color: var(--color-primary);
+	flex-grow: 1;
+}
+.footer-locations { 
+	padding-top: 15px;
+	padding-bottom: 60px;
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.footer-image { 
+	display: flex;
+}
