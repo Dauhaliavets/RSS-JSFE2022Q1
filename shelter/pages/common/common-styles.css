@@ -22,9 +22,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 15px 45px;
+	padding: 13px 43px;
 	border-radius: 100px;
-	border: none;
+	border: 2px solid #f1cdb3;
+}
+.button_center {
+	margin: 0 auto;
 }
 .button_primary {
 	background-color: #f1cdb3;
@@ -35,6 +38,28 @@
 	line-height: 130%;
 	letter-spacing: 0.06em;
 	color: #292929;
+}
+.button_secondary {
+	border: 2px solid #F1CDB3;
+	background-color: transparent;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+	color: #292929;
+}
+
+.button-arrow {
+	width: 52px;
+	height: 52px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #F1CDB3;
+	border-radius: 50%;
+	background-color: transparent;
 }
 
 

@@ -4,6 +4,7 @@
 :root {
 	--color-light: #FFFFFF;
 	--color-light-s: #FAFAFA;
+	--color-light-l: #F6F6F6;
 	--color-primary: #F1CDB3;
 	--color-primary-light: #FDDCC4;
 	--color-dark-s: #CDCDCD;
@@ -112,7 +113,6 @@
 }
 .about-container { 
 	display: flex;
-	/* justify-content: space-between; */
 	align-items: center;
 }
 .about-image { 
@@ -144,4 +144,108 @@
 	font-size: 15px;
 	line-height: 160%;
 	color: var(--color-dark-xl);
+}
+
+/* Our friends */
+.our-friends { 
+	padding: 80px 0 100px;
+	background-color: var(--color-light-l);
+}
+.our-friends-container {
+	/* display: flex; */
+	/* flex-direction: column;
+	align-items: center; */
+}
+.our-friends-heading { 
+	margin: 0 auto;
+	max-width: 400px;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+	text-align: center;
+	color: var(--color-dark-l);
+}
+.our-friends-slider { 
+	margin: 60px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.slider { }
+.slider-cards {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 53px;
+	gap: 90px;
+}
+.card { 
+	background-color: var(--color-light-s);
+	border-radius: 9px 9px 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 30px;
+}
+.card__image { }
+.card__title { 
+	margin: 30px 0;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+	letter-spacing: 0.06em;
+	color: var(--color-dark-l);
+}
+
+/* Help */
+.help { 
+	padding: 80px 0 100px;
+}
+.help-container { 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.help-heading { 
+	margin-bottom: 60px;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+	color: var(--color-dark-l);
+	text-align: center;
+}
+.help-list { 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 55px 120px;
+	flex-wrap: wrap;
+}
+.help-list-item { }
+.item-icon { 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.icon { 
+	width: 60px;
+	height: 60px;
+}
+.item-title { 
+	margin-top: 30px;
+	font-family: 'GeorgiaRegular';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 115%;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: var(--color-dark-l);
 }
