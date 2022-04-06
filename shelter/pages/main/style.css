@@ -1,18 +1,6 @@
 @import '../common/normalize.css';
 @import '../common/common-styles.css';
 
-:root {
-	--color-light: #FFFFFF;
-	--color-light-s: #FAFAFA;
-	--color-light-l: #F6F6F6;
-	--color-primary: #F1CDB3;
-	--color-primary-light: #FDDCC4;
-	--color-dark-m: #B2B2B2;
-	--color-dark-s: #CDCDCD;
-	--color-dark-l: #545454;
-	--color-dark-xl: #4C4C4C;
-}
-
 .start-screen {
 	padding-top: 60px;
 	background: url('../../assets/images/noise-transparent.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
@@ -26,7 +14,9 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.header-logo { }
+.header-logo { 
+	cursor: pointer;
+}
 .header-logo__title { 
 	margin: 0 0 10px 0;
 	font-family: 'GeaorgiaRegular';
@@ -153,9 +143,9 @@
 	background-color: var(--color-light-l);
 }
 .our-friends-container {
-	/* display: flex; */
-	/* flex-direction: column;
-	align-items: center; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .our-friends-heading { 
 	margin: 0 auto;
@@ -189,6 +179,17 @@
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 30px;
+	transition: .3s ease-in;
+}
+.card:hover {
+	cursor: pointer;
+	background-color: var(--color-light);
+}
+.card:hover .button {
+	cursor: pointer;
+	border: 2px solid var(--color-primary-light);
+	background-color: var(--color-primary-light);
+	transition: .3s ease-in;
 }
 .card__image { }
 .card__title { 
@@ -367,6 +368,7 @@
 	letter-spacing: 0.06em;
 	color: var(--color-primary);
 	flex-grow: 1;
+	text-decoration: none;
 }
 .footer-locations { 
 	padding-top: 15px;

@@ -7,10 +7,24 @@
 	src: url('../../assets/fonts/arial/arial-regular.ttf');
 }
 
+:root {
+	--color-light: #FFFFFF;
+	--color-light-s: #FAFAFA;
+	--color-light-l: #F6F6F6;
+	--color-primary: #F1CDB3;
+	--color-primary-light: #FDDCC4;
+	--color-dark-m: #B2B2B2;
+	--color-dark-s: #CDCDCD;
+	--color-dark-l: #545454;
+	--color-dark-xl: #4C4C4C;
+	--color-dark-3xl: #292929;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 .container {
@@ -19,28 +33,34 @@
 }
 
 .button {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	display: inline-block;
+	text-decoration: none;
 	padding: 13px 43px;
 	border-radius: 100px;
-	border: 2px solid #f1cdb3;
+	border: 2px solid var(--color-primary);
+	transition: .3s ease-in;
+}
+.button:hover {
+	cursor: pointer;
+	border: 2px solid var(--color-primary-light);
+	background-color: var(--color-primary-light);
+	transition: .3s ease-in;
 }
 .button_center {
 	margin: 0 auto;
 }
 .button_primary {
-	background-color: #f1cdb3;
+	background-color: var(--color-primary);
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 17px;
 	line-height: 130%;
 	letter-spacing: 0.06em;
-	color: #292929;
+	color: var(--color-dark-3xl);
 }
 .button_secondary {
-	border: 2px solid #F1CDB3;
+	border: 2px solid var(--color-primary);
 	background-color: transparent;
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
@@ -50,8 +70,8 @@
 	letter-spacing: 0.06em;
 	color: #292929;
 }
-
 .button-arrow {
+	padding: 0;
 	width: 52px;
 	height: 52px;
 	display: flex;
