@@ -19,7 +19,7 @@
 	font-weight: 400;
 	font-size: 32px;
 	line-height: 110%;
-	letter-spacing: 0.08em;
+	letter-spacing: 0.09em;
 	color: var(--color-dark-l);
 }
 .header-logo__subtitle { 
@@ -43,7 +43,14 @@
 }
 .list-item-active {
 	border-bottom: 3px solid var(--color-primary);
-	color: var(--color-light-s);
+	transition: .3s;
+}
+.list-item-active:hover {
+	border-bottom: 3px solid transparent;
+	transition: .3s;
+}
+.list-item-active .nav-list__item-link {
+	color: var(--color-dark-l);
 }
 .nav-list__item-link { 
 	font-family: 'ArialRegular';
@@ -54,11 +61,14 @@
 	text-decoration: none;
 	color: var(--color-dark-l);
 	letter-spacing: 0.005em;
+	transition: .3s;
 }
 .nav-list__item-link:hover{
 	cursor: pointer;
 	color: var(--color-dark-3xl);
+	transition: .3s;
 }
+
 /* Header burger menu */
 .header-burger-menu { 
 	display: none;
@@ -96,7 +106,7 @@
 }
 .card { 
 	background-color: var(--color-light-s);
-	border-radius: 9px 9px 0 0;
+	border-radius: 9px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -140,17 +150,22 @@
 	align-items: center;
 	border: 2px solid var(--color-primary);
 	color: var(--color-dark-3xl);
+	transition: .3s;
 }
 .button-paginator:not(.button-disabled):hover {
 	cursor: pointer;
-	background-color: var(--color-primary);
+	background-color: var(--color-primary-light);
+	border-color: var(--color-primary-light);
+	transition: .3s;
 }
 .button-disabled { 
 	border-color: var(--color-dark-s);
 	color: var(--color-dark-s);
+	transition: .3s;
 }
 .button-active { 
 	background-color: var(--color-primary);
+	transition: .3s;
 }
 .button-paginator__text { 
 	margin-top: -4px;
@@ -198,7 +213,6 @@
 	flex-shrink: 0;
 }
 .item__link { 
-	margin-left: 20px;
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
 	font-weight: 400;
@@ -208,9 +222,25 @@
 	color: var(--color-primary);
 	flex-grow: 1;
 	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+.link_mail {
+	height: 32px;
+	padding-left: 60px;
+  background: url("../../assets/icons/icon-email.svg") 0 0 no-repeat;
+}
+.link_tel {
+	height: 32px;
+	padding-left: 60px;
+	background: url("../../assets/icons/icon-phone.svg") 0 0 no-repeat;
+}
+.link_marker {
+	height: 32px;
+	padding-left: 42px;
+	background: url("../../assets/icons/icon-marker.svg") 0px center no-repeat;
 }
 .footer-locations { 
-	margin-left: -3px;
 	padding-top: 15px;
 	padding-bottom: 60px;
 	max-width: 300px;
