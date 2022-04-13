@@ -2,7 +2,11 @@
 @import '../common/common-styles.css';
 
 /* Header */
-.header { }
+.header { 
+	position: sticky;
+  top: 0;
+  background-color: #ffffff;
+}
 .header-container { 
 	padding: 30px 0;
 	display: flex;
@@ -152,20 +156,23 @@
 	color: var(--color-dark-3xl);
 	transition: .3s;
 }
-.button-paginator:not(.button-disabled):hover {
+.button-paginator_first-page,
+.button-paginator_prev-page {
+	border-color: var(--color-dark-s);
+	color: var(--color-dark-s);
+	cursor: default;
+}
+.button-paginator_next-page:hover,
+.button-paginator_last-page:hover {
 	cursor: pointer;
 	background-color: var(--color-primary-light);
 	border-color: var(--color-primary-light);
 	transition: .3s;
 }
-.button-disabled { 
-	border-color: var(--color-dark-s);
-	color: var(--color-dark-s);
-	transition: .3s;
-}
 .button-active { 
 	background-color: var(--color-primary);
 	transition: .3s;
+	cursor: default;
 }
 .button-paginator__text { 
 	margin-top: -4px;
