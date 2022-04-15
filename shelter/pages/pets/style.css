@@ -183,3 +183,26 @@
 	line-height: 115%;
 	letter-spacing: 0.06em;
 }
+
+/* Media query */
+@media screen and (max-width: 1280px) {
+	.our-friends-cards-container {
+		padding: 0;
+		justify-content: center;
+		align-items: center;
+		gap: 30px 40px;
+	}
+	.our-friends-heading {
+		margin-bottom: 30px;
+	}
+	.our-friends {
+		padding-bottom: 76px;
+	}
+	.card:nth-child(7),
+	.card:nth-child(8) {
+		display: none;
+	}
+	.pagination-controls {
+		margin-top: 40px;
+	}
+}
