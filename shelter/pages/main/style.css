@@ -348,6 +348,9 @@
 	.start-screen {
 		padding-top: 30px;
 	}
+	.header-container {
+		height: 60px;
+	}
 	.not-only-container {
 		flex-direction: column;
 	}
@@ -366,6 +369,9 @@
 		height: 593px;
 	}
 
+	.about-content__heading {
+		height: 90px;
+	}
 	.about-container {
 		flex-direction: column-reverse;
 		gap: 80px;
@@ -373,12 +379,18 @@
 	.about-image {
 		margin: 0;
 	}
+	.our-friends-heading {
+		height: 90px;
+	}
 	.slider-cards {
 		gap: 40px;
 		margin: 0 12px;
 	}
 	.card:last-child {
 		display: none;
+	}
+	.help-heading {
+		height: 90px;
 	}
 	.help-list {
 		width: calc(100% - 78px);
@@ -393,5 +405,11 @@
 	.in-addition-container {
 		flex-direction: column-reverse;
 		gap: 60px;
+	}
+	.in-addition-content {
+		margin: 0;
+	}
+	.in-addition-image {
+		display: flex;
 	}
 }
