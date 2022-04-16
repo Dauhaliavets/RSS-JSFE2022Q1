@@ -2,12 +2,12 @@
 @import '../common/common-styles.css';
 
 /* Header */
-.header { 
+.header {
 	position: sticky;
-  top: 0;
-  background-color: #ffffff;
+	top: 0;
+	background-color: #ffffff;
 }
-.header-container { 
+.header-container {
 	padding: 30px 0;
 	display: flex;
 	justify-content: space-between;
@@ -16,7 +16,7 @@
 .header-logo__link {
 	text-decoration: none;
 }
-.header-logo__title { 
+.header-logo__title {
 	margin: 0 0 10px 0;
 	font-family: 'GeaorgiaRegular';
 	font-style: normal;
@@ -26,7 +26,7 @@
 	letter-spacing: 0.09em;
 	color: var(--color-dark-l);
 }
-.header-logo__subtitle { 
+.header-logo__subtitle {
 	padding-left: 4px;
 	font-family: 'ArialRegular';
 	font-style: normal;
@@ -36,27 +36,28 @@
 	letter-spacing: 0.1em;
 	color: var(--color-dark-3xl);
 }
-.header-nav { }
+.header-nav {
+}
 .nav-list {
 	display: flex;
 	justify-content: space-between;
 	gap: 35px;
 }
-.nav-list__item { 
+.nav-list__item {
 	list-style: none;
 }
 .list-item-active {
 	border-bottom: 3px solid var(--color-primary);
-	transition: .3s;
+	transition: 0.3s;
 }
 .list-item-active:hover {
 	border-bottom: 3px solid transparent;
-	transition: .3s;
+	transition: 0.3s;
 }
 .list-item-active .nav-list__item-link {
 	color: var(--color-dark-l);
 }
-.nav-list__item-link { 
+.nav-list__item-link {
 	font-family: 'ArialRegular';
 	font-style: normal;
 	font-weight: 400;
@@ -65,21 +66,16 @@
 	text-decoration: none;
 	color: var(--color-dark-l);
 	letter-spacing: 0.005em;
-	transition: .3s;
+	transition: 0.3s;
 }
-.nav-list__item-link:hover{
+.nav-list__item-link:hover {
 	cursor: pointer;
 	color: var(--color-dark-3xl);
-	transition: .3s;
-}
-
-/* Header burger menu */
-.header-burger-menu { 
-	display: none;
+	transition: 0.3s;
 }
 
 /* Our friends */
-.our-friends { 
+.our-friends {
 	padding: 80px 0 100px;
 	background-color: var(--color-light-l);
 }
@@ -88,7 +84,7 @@
 	flex-direction: column;
 	align-items: center;
 }
-.our-friends-heading { 
+.our-friends-heading {
 	margin: 0 auto;
 	margin-bottom: 45px;
 	max-width: 400px;
@@ -101,21 +97,21 @@
 	text-align: center;
 	color: var(--color-dark-l);
 }
-.our-friends-cards-container { 
+.our-friends-cards-container {
 	padding: 15px 0;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 30px 40px;
 }
-.card { 
+.card {
 	background-color: var(--color-light-s);
 	border-radius: 9px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 30px;
-	transition: .3s ease-in;
+	transition: 0.3s ease-in;
 }
 .card:hover {
 	cursor: pointer;
@@ -126,10 +122,11 @@
 	cursor: pointer;
 	border: 2px solid var(--color-primary-light);
 	background-color: var(--color-primary-light);
-	transition: .3s ease-in;
+	transition: 0.3s ease-in;
 }
-.card__image { }
-.card__title { 
+.card__image {
+}
+.card__title {
 	margin: 30px 0;
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
@@ -145,7 +142,7 @@
 	justify-content: center;
 	gap: 20px;
 }
-.button-paginator { 
+.button-paginator {
 	width: 52px;
 	height: 52px;
 	border-radius: 50%;
@@ -154,7 +151,7 @@
 	align-items: center;
 	border: 2px solid var(--color-primary);
 	color: var(--color-dark-3xl);
-	transition: .3s;
+	transition: 0.3s;
 }
 .button-paginator_first-page,
 .button-paginator_prev-page {
@@ -167,14 +164,14 @@
 	cursor: pointer;
 	background-color: var(--color-primary-light);
 	border-color: var(--color-primary-light);
-	transition: .3s;
+	transition: 0.3s;
 }
-.button-active { 
+.button-active {
 	background-color: var(--color-primary);
-	transition: .3s;
+	transition: 0.3s;
 	cursor: default;
 }
-.button-paginator__text { 
+.button-paginator__text {
 	margin-top: -4px;
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
@@ -204,5 +201,72 @@
 	}
 	.pagination-controls {
 		margin-top: 40px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.header-container {
+		margin: 0;
+		padding-right: 40px;
+	}
+
+	.header-nav {
+		position: absolute;
+		top: 0;
+		right: -320px;
+		padding: 30px 10px 0;
+		width: 320px;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--color-light-l);
+		transition: 0.3s;
+	}
+	.header-nav.nav_active {
+		top: 0;
+		right: 0;
+		transition: 0.3s;
+	}
+	.nav-list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: calc(100% - 58px);
+		margin: 0 auto;
+		max-width: 243px;
+	}
+	.nav-list__item-link {
+		font-size: 32px;
+		letter-spacing: 0;
+	}
+	.header-burger-menu-logo {
+		position: absolute;
+		top: 30px;
+		left: 10px;
+	}
+	.menu-line,
+	.menu-line::before,
+	.menu-line::after {
+		width: 30px;
+		height: 2px;
+		background-color: #000000;
+	}
+
+	.our-friends {
+		padding: 42px 0;
+	}
+	.our-friends-heading {
+		margin-bottom: 42px;
+		font-size: 25px;
+	}
+
+	.card:nth-child(4),
+	.card:nth-child(5),
+	.card:nth-child(6) {
+		display: none;
+	}
+	.pagination-controls {
+		gap: 10px;
 	}
 }
