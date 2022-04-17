@@ -36,8 +36,7 @@
 	letter-spacing: 0.1em;
 	color: var(--color-dark-3xl);
 }
-.header-nav {
-}
+.header-nav {}
 .nav-list {
 	display: flex;
 	justify-content: space-between;
@@ -182,7 +181,7 @@
 }
 
 /* Media query */
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
 	.our-friends-cards-container {
 		padding: 0;
 		justify-content: center;
@@ -204,29 +203,60 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.header-container {
 		margin: 0;
-		padding-right: 40px;
+		padding-right: 43px;
+	}
+	.header-logo__title {
+		line-height: 35px;
+		letter-spacing: 0.08em;
 	}
 
 	.header-nav {
 		position: absolute;
 		top: 0;
-		right: -320px;
+		right: 0;
+		opacity: 0;
 		padding: 30px 10px 0;
 		width: 320px;
 		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: var(--color-light-l);
+		background-color: var(--color-dark-3xl);
 		transition: 0.3s;
+		z-index: -1;
+		visibility: hidden;
+		overflow: auto;
 	}
 	.header-nav.nav_active {
 		top: 0;
 		right: 0;
+		opacity: 1;
 		transition: 0.3s;
+		z-index: 1;
+		visibility: visible;
+	}
+	.header-nav.nav_active
+	.header-logo__title {
+		color: var(--color-primary);
+	}
+	.header-nav.nav_active
+	.header-logo__subtitle {
+		color: var(--color-light);
+	}
+	.header-burger-menu.burger-btn_active
+	.menu-line {
+		background-color: var(--color-primary);
+	}
+	.header-burger-menu.burger-btn_active
+	.menu-line::before {
+		background-color: var(--color-primary);
+	}
+	.header-burger-menu.burger-btn_active
+	.menu-line::after {
+		background-color: var(--color-primary);
 	}
 	.nav-list {
 		display: flex;
@@ -239,7 +269,17 @@
 	.nav-list__item-link {
 		font-size: 32px;
 		letter-spacing: 0;
+		color: var(--color-dark-s);
 	}
+	.list-item-active .nav-list__item-link {
+		color: var(--color-light-s);
+	}
+	.nav-list__item-link:hover {
+		color: var(--color-light-s);
+		transition: 0.3s;
+	}
+
+
 	.header-burger-menu-logo {
 		position: absolute;
 		top: 30px;
@@ -256,9 +296,13 @@
 	.our-friends {
 		padding: 42px 0;
 	}
+	.our-friends-cards-container {
+		flex-direction: column;
+	}
 	.our-friends-heading {
 		margin-bottom: 42px;
 		font-size: 25px;
+		line-height: 32px;
 	}
 
 	.card:nth-child(4),
@@ -268,5 +312,6 @@
 	}
 	.pagination-controls {
 		gap: 10px;
+		margin-top: 42px;
 	}
 }
