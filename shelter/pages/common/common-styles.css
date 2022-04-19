@@ -145,6 +145,16 @@ body {
 	border-radius: 50%;
 	background-color: transparent;
 }
+.button-left {
+	background-image: url('../../assets/icons/arrow-left.png');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.button-right {
+	background-image: url('../../assets/icons/arrow-right.png');
+	background-position: center;
+	background-repeat: no-repeat;
+}
 
 /* Footer */
 .footer {

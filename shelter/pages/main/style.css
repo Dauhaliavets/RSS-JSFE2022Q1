@@ -186,6 +186,7 @@
 	justify-content: space-between;
 	margin: 0 53px;
 	gap: 90px;
+	min-height: 435px;
 }
 .card {
 	background-color: var(--color-light-s);
