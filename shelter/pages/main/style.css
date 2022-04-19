@@ -19,6 +19,9 @@
 .header-logo__link {
 	text-decoration: none;
 }
+.nav-logo {
+	display: none;
+}
 .header-logo__title {
 	margin: 0 0 10px 0;
 	font-family: 'GeaorgiaRegular';
@@ -427,24 +430,30 @@
 	.header-nav {
 		position: absolute;
 		top: 0;
-		right: 0;
+		right: -320px;
 		opacity: 0;
-		padding: 30px 10px 0;
+		padding: 0 10px 0;
 		width: 320px;
 		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		background-color: var(--color-dark-3xl);
-		transition: 0.3s;
+		transition: 0.8s ease-in;
 		z-index: -1;
 	}
 	.header-nav.nav_active {
 		top: 0;
 		right: 0;
 		opacity: 1;
-		transition: 0.3s;
-		z-index: 1;
+		transition: 0.8s ease-in;
+		z-index: 5;
+	}
+	.nav-logo {
+		display: block;
+		position: absolute;
+		top: 30px;
+		left: 10px;
 	}
 	.nav-list {
 		display: flex;
@@ -453,6 +462,7 @@
 		width: calc(100% - 58px);
 		margin: 0 auto;
 		max-width: 243px;
+		gap: 40px;
 	}
 	.nav-list__item-link {
 		font-size: 32px;
