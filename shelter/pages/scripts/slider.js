@@ -1,11 +1,13 @@
+import { PETS } from '../../db/pets.js';
+
 const cardsContainer = document.querySelector('.slider-cards');
 const leftBtn = document.querySelector('.button-left');
 const rightBtn = document.querySelector('.button-right');
-const URL = '../../db/pets.json';
 
-function createCard({ img, name }) {
+function createCard({ id, img, name }) {
 	const card = document.createElement('div');
 	card.classList.add('card');
+	card.setAttribute('id', id)
 
 	const cardImage = document.createElement('img');
 	cardImage.classList.add('card__image');
@@ -23,12 +25,6 @@ function createCard({ img, name }) {
 	card.append(cardImage, cardTitle, cardBtn);
 
 	return card;
-}
-
-async function getData() {
-	let response = await fetch(URL);
-	let json = await response.json();
-	return json;
 }
 
 function dataClosure(data) {
@@ -99,14 +95,9 @@ function handlerSliderBtn(e, moveFunction) {
 	cardsContainer.append(...dataAfterMove.map((item) => createCard(item)));
 }
 
-async function init() {
-	let data = await getData();
-	let move = dataClosure(data);
+let move = dataClosure(PETS);
 
-	cardsContainer.append(...data.slice(0, 3).map((item) => createCard(item)));
+cardsContainer.append(...PETS.slice(0, 3).map((item) => createCard(item)));
 
-	leftBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
-	rightBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
-}
-
-init();
+leftBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
+rightBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
