@@ -99,6 +99,7 @@
 	color: var(--color-dark-l);
 }
 .our-friends-cards-container {
+	min-height: 930px;
 	padding: 15px 0;
 	display: flex;
 	justify-content: space-between;
@@ -154,20 +155,18 @@
 	color: var(--color-dark-3xl);
 	transition: 0.3s;
 }
-.button-paginator_first-page,
-.button-paginator_prev-page {
+.button-inactive {
 	border-color: var(--color-dark-s);
 	color: var(--color-dark-s);
 	cursor: default;
 }
-.button-paginator_next-page:hover,
-.button-paginator_last-page:hover {
+.button-active:hover {
 	cursor: pointer;
 	background-color: var(--color-primary-light);
 	border-color: var(--color-primary-light);
 	transition: 0.3s;
 }
-.button-active {
+.button-current {
 	background-color: var(--color-primary);
 	transition: 0.3s;
 	cursor: default;
@@ -180,11 +179,13 @@
 	font-size: 20px;
 	line-height: 115%;
 	letter-spacing: 0.06em;
+	text-align: center;
 }
 
 /* Media query */
 @media screen and (max-width: 1279px) {
 	.our-friends-cards-container {
+		min-height: 930px;
 		padding: 0;
 		justify-content: center;
 		align-items: center;
@@ -307,6 +308,7 @@
 	}
 	.our-friends-cards-container {
 		flex-direction: column;
+		min-height: 1365px;
 	}
 	.our-friends-heading {
 		margin-bottom: 42px;

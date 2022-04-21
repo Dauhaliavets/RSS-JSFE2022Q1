@@ -54,7 +54,7 @@
 					</h3>
 
 					<div class="our-friends-cards-container">
-						<div class="card">
+						<!-- <div class="card">
 							<img
 								class="card__image"
 								src="../../assets/images/katrine.png"
@@ -125,23 +125,23 @@
 							/>
 							<h4 class="card__title">Freddie</h4>
 							<a class="button button_secondary">Learn more</a>
-						</div>
+						</div> -->
 					</div>
 
 					<div class="pagination-controls">
-						<div class="button-paginator button-paginator_first-page">
+						<div class="button-paginator button-inactive" id="first-page">
 							<span class="button-paginator__text">&lt;&lt;</span>
 						</div>
-						<div class="button-paginator button-paginator_prev-page">
+						<div class="button-paginator button-inactive" id="prev-page">
 							<span class="button-paginator__text">&lt;</span>
 						</div>
-						<div class="button-paginator button-active">
-							<span class="button-paginator__text">1</span>
+						<div class="button-paginator button-current">
+							<span class="button-paginator__text" id="current-page">1</span>
 						</div>
-						<div class="button-paginator button-paginator_next-page">
+						<div class="button-paginator button-active" id="next-page">
 							<span class="button-paginator__text">&gt;</span>
 						</div>
-						<div class="button-paginator button-paginator_last-page">
+						<div class="button-paginator button-active" id="last-page">
 							<span class="button-paginator__text">&gt;&gt;</span>
 						</div>
 					</div>
@@ -175,8 +175,11 @@
 				</div>
 			</div>
 		</footer>
+
 		<div class="body__overlay"></div>
+		<div class="modal modal-overlay"></div>
 
 		<script src="../scripts/burger.js"></script>
+		<script src="../scripts/pagination.js" type="module"></script>
 	</body>
 </html>
