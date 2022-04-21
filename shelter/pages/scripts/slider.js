@@ -1,4 +1,5 @@
 import { PETS } from '../../db/pets.js';
+import { openModal } from './modal.js';
 
 const cardsContainer = document.querySelector('.slider-cards');
 const leftBtn = document.querySelector('.button-left');
@@ -7,7 +8,7 @@ const rightBtn = document.querySelector('.button-right');
 function createCard({ id, img, name }) {
 	const card = document.createElement('div');
 	card.classList.add('card');
-	card.setAttribute('id', id)
+	card.dataset.id = id;
 
 	const cardImage = document.createElement('img');
 	cardImage.classList.add('card__image');
@@ -23,6 +24,11 @@ function createCard({ id, img, name }) {
 	cardBtn.textContent = 'Learn more';
 
 	card.append(cardImage, cardTitle, cardBtn);
+
+	card.addEventListener('click', (e) => {
+		const id = e.currentTarget.dataset.id;
+		openModal(id);
+	});
 
 	return card;
 }

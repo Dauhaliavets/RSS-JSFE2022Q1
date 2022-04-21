@@ -250,18 +250,19 @@ body {
 }
 
 /* Modal */
-.modal {
-}
 .modal-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(41, 41, 41, 0.6);
+}
+.modal-overlay-show {
+	display: flex;
 }
 .modal-window {
 	position: relative;
