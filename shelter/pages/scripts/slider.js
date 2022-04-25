@@ -66,16 +66,63 @@ function dataClosure(data) {
 	};
 }
 
-function handlerSliderBtn(e, moveFunction) {
+let move = dataClosure(PETS);
+
+function handlerBtnLeft(e) {
 	const direction = e.target.dataset.direction;
-	let dataAfterMove = moveFunction(direction)();
-	cardsContainer.innerHTML = '';
-	cardsContainer.append(...dataAfterMove.map((item) => createCard(item)));
+	let dataAfterMove = move(direction)();
+
+	if (direction === 'left') {
+		leftBtn.removeEventListener('click', handlerBtnLeft);
+		rightBtn.removeEventListener('click', handlerBtnRight);
+
+		dataAfterMove.forEach((item) =>
+			cardsContainer.insertAdjacentElement('afterbegin', createCard(item))
+		);
+		
+		cardsContainer.classList.remove('transition-right');
+		cardsContainer.classList.add('transition-left');
+	}
 }
 
-let move = dataClosure(PETS);
+function handlerBtnRight(e) {
+	const direction = e.target.dataset.direction;
+	let dataAfterMove = move(direction)();
+
+	if (direction === 'right') {
+		leftBtn.removeEventListener('click', handlerBtnLeft);
+		rightBtn.removeEventListener('click', handlerBtnRight);
+
+		dataAfterMove.forEach((item) =>
+			cardsContainer.insertAdjacentElement('beforeend', createCard(item))
+		);
+
+		cardsContainer.classList.remove('transition-left');
+		cardsContainer.classList.add('transition-right');
+	}
+}
 
 cardsContainer.append(...PETS.slice(0, 3).map((item) => createCard(item)));
 
-leftBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
-rightBtn.addEventListener('click', (e) => handlerSliderBtn(e, move));
+leftBtn.addEventListener('click', handlerBtnLeft);
+rightBtn.addEventListener('click', handlerBtnRight);
+
+cardsContainer.addEventListener('animationend', (e) => {
+	cardsContainer.classList.remove('transition-left');
+	cardsContainer.classList.remove('transition-right');
+
+	const cards = cardsContainer.querySelectorAll('div.card');
+
+	if (e.animationName === 'slide-to-left') {
+		cards.forEach((item, ind) => {
+			if (ind > 2) item.remove();
+		});
+	} else {
+		cards.forEach((item, ind) => {
+			if (ind < 3) item.remove();
+		});
+	}
+
+	leftBtn.addEventListener('click', handlerBtnLeft);
+	rightBtn.addEventListener('click', handlerBtnRight);
+});
