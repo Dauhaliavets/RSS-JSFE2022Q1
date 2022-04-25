@@ -16,6 +16,10 @@
 						<h3 class="header-logo__subtitle">Shelter for pets in Boston</h3>
 					</a>
 					<nav class="header-nav">
+						<a href="../main/index.html" class="header-logo__link nav-logo">
+							<h2 class="header-logo__title">Cozy House</h2>
+							<h3 class="header-logo__subtitle">Shelter for pets in Boston</h3>
+						</a>
 						<ul class="nav-list">
 							<li class="nav-list__item">
 								<a href="../main/index.html" class="nav-list__item-link"
@@ -40,6 +44,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="body__overlay"></div>
 		</header>
 		<section class="our-friends" id="our-friends">
 			<div class="container">
@@ -50,10 +55,10 @@
 					</h3>
 
 					<div class="our-friends-cards-container">
-						<div class="card">
+						<!-- <div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-katrine.png"
+								src="../../assets/images/katrine.png"
 								alt="pets-katrine"
 							/>
 							<h4 class="card__title">Katrine</h4>
@@ -62,7 +67,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-jennifer.png"
+								src="../../assets/images/jennifer.png"
 								alt="pets-jennifer"
 							/>
 							<h4 class="card__title">Jennifer</h4>
@@ -71,7 +76,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-woody.png"
+								src="../../assets/images/woody.png"
 								alt="pets-woody"
 							/>
 							<h4 class="card__title">Woody</h4>
@@ -80,7 +85,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-sophia.png"
+								src="../../assets/images/sophia.png"
 								alt="pets-sophia"
 							/>
 							<h4 class="card__title">Sophia</h4>
@@ -89,7 +94,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-timmy.png"
+								src="../../assets/images/timmy.png"
 								alt="pets-timmy"
 							/>
 							<h4 class="card__title">Timmy</h4>
@@ -98,7 +103,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-charly.png"
+								src="../../assets/images/charly.png"
 								alt="pets-charly"
 							/>
 							<h4 class="card__title">Charly</h4>
@@ -107,7 +112,7 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-scarlet.png"
+								src="../../assets/images/scarlett.png"
 								alt="pets-scarlet"
 							/>
 							<h4 class="card__title">Scarlett</h4>
@@ -116,28 +121,28 @@
 						<div class="card">
 							<img
 								class="card__image"
-								src="../../assets/images/pets-freddie.png"
+								src="../../assets/images/freddie.png"
 								alt="pets-freddie"
 							/>
 							<h4 class="card__title">Freddie</h4>
 							<a class="button button_secondary">Learn more</a>
-						</div>
+						</div> -->
 					</div>
 
 					<div class="pagination-controls">
-						<div class="button-paginator button-paginator_first-page">
+						<div class="button-paginator button-inactive" id="first-page">
 							<span class="button-paginator__text">&lt;&lt;</span>
 						</div>
-						<div class="button-paginator button-paginator_prev-page">
+						<div class="button-paginator button-inactive" id="prev-page">
 							<span class="button-paginator__text">&lt;</span>
 						</div>
-						<div class="button-paginator button-active">
-							<span class="button-paginator__text">1</span>
+						<div class="button-paginator button-current">
+							<span class="button-paginator__text" id="current-page">1</span>
 						</div>
-						<div class="button-paginator button-paginator_next-page">
+						<div class="button-paginator button-active" id="next-page">
 							<span class="button-paginator__text">&gt;</span>
 						</div>
-						<div class="button-paginator button-paginator_last-page">
+						<div class="button-paginator button-active" id="last-page">
 							<span class="button-paginator__text">&gt;&gt;</span>
 						</div>
 					</div>
@@ -172,6 +177,10 @@
 			</div>
 		</footer>
 
+		
+		<div class="modal modal-overlay"></div>
+
 		<script src="../scripts/burger.js"></script>
+		<script src="../scripts/pagination.js" type="module"></script>
 	</body>
 </html>

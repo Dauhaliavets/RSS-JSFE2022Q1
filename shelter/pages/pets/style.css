@@ -36,7 +36,9 @@
 	letter-spacing: 0.1em;
 	color: var(--color-dark-3xl);
 }
-.header-nav {}
+.nav-logo {
+	display: none;
+}
 .nav-list {
 	display: flex;
 	justify-content: space-between;
@@ -97,6 +99,7 @@
 	color: var(--color-dark-l);
 }
 .our-friends-cards-container {
+	min-height: 930px;
 	padding: 15px 0;
 	display: flex;
 	justify-content: space-between;
@@ -152,20 +155,18 @@
 	color: var(--color-dark-3xl);
 	transition: 0.3s;
 }
-.button-paginator_first-page,
-.button-paginator_prev-page {
+.button-inactive {
 	border-color: var(--color-dark-s);
 	color: var(--color-dark-s);
 	cursor: default;
 }
-.button-paginator_next-page:hover,
-.button-paginator_last-page:hover {
+.button-active:hover {
 	cursor: pointer;
 	background-color: var(--color-primary-light);
 	border-color: var(--color-primary-light);
 	transition: 0.3s;
 }
-.button-active {
+.button-current {
 	background-color: var(--color-primary);
 	transition: 0.3s;
 	cursor: default;
@@ -178,11 +179,13 @@
 	font-size: 20px;
 	line-height: 115%;
 	letter-spacing: 0.06em;
+	text-align: center;
 }
 
 /* Media query */
 @media screen and (max-width: 1279px) {
 	.our-friends-cards-container {
+		min-height: 930px;
 		padding: 0;
 		justify-content: center;
 		align-items: center;
@@ -216,7 +219,7 @@
 	.header-nav {
 		position: absolute;
 		top: 0;
-		right: 0;
+		right: -320px;
 		opacity: 0;
 		padding: 30px 10px 0;
 		width: 320px;
@@ -225,7 +228,7 @@
 		justify-content: center;
 		align-items: center;
 		background-color: var(--color-dark-3xl);
-		transition: 0.3s;
+		transition: 0.8s ease-in;
 		z-index: -1;
 		visibility: hidden;
 		overflow: auto;
@@ -234,8 +237,8 @@
 		top: 0;
 		right: 0;
 		opacity: 1;
-		transition: 0.3s;
-		z-index: 1;
+		transition: 0.8s ease-in;
+		z-index: 5;
 		visibility: visible;
 	}
 	.header-nav.nav_active
@@ -258,6 +261,12 @@
 	.menu-line::after {
 		background-color: var(--color-primary);
 	}
+	.nav-logo {
+		display: block;
+		position: absolute;
+		top: 30px;
+		left: 10px;
+	}
 	.nav-list {
 		display: flex;
 		flex-direction: column;
@@ -265,6 +274,7 @@
 		width: calc(100% - 58px);
 		margin: 0 auto;
 		max-width: 243px;
+		gap: 40px;
 	}
 	.nav-list__item-link {
 		font-size: 32px;
@@ -298,6 +308,7 @@
 	}
 	.our-friends-cards-container {
 		flex-direction: column;
+		min-height: 1365px;
 	}
 	.our-friends-heading {
 		margin-bottom: 42px;
