@@ -169,6 +169,11 @@ body {
 	border-radius: 50%;
 	background-color: transparent;
 }
+/* .button-close:hover {
+	cursor: default;
+	border: 2px solid #f1cdb3;
+	background-color: transparent;
+} */
 
 /* Footer */
 .footer {
@@ -258,6 +263,16 @@ body {
 	height: 100vh;
 	background-color: rgba(41, 41, 41, 0.6);
 }
+.modal-overlay:hover {
+	cursor: pointer;
+}
+.modal-overlay:hover .button-close {
+	cursor: pointer;
+	border: 2px solid var(--color-primary-light);
+	background-color: var(--color-primary-light);
+	transition: 0.3s ease-in;
+}
+
 .modal-overlay-show {
 	display: flex;
 }
@@ -271,6 +286,21 @@ body {
 	font-style: normal;
 	font-weight: 400;
 }
+.modal-overlay:hover .modal-window {
+	cursor: default;
+}
+.modal-window:hover .button-close{
+	cursor: default;
+	border: 2px solid #f1cdb3;
+	background-color: transparent;
+}
+.modal-window:hover .button-close:hover {
+	cursor: pointer;
+	border: 2px solid var(--color-primary-light);
+	background-color: var(--color-primary-light);
+	transition: 0.3s ease-in;
+}
+
 .modal-image-wrapper {
 	max-width: calc(100% / 9 * 5);
 	display: flex;
