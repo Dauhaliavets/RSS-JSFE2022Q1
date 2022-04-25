@@ -1,5 +1,6 @@
 import { PETS } from '../../db/pets.js';
 const modal = document.querySelector('.modal');
+const body = document.querySelector('body');
 
 function createModalTemplate({
 	id,
@@ -67,11 +68,13 @@ function openModal(petsId) {
 	const template = createModalTemplate(...pet);
 	modal.appendChild(template);
 	modal.classList.add('modal-overlay-show');
+	body.classList.add('body_active');
 }
 
 function closeModal() {
 	modal.innerHTML = '';
 	modal.classList.remove('modal-overlay-show');
+	body.classList.remove('body_active');
 }
 
 modal.addEventListener('click', (e) => {

@@ -1,29 +1,16 @@
 import { PETS } from '../../db/pets.js';
 import { createCard } from './createCard.js';
+import { shuffle } from './shuffle.js';
 
-const body = document.querySelector('body');
 const cardsContainer = document.querySelector('.our-friends-cards-container');
-const firstPage = document.querySelector('#first-page');
-const prevPage = document.querySelector('#prev-page');
+const firstPageBtn = document.querySelector('#first-page');
+const prevPageBtn = document.querySelector('#prev-page');
 const currentPageBlock = document.querySelector('#current-page');
-const nextPage = document.querySelector('#next-page');
-const lastPage = document.querySelector('#last-page');
+const nextPageBtn = document.querySelector('#next-page');
+const lastPageBtn = document.querySelector('#last-page');
 
 let currentPage = 1;
 let cardOnPage;
-
-function shuffle(array) {
-	let curInd = array.length;
-	let randInd;
-
-	while (curInd !== 0) {
-		randInd = Math.floor(Math.random() * curInd);
-		curInd--;
-		[array[curInd], array[randInd]] = [array[randInd], array[curInd]];
-	}
-
-	return array;
-}
 
 function generateAllCards() {
 	let allCards = [];
@@ -36,7 +23,6 @@ function generateAllCards() {
 		allCards.push(...shuffled);
 	}
 
-	console.log('allPets: ', allCards);
 	return allCards;
 }
 
@@ -56,21 +42,25 @@ function moveToPage(cards, number, countPages) {
 }
 
 function switchActiveBtn(countPages) {
-	firstPage.classList.remove('button-inactive');
-	prevPage.classList.remove('button-inactive');
-	nextPage.classList.remove('button-inactive');
-	lastPage.classList.remove('button-inactive');
+	firstPageBtn.classList.remove('button-inactive', 'button-active');
+	prevPageBtn.classList.remove('button-inactive', 'button-active');
+	nextPageBtn.classList.remove('button-inactive', 'button-active');
+	lastPageBtn.classList.remove('button-inactive', 'button-active');
 	if (currentPage === 1) {
-		firstPage.classList.add('button-inactive');
-		prevPage.classList.add('button-inactive');
+		firstPageBtn.classList.add('button-inactive');
+		prevPageBtn.classList.add('button-inactive');
+		nextPageBtn.classList.add('button-active');
+		lastPageBtn.classList.add('button-active');
 	} else if (currentPage === countPages) {
-		nextPage.classList.add('button-inactive');
-		lastPage.classList.add('button-inactive');
+		firstPageBtn.classList.add('button-active');
+		prevPageBtn.classList.add('button-active');
+		nextPageBtn.classList.add('button-inactive');
+		lastPageBtn.classList.add('button-inactive');
 	} else {
-		firstPage.classList.add('button-active');
-		prevPage.classList.add('button-active');
-		nextPage.classList.add('button-active');
-		lastPage.classList.add('button-active');
+		firstPageBtn.classList.add('button-active');
+		prevPageBtn.classList.add('button-active');
+		nextPageBtn.classList.add('button-active');
+		lastPageBtn.classList.add('button-active');
 	}
 }
 
@@ -79,26 +69,26 @@ function controlsInit(cards) {
 	moveToPage(cards, currentPage, countPages);
 	switchActiveBtn(countPages);
 
-	firstPage.addEventListener('click', () => {
+	firstPageBtn.addEventListener('click', () => {
 		currentPage = 1;
 		moveToPage(cards, currentPage, countPages);
 	});
 
-	prevPage.addEventListener('click', () => {
+	prevPageBtn.addEventListener('click', () => {
 		if (currentPage > 1) {
 			currentPage--;
 			moveToPage(cards, currentPage, countPages);
 		}
 	});
 
-	nextPage.addEventListener('click', () => {
+	nextPageBtn.addEventListener('click', () => {
 		if (currentPage < countPages) {
 			currentPage++;
 			moveToPage(cards, currentPage, countPages);
 		}
 	});
 
-	lastPage.addEventListener('click', () => {
+	lastPageBtn.addEventListener('click', () => {
 		currentPage = countPages;
 		moveToPage(cards, currentPage, countPages);
 	});
@@ -116,30 +106,28 @@ function paginationInit() {
 		cardOnPage = 8;
 	}
 
-	window.addEventListener('resize', (e) => {
-		if (
-			e.currentTarget.innerWidth < 1280 &&
-			e.currentTarget.innerWidth >= 768
-		) {
-			const newCountCardOnPage = 6;
-			if (cardOnPage !== newCountCardOnPage) {
-				cardOnPage = newCountCardOnPage;
-				controlsInit(cards);
-			}
-		} else if (e.currentTarget.innerWidth < 768) {
-			const newCountCardOnPage = 3;
-			if (cardOnPage !== newCountCardOnPage) {
-				cardOnPage = newCountCardOnPage;
-				controlsInit(cards);
-			}
-		} else {
-			const newCountCardOnPage = 8;
-			if (cardOnPage !== newCountCardOnPage) {
-				cardOnPage = newCountCardOnPage;
-				controlsInit(cards);
-			}
-		}
-	});
+	// window.addEventListener('resize', (e) => {
+	// 	const innerWidth = e.currentTarget.innerWidth;
+	// 	if (innerWidth < 1280 && innerWidth >= 768) {
+	// 		const newCountCardOnPage = 6;
+	// 		if (cardOnPage !== newCountCardOnPage) {
+	// 			cardOnPage = newCountCardOnPage;
+	// 			controlsInit(cards);
+	// 		}
+	// 	} else if (innerWidth < 768) {
+	// 		const newCountCardOnPage = 3;
+	// 		if (cardOnPage !== newCountCardOnPage) {
+	// 			cardOnPage = newCountCardOnPage;
+	// 			controlsInit(cards);
+	// 		}
+	// 	} else {
+	// 		const newCountCardOnPage = 8;
+	// 		if (cardOnPage !== newCountCardOnPage) {
+	// 			cardOnPage = newCountCardOnPage;
+	// 			controlsInit(cards);
+	// 		}
+	// 	}
+	// });
 
 	controlsInit(cards);
 }

@@ -27,15 +27,9 @@
 	scroll-behavior: smooth;
 }
 
-html {
-	overflow-x: hidden;
-}
-.fixed-html {
-	overflow: hidden;
-}
-
 body {
 	position: relative;
+	overflow-x: hidden;
 }
 
 .container {
@@ -51,6 +45,9 @@ body {
 	width: 100vw;
 	height: 100vh;
 	z-index: 1;
+}
+.body_active {
+	overflow-y: hidden;
 }
 .body_active .body__overlay {
 	display: block;
