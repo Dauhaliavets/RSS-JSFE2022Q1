@@ -1,5 +1,6 @@
 import { PETS } from '../../db/pets.js';
 import { createCard } from './createCard.js';
+import { shuffle } from './shuffle.js';
 
 const cardsContainer = document.querySelector('.slider-cards');
 const leftBtn = document.querySelector('.button-left');
@@ -66,7 +67,7 @@ function dataClosure(data) {
 	};
 }
 
-let move = dataClosure(PETS);
+let move = dataClosure(shuffle(PETS));
 
 function handlerBtnLeft(e) {
 	const direction = e.target.dataset.direction;
