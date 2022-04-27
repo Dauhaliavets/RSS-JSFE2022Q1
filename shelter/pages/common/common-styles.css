@@ -24,12 +24,18 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	scroll-behavior: smooth;
+}
+html {
+	overflow-x: hidden;
 }
 
 body {
 	position: relative;
 	overflow-x: hidden;
+}
+
+.html__lock {
+	overflow-y: hidden;
 }
 
 .container {
@@ -281,7 +287,7 @@ body {
 	background-color: var(--color-light-s);
 	border-radius: 9px;
 	display: flex;
-	max-width: 900px;
+	width: 900px;
 	font-family: 'GeorgiaRegular';
 	font-style: normal;
 	font-weight: 400;
@@ -408,7 +414,7 @@ body {
 	}
 
 	.modal-window {
-		max-width: 630px;
+		width: 630px;
 	}
 	.modal-image {
 		width: 350px;
@@ -490,7 +496,7 @@ body {
 	}
 
 	.modal-window {
-		max-width: 240px;
+		width: 240px;
 	}
 	.modal-image-wrapper {
 		display: none;
