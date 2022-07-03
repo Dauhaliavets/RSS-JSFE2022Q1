@@ -8,6 +8,17 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "rules": {
+    "no-console": "warn",
+    "@typescript-eslint/no-explicit-any": "error",
+    "import/extensions": [
+      "off"
+    ],
+    "import/no-extraneous-dependencies": [
+      "off"
+    ],
+    "@typescript-eslint/lines-between-class-members": "off"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
