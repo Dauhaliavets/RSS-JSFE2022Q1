@@ -1,5 +1,5 @@
-import { DataNews } from "./news/news.types";
-import { DataSources } from "./sources/sources.types";
+import { DataNews } from './news/news.types';
+import { DataSources } from './sources/sources.types';
 
 export interface NewsResponse {
   status: string;
