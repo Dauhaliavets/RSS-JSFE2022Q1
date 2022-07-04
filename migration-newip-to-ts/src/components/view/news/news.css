@@ -1,3 +1,8 @@
+.news {
+  display: grid;
+  grid-template-columns: repeat(2, 6fr);
+}
+
 .news__item {
   display: flex;
   flex-direction: column;
@@ -119,6 +124,13 @@
 
 .news__item:hover .news__meta-details {
   left: 0%;
+}
+
+@media (max-width: 1460px) {
+  .news {
+    display: grid;
+    grid-template-columns: repeat(1, 12fr);
+  }
 }
 
 @media (min-width: 640px) {
