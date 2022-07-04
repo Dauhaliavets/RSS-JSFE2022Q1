@@ -1,10 +1,10 @@
 import { NewsResponse } from './../view/appView.types';
 import { SourcesResponse } from '../view/appView.types';
 import AppLoader from './appLoader';
-import { CallbackArgsType } from './controller.types';
+import { CallbackType } from './controller.types';
 
 class AppController extends AppLoader {
-  getSources(callback: CallbackArgsType<SourcesResponse>): void {
+  public getSources(callback: CallbackType<SourcesResponse>): void {
     super.getResp(
       {
         endpoint: 'sources',
@@ -13,7 +13,7 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: Event, callback: CallbackArgsType<NewsResponse>): void {
+  public getNews(e: Event, callback: CallbackType<NewsResponse>): void {
     let target = e.target as HTMLElement;
     const newsContainer = e.currentTarget as HTMLElement;
 

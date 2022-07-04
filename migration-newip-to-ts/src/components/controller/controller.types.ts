@@ -17,7 +17,7 @@ enum StatusCodes {
   NOT_FOUND = 404,
 }
 
-interface RequestOptionsType {
+type RequestOptionsType = {
   endpoint: string;
   options?: {
     sources?: string;
@@ -39,7 +39,7 @@ interface ApiResponse {
   url: string;
 }
 
-type CallbackArgsType<T> = { (data: T): void };
+type CallbackType<T> = { (data: T): void };
 
 export {
   Url,
@@ -48,5 +48,5 @@ export {
   RequestOptionsType,
   ApiOptionsType,
   ApiResponse,
-  CallbackArgsType,
+  CallbackType,
 };

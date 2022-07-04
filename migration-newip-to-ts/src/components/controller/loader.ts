@@ -1,7 +1,7 @@
 import { NewsResponse, SourcesResponse } from './../view/appView.types';
 import {
   ApiResponse,
-  CallbackArgsType,
+  CallbackType,
   RequestOptionsType,
   ApiOptionsType,
   RequestMethod,
@@ -19,7 +19,7 @@ class Loader {
 
   protected getResp(
     { endpoint, options = {} }: RequestOptionsType,
-    callback: CallbackArgsType<NewsResponse | SourcesResponse> = () => console.error('No callback for GET response'),
+    callback: CallbackType<NewsResponse | SourcesResponse> = () => console.error('No callback for GET response'),
   ): void {
     this.load(RequestMethod.GET, endpoint, callback, options);
   }
@@ -48,7 +48,7 @@ class Loader {
   private load(
     method: RequestMethod.GET | RequestMethod.POST,
     endpoint: string,
-    callback: CallbackArgsType<NewsResponse | SourcesResponse>,
+    callback: CallbackType<NewsResponse | SourcesResponse>,
     options: Pick<RequestOptionsType, 'options'>['options'],
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
