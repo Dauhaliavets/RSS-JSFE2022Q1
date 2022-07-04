@@ -1,17 +1,24 @@
 import { NewsResponse, SourcesResponse } from './../view/appView.types';
-import { ApiResponse, CallbackArgsType, GetRespOptionsType, GetRespType, OptionsType, RequestMethod } from './controller.types';
+import {
+  ApiResponse,
+  CallbackArgsType,
+  RequestOptionsType,
+  ApiOptionsType,
+  RequestMethod,
+  StatusCodes,
+} from './controller.types';
 
 class Loader {
   private baseLink: string;
-  private options: OptionsType;
+  readonly options: ApiOptionsType;
 
-  constructor(baseLink: string, options: OptionsType) {
+  constructor(baseLink: string, options: ApiOptionsType) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
-  getResp(
-    { endpoint, options = {} }: GetRespType,
+  protected getResp(
+    { endpoint, options = {} }: RequestOptionsType,
     callback: CallbackArgsType<NewsResponse | SourcesResponse> = () => console.error('No callback for GET response'),
   ): void {
     this.load(RequestMethod.GET, endpoint, callback, options);
@@ -19,36 +26,36 @@ class Loader {
 
   private errorHandler(res: ApiResponse): ApiResponse | never {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === StatusCodes.UNAUTHORIZED || res.status === StatusCodes.NOT_FOUND) {
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+      }
       throw Error(res.statusText);
     }
 
     return res;
   }
 
-  private makeUrl(options: GetRespOptionsType, endpoint: string): string {
-    const urlOptions: { [index: string]: string } = { ...this.options, ...options };
+  private makeUrl(options: Pick<RequestOptionsType, 'options'>['options'], endpoint: string): string {
+    const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
-
-    Object.keys(urlOptions).forEach((key) => {
-      url += `${key}=${urlOptions[key]}&`;
+    Object.keys(urlOptions).forEach((key: string) => {
+      url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
     });
 
     return url.slice(0, -1);
   }
 
-  load(
+  private load(
     method: RequestMethod.GET | RequestMethod.POST,
     endpoint: string,
     callback: CallbackArgsType<NewsResponse | SourcesResponse>,
-    options: GetRespOptionsType,
+    options: Pick<RequestOptionsType, 'options'>['options'],
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((res) => res.json())
-      .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .then((res: ApiResponse) => res.json())
+      .then((data: NewsResponse | SourcesResponse) => callback(data))
+      .catch((err: string) => console.error(err));
   }
 }
 

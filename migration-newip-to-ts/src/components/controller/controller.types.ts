@@ -10,22 +10,26 @@ enum RequestMethod {
   POST = 'POST',
 }
 
+enum StatusCodes {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403,
+  NOT_FOUND = 404,
+}
 
-type OptionsType = {
+interface RequestOptionsType {
+  endpoint: string;
+  options?: {
+    sources?: string;
+  };
+}
+
+type ApiOptionsType = {
   apiKey: string;
 };
 
-type GetRespOptionsType = {
-  sources?: string;
-};
-
-type GetRespType = {
-  endpoint: string;
-  options?: GetRespOptionsType;
-};
-
 interface ApiResponse {
-  json(): PromiseLike<NewsResponse | SourcesResponse>;
+  json(): Promise<NewsResponse | SourcesResponse>;
   bodyUsed: boolean;
   redirected: boolean;
   ok: boolean;
@@ -33,16 +37,16 @@ interface ApiResponse {
   statusText?: string;
   type: string;
   url: string;
-} 
+}
 
 type CallbackArgsType<T> = { (data: T): void };
 
-export { 
+export {
   Url,
   RequestMethod,
-  OptionsType, 
-  GetRespOptionsType, 
-  GetRespType, 
-  ApiResponse, 
+  StatusCodes,
+  RequestOptionsType,
+  ApiOptionsType,
+  ApiResponse,
   CallbackArgsType,
 };
