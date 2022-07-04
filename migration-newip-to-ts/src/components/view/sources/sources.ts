@@ -2,9 +2,9 @@ import './sources.css';
 import { DataSources } from './sources.types';
 
 class Sources {
-  private currentPage: number = 1;
-  private readonly itemsOnPage: number = 8;
-  private countPages: number = 0;
+  private currentPage = 1;
+  readonly itemsOnPage = 8;
+  private countPages = 0;
   private data: Readonly<DataSources>[] = [];
 
   public draw(data: Readonly<DataSources>[]): void {

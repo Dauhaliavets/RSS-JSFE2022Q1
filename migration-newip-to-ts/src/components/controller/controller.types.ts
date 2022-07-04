@@ -22,7 +22,7 @@ type RequestOptionsType = {
   options?: {
     sources?: string;
   };
-}
+};
 
 type ApiOptionsType = {
   apiKey: string;
