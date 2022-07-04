@@ -3,7 +3,7 @@ import { DataSources } from './sources.types';
 
 class Sources {
   private currentPage: number = 1;
-  private readonly itemsOnPage: number = 6;
+  private readonly itemsOnPage: number = 8;
   private countPages: number = 0;
   private data: Readonly<DataSources>[] = [];
 
@@ -40,7 +40,7 @@ class Sources {
   }
 
   private initPagination(): void {
-    (document.querySelector('.prev-page') as HTMLElement).addEventListener('click', () => {
+    (document.querySelector('.btn__prev-page') as HTMLElement).addEventListener('click', () => {
       if (this.currentPage > 1) {
         this.currentPage--;
         this.drawSources(this.currentPage);
@@ -48,7 +48,7 @@ class Sources {
       }
     });
 
-    (document.querySelector('.next-page') as HTMLElement).addEventListener('click', () => {
+    (document.querySelector('.btn__next-page') as HTMLElement).addEventListener('click', () => {
       if (this.currentPage < this.countPages) {
         this.currentPage++;
         this.drawSources(this.currentPage);
