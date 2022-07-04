@@ -7,7 +7,3 @@ export interface DataSources {
   name: string;
   url: string;
 }
-
-export interface SourcesConfig {
-  draw(data: DataSources[]): void;
-}

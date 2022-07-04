@@ -3,32 +3,34 @@ import { DataSources } from './sources.types';
 
 class Sources {
   private currentPage: number = 1;
-  readonly itemsOnPage: number = 6;
+  private readonly itemsOnPage: number = 6;
   private countPages: number = 0;
+  private data: Readonly<DataSources>[] = [];
 
-  draw(data: DataSources[]): void {
-    this.countPages = Math.ceil(data.length / this.itemsOnPage);
-    this.drawSources(data, this.currentPage);
-    this.setPagination(data);
+  public draw(data: Readonly<DataSources>[]): void {
+    this.data = data;
+    this.countPages = Math.ceil(this.data.length / this.itemsOnPage);
+    this.drawSources(this.currentPage);
+    this.initPagination();
     this.updatePagination(this.currentPage);
   }
 
-  private drawSources(sources: DataSources[], pageNumber: number): void {
-    let startIndex: number = this.itemsOnPage * (pageNumber - 1);
-    let endIndex: number = this.itemsOnPage * pageNumber;
+  private drawSources(pageNumber: number): void {
+    const startIndex: number = this.itemsOnPage * (pageNumber - 1);
+    const endIndex: number = this.itemsOnPage * pageNumber;
 
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-    const visibleSources = sources
+    const visibleSources = this.data
       .slice(startIndex, endIndex)
-      .map((item: DataSources) => this.createSourceItem(item, sourceItemTemp));
+      .map((item: Readonly<DataSources>) => this.createSourceItem(item, sourceItemTemp));
 
     const sourcesContainer = document.querySelector('.sources') as HTMLElement;
     sourcesContainer.innerHTML = '';
     sourcesContainer.append(...visibleSources);
   }
 
-  private createSourceItem(item: DataSources, template: HTMLTemplateElement): HTMLElement {
+  private createSourceItem(item: Readonly<DataSources>, template: HTMLTemplateElement): HTMLElement {
     const sourceClone = template.content.cloneNode(true) as HTMLElement;
 
     (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
@@ -37,11 +39,11 @@ class Sources {
     return sourceClone;
   }
 
-  private setPagination(sources: DataSources[]): void {
+  private initPagination(): void {
     (document.querySelector('.prev-page') as HTMLElement).addEventListener('click', () => {
       if (this.currentPage > 1) {
         this.currentPage--;
-        this.drawSources(sources, this.currentPage);
+        this.drawSources(this.currentPage);
         this.updatePagination(this.currentPage);
       }
     });
@@ -49,7 +51,7 @@ class Sources {
     (document.querySelector('.next-page') as HTMLElement).addEventListener('click', () => {
       if (this.currentPage < this.countPages) {
         this.currentPage++;
-        this.drawSources(sources, this.currentPage);
+        this.drawSources(this.currentPage);
         this.updatePagination(this.currentPage);
       }
     });
