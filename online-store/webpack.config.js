@@ -60,7 +60,10 @@ module.exports = ({ development }) => ({
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new CopyPlugin({
-      patterns: [{ from: 'src/assets', to: 'assets' }],
+      patterns: [
+        { from: 'src/assets', to: 'assets' },
+        { from: 'src/DB', to: 'DB' },
+      ],
     }),
   ],
   ...devServer(development),

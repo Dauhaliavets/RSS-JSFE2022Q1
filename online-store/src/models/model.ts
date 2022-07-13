@@ -9,10 +9,18 @@ const initialState: AppState = {
 
 export class Model {
   private _state;
-  public events = new Signal<AppState>()
+  public events = new Signal<AppState>();
 
   constructor(state: AppState = initialState) {
     this._state = state;
+    this.loadData();
+  }
+
+  private async loadData() {
+    await fetch('../DB/db.json')
+      .then((res) => res.json())
+      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData.slice(0, 40) }))
+      .catch((error) => alert(`Ошибка ${error}`));
   }
 
   public getState() {
