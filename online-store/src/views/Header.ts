@@ -7,13 +7,17 @@ export class Header extends Control<HTMLElement> {
   logo: Control<HTMLElement>;
   searchInput: Control<HTMLElement>;
   cartBtn: Control<HTMLElement>;
+  cartIcon: Control<HTMLElement>;
+  cartCount: Control<HTMLElement>;
 
   constructor(parentElement: HTMLElement, data: AppState, controller: Controller) {
     super(parentElement, 'header', 'header');
     this.container = new Control(this.node, 'div', 'header__container container');
-    this.logo = new Control(this.container.node, 'div', 'header__logo', 'LOGO');
+    this.logo = new Control(this.container.node, 'div', 'header__logo');
     this.searchInput = new Control(this.container.node, 'input', 'header__input');
-    this.cartBtn = new Control(this.container.node, 'div', 'header__button-cart', `Корзина ${data.cart.length}`);
+    this.cartBtn = new Control(this.container.node, 'div', 'header__button-cart');
+    this.cartIcon = new Control(this.cartBtn.node, 'div', 'header__button-cart-icon');
+    this.cartCount = new Control(this.cartBtn.node, 'div', 'header__button-cart-count', `${data.cart.length}`);
     this.cartBtn.node.onclick = () => {
       controller.toggleIsOnCart()
     }

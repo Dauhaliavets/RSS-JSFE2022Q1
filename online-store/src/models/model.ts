@@ -138,7 +138,7 @@ const initialState: AppState = {
 
 export class Model {
   private _state;
-  public onChange = new Signal<AppState>()
+  public events = new Signal<AppState>()
 
   constructor(state: AppState = initialState) {
     this._state = state;
@@ -150,6 +150,6 @@ export class Model {
 
   public setState(newState: AppState) {
     this._state = { ...this.getState(), ...newState };
-    this.onChange.emit(this._state);
+    this.events.emit(this._state);
   }
 }
