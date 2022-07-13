@@ -15,12 +15,12 @@ export class View {
   constructor(parentElement: HTMLElement, model: Model, controller: Controller) {
     this.parentElement = parentElement;
 
-    this.onUpdate(controller)(model.getState())
+    this.onUpdate(controller)(model.getState());
     model.events.add(this.onUpdate(controller));
   }
-  
+
   public onUpdate = (controller: Controller) => (newState: AppState) => {
-    console.log('Update')
+    console.log('Update');
     this.parentElement.innerHTML = '';
     this.header = new Header(this.parentElement, newState, controller);
     if (newState.isOnCart) {
@@ -29,5 +29,5 @@ export class View {
       this.view = new Cards(this.parentElement, newState, controller);
     }
     this.footer = new Footer(this.parentElement);
-  }
+  };
 }
