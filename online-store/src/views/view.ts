@@ -5,11 +5,12 @@ import { AppState, Product } from '../models/model.types';
 import { Header } from './Header';
 import { Cart } from './Cart';
 import { Model } from '../models/model';
+import { Control } from '../controllers/Control';
 
 export class View {
   parentElement: HTMLElement;
   header: Header | undefined;
-  view: Cart | Cards | undefined;
+  mainScreen: Cart | Cards | undefined;
   footer: Footer | undefined;
 
   constructor(parentElement: HTMLElement, model: Model, controller: Controller) {
@@ -20,13 +21,15 @@ export class View {
   }
 
   public onUpdate = (controller: Controller) => (newState: AppState) => {
-    console.log('Update');
     this.parentElement.innerHTML = '';
     this.header = new Header(this.parentElement, newState, controller);
+    this.mainScreen = new Control(this.parentElement, 'main', 'main__container container');
     if (newState.isOnCart) {
-      this.view = new Cart(this.parentElement, newState, controller);
+      const cartScreen = new Cart(this.parentElement, newState, controller);
+      this.mainScreen.node.append(cartScreen.node);
     } else {
-      this.view = new Cards(this.parentElement, newState, controller);
+      const cardsScreen = new Cards(this.parentElement, newState, controller);
+      this.mainScreen.node.append(cardsScreen.node);
     }
     this.footer = new Footer(this.parentElement);
   };

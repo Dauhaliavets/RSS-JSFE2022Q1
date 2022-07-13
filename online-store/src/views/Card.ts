@@ -8,11 +8,16 @@ export class Card extends Control<HTMLElement> {
   price: Control<HTMLElement>;
   brand: Control<HTMLElement>;
   description: Control<HTMLElement>;
-  buttonRemove: Control<HTMLElement>;
-  buttonAdd: Control<HTMLElement>;
+  buttonRemove: Control<HTMLElement> | undefined;
+  buttonAdd: Control<HTMLElement> | undefined;
+  oldPrice: Control<HTMLElement> | undefined;
+  newPrice: Control<HTMLElement>;
+  buttons: Control<HTMLElement>;
+  indicator: Control<HTMLElement> | undefined;
 
   constructor(parentElement: HTMLElement, data: Product, controller: Controller) {
     super(parentElement, 'div', 'card__item');
+
     this.image = new Control(this.node, 'img', 'card__item-image');
     this.image.node.src = data.img;
     this.brand = new Control(this.node, 'span', 'card__item-brand', data.brand);
@@ -23,11 +28,26 @@ export class Card extends Control<HTMLElement> {
       new Control(this.description.node, 'p', 'card__item-description__item', `${key}${data.description[key]}`);
     }
 
-    this.price = new Control(this.node, 'span', 'card__item-price', `${data.price}`);
-    this.buttonRemove = new Control(this.node, 'button', 'card__item-button__remove', 'Remove from cart');
-    this.buttonAdd = new Control(this.node, 'button', 'card__item-button__add', 'Add to cart');
+    this.price = new Control(this.node, 'div', 'card__item-price');
+    if (data.discount) {
+      const priceWithDiscount = Number(data.price - (data.price / 100) * data.discount).toFixed(2);
+      this.oldPrice = new Control(this.node, 'span', 'card__item-price-old', `${data.price} BYN`);
+      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${priceWithDiscount} BYN`);
+      this.price.node.append(this.oldPrice.node, this.newPrice.node);
+    } else {
+      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${data.price} BYN`);
+      this.price.node.append(this.newPrice.node);
+    }
 
-    this.buttonRemove.node.onclick = () => controller.removeFromCart(data.id);
-    this.buttonAdd.node.onclick = () => controller.addToCart(data);
+    this.buttons = new Control(this.node, 'div', 'card__item-buttons-container');
+
+    if (controller.isInCart(data)) {
+      this.indicator = new Control(this.node, 'span', 'card__item-indicator', 'В корзине');
+      this.buttonRemove = new Control(this.buttons.node, 'button', 'button__remove', 'Remove');
+      this.buttonRemove.node.onclick = () => controller.removeFromCart(data.id);
+    } else {
+      this.buttonAdd = new Control(this.buttons.node, 'button', 'button__add', 'Add to Cart');
+      this.buttonAdd.node.onclick = () => controller.addToCart(data);
+    }
   }
 }
