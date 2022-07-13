@@ -1,0 +1,52 @@
+.header {
+  background-color: #ffffff;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 10px;
+    border-bottom: 1px solid #CACDD8;
+  }
+
+  &__logo {
+    width: 34px;
+    height: 40px;
+    background-image: url('./assets/logo.png');
+  }
+
+  &__input {}
+
+  &__button-cart {
+    position: relative;
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &-icon {
+      width: 25px;
+      height: 25px;
+      background-image: url('./assets/shopping-cart-icon.svg');
+    }
+
+    &-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #0156FF;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      line-height: 15px;
+      color: #ffffff;
+    }
+  }
+
+}
