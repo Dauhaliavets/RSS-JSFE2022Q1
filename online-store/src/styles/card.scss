@@ -41,22 +41,14 @@
 
     &-image {
       margin: 0 auto;
+      max-width: 160px;
       height: 130px;
     }
 
     &-price {
       color: #333333;
       font-size: 20px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-end;
-      justify-content: flex-end;
-
-      &-old {
-        text-decoration-line: line-through;
-        color: #666666;
-        font-size: 14px;
-      }
+      align-self: flex-end;
     }
 
     &-buttons-container {
@@ -66,13 +58,14 @@
 
     .button__remove {
       cursor: pointer;
-      background:#ffffff;
+      background: #ffffff;
       border: 2px solid #ff2701;
       border-radius: 50px;
       padding: 8px 50px;
       color: #ff2701;
       font-size: 14px;
       line-height: 18px;
+
       &:hover {
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.14);
       }
@@ -87,6 +80,7 @@
       color: #0156FF;
       font-size: 14px;
       line-height: 18px;
+
       &:hover {
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.14);
       }

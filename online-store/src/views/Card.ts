@@ -11,7 +11,6 @@ export class Card extends Control<HTMLElement> {
   buttonRemove: Control<HTMLElement> | undefined;
   buttonAdd: Control<HTMLElement> | undefined;
   oldPrice: Control<HTMLElement> | undefined;
-  newPrice: Control<HTMLElement>;
   buttons: Control<HTMLElement>;
   indicator: Control<HTMLElement> | undefined;
 
@@ -28,17 +27,7 @@ export class Card extends Control<HTMLElement> {
       new Control(this.description.node, 'p', 'card__item-description__item', `${key}${data.description[key]}`);
     }
 
-    this.price = new Control(this.node, 'div', 'card__item-price');
-    if (data.discount) {
-      const priceWithoutDiscount = Number(data.price + (data.price / 100) * data.discount).toFixed(2);
-      this.oldPrice = new Control(this.node, 'span', 'card__item-price-old', `${data.price} BYN`);
-      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${priceWithoutDiscount} BYN`);
-      this.price.node.append(this.oldPrice.node, this.newPrice.node);
-    } else {
-      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${data.price} BYN`);
-      this.price.node.append(this.newPrice.node);
-    }
-
+    this.price = new Control(this.node, 'div', 'card__item-price', `${data.price} BYN`);
     this.buttons = new Control(this.node, 'div', 'card__item-buttons-container');
 
     if (controller.isInCart(data)) {

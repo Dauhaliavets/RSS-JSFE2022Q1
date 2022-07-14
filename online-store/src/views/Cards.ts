@@ -10,14 +10,10 @@ export class Cards extends Control<HTMLElement> {
   optionSortByLowPrice: Control<HTMLOptionElement>;
   optionSortByNameAZ: Control<HTMLOptionElement>;
   optionSortByNameZA: Control<HTMLOptionElement>;
-  // optionDefaultItem: Control<HTMLOptionElement>;
 
   constructor(parentElement: HTMLElement, data: AppState, controller: Controller) {
     super(parentElement, 'div', 'cards__container');
-    this.select = new Control(this.node, 'select', '');
-
-    // this.optionDefaultItem = new Control(this.select.node, 'option', '', 'Sort by: ');
-    // this.optionDefaultItem.node.disabled;
+    this.select = new Control(this.node, 'select', 'cards__sort');
 
     this.optionSortByHighPrice = new Control(this.select.node, 'option', '', 'Сорт по убыванию цены');
     this.optionSortByHighPrice.node.id = 'price_desc';
@@ -44,7 +40,6 @@ export class Cards extends Control<HTMLElement> {
 
     this.cardsWrapper = new Control(this.node, 'div', 'cards__wrapper');
 
-    // console.log(data.filters?.category.length);
     if (data.filters?.category.length) {
       data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
     } else {

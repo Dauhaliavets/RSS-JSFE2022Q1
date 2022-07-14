@@ -8,7 +8,9 @@
 .cards__container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+}
+.cards__sort {
+  align-self: flex-end;
 }
 .cards__wrapper {
   display: grid;
