@@ -2,7 +2,7 @@ type ProductDescription = {
   [index: string]: string;
 };
 
-export type Category = 'Laptop' | 'Monoblock' | 'Printer' | 'Smartphone' | 'TV';
+export type Category = 'Laptop' | 'Monoblock' | 'Printer' | 'SmartWatch' | 'Smartphone' | 'Tablet' | 'TV';
 
 export interface Product {
   id: number;
@@ -14,8 +14,11 @@ export interface Product {
   discount: number;
   currency: string;
   img: string;
-  isChoise: boolean;
   count: number;
+}
+
+export interface DefaultFilters {
+  category: Category[];
 }
 
 export interface AppState {
@@ -24,7 +27,9 @@ export interface AppState {
   cart: Array<Product>;
   isOnCart: boolean;
   sortSettings: string;
+  defaultFilters: DefaultFilters;
   filters: {
-    category: string[];
+    category: Category[];
+    [key: string]: Category[];
   };
 }

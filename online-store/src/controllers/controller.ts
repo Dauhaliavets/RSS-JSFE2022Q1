@@ -29,22 +29,14 @@ export class Controller {
         return 0;
       });
     } else if (key === 'price') {
-      sortableItems.sort((a, b) => {
-        if (a['price'] < b['price']) {
-          return direction === 'asc' ? -1 : 1;
-        }
-        if (a['price'] > b['price']) {
-          return direction === 'asc' ? 1 : -1;
-        }
-        return 0;
-      });
+      sortableItems.sort((a, b) => (direction === 'asc' ? a.price - b.price : b.price - a.price));
     }
 
     return sortableItems;
   };
 
   public sortBy = (config: string) => {
-    const [key, direction] = config.split('_')
+    const [key, direction] = config.split('_');
     const sortableItems = this.sortedItems(key, direction);
 
     this.model.setState({
@@ -55,29 +47,26 @@ export class Controller {
   };
 
   public filteredItems(filters: string[]): Product[] {
-    const products = this.model.getState().products
-    let filterableItems: Product[] = [];
-    filters.forEach(filter => {
-      filterableItems = [...products.filter(item => item.category === filter)]
-    })
+    const products = this.model.getState().products;
 
-    return filterableItems;
+    return products.filter((product) => {
+      return filters.find((filter) => Object.values(product).includes(filter));
+    });
   }
 
   public changeFilters(event: MouseEvent) {
     const checked = (event.target as HTMLInputElement).checked;
     const idCategoryFilter = (event.target as HTMLElement).id;
     const filters = this.model.getState().filters;
-    let newFiltersCategory: string[] = [];
-    if(checked) {
-      if(filters.category.includes(idCategoryFilter)) {
-        newFiltersCategory = filters.category.filter(cat => cat !== idCategoryFilter)
-      } else {
-        newFiltersCategory = [...filters.category, idCategoryFilter];
-      }
+    let newFiltersCategory: Category[] = [];
+
+    if (checked) {
+      newFiltersCategory = [...filters.category, idCategoryFilter as Category];
+    } else {
+      newFiltersCategory = filters.category.filter((cat) => cat !== idCategoryFilter);
     }
 
-    const filterableItems = this.filteredItems(newFiltersCategory)
+    const filterableItems = this.filteredItems(newFiltersCategory);
 
     this.model.setState({
       ...this.model.getState(),

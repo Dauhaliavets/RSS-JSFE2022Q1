@@ -7,9 +7,12 @@ const initialState: AppState = {
   cart: [],
   isOnCart: false,
   sortSettings: '',
+  defaultFilters: {
+    category: ['Laptop', 'Monoblock', 'Printer', 'SmartWatch', 'Smartphone', 'Tablet', 'TV'],
+  },
   filters: {
-    category: []
-  }
+    category: [],
+  },
 };
 
 export class Model {
@@ -24,7 +27,7 @@ export class Model {
   private async loadData() {
     await fetch('../DB/db.json')
       .then((res) => res.json())
-      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData.slice(0, 40) }))
+      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData.slice(0, 80) }))
       .catch((error) => alert(`Ошибка ${error}`));
   }
 
