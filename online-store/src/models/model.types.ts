@@ -2,13 +2,7 @@ type ProductDescription = {
   [index: string]: string;
 };
 
-export enum Category {
-  Laptop = 'Laptop',
-  Monoblock = 'Monoblock',
-  Printer = 'Printer',
-  Smartphone = 'Smartphone',
-  Tv = 'TV',
-}
+export type Category = 'Laptop' | 'Monoblock' | 'Printer' | 'Smartphone' | 'TV';
 
 export interface Product {
   id: number;
@@ -30,4 +24,7 @@ export interface AppState {
   cart: Array<Product>;
   isOnCart: boolean;
   sortSettings: string;
+  filters: {
+    category: string[];
+  };
 }

@@ -44,12 +44,11 @@ export class Cards extends Control<HTMLElement> {
 
     this.cardsWrapper = new Control(this.node, 'div', 'cards__wrapper');
 
-    data.products.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
+    // console.log(data.filters?.category.length);
+    if (data.filters?.category.length) {
+      data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
+    } else {
+      data.products.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
+    }
   }
 }
-
-// <select name="select"> <!--Supplement an id here instead of using 'name'-->
-//   <option value="value1">Значение 1</option>
-//   <option value="value2" selected>Значение 2</option>
-//   <option value="value3">Значение 3</option>
-// </select>

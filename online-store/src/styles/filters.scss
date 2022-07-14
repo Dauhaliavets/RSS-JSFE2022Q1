@@ -1,0 +1,23 @@
+.filters {
+  &__container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    gap: 10px;
+  }
+  &__title {
+    font-size: 18px;
+  }
+  &__subtitle {
+    font-size: 14px;
+  }
+}
+
+.filter__item {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}

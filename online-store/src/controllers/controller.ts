@@ -1,3 +1,4 @@
+import { Category } from './../models/model.types';
 // import { SortConfig } from './../models/model.types';
 import { Model } from '../models/model';
 import { Product } from '../models/model.types';
@@ -52,6 +53,40 @@ export class Controller {
       sortSettings: config,
     });
   };
+
+  public filteredItems(filters: string[]): Product[] {
+    const products = this.model.getState().products
+    let filterableItems: Product[] = [];
+    filters.forEach(filter => {
+      filterableItems = [...products.filter(item => item.category === filter)]
+    })
+
+    return filterableItems;
+  }
+
+  public changeFilters(event: MouseEvent) {
+    const checked = (event.target as HTMLInputElement).checked;
+    const idCategoryFilter = (event.target as HTMLElement).id;
+    const filters = this.model.getState().filters;
+    let newFiltersCategory: string[] = [];
+    if(checked) {
+      if(filters.category.includes(idCategoryFilter)) {
+        newFiltersCategory = filters.category.filter(cat => cat !== idCategoryFilter)
+      } else {
+        newFiltersCategory = [...filters.category, idCategoryFilter];
+      }
+    }
+
+    const filterableItems = this.filteredItems(newFiltersCategory)
+
+    this.model.setState({
+      ...this.model.getState(),
+      visible: filterableItems,
+      filters: {
+        category: newFiltersCategory,
+      },
+    });
+  }
 
   public addToCart(card: Product) {
     const state = this.model.getState();

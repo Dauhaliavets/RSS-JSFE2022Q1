@@ -2,7 +2,7 @@ class Control<NodeType extends HTMLElement> {
   public node: NodeType;
 
   constructor(parentElement: HTMLElement, tagName = 'div', classList = '', content = '') {
-    const element = document.createElement(tagName);
+    const element = <HTMLElement>document.createElement(tagName);
     element.className = classList;
     element.textContent = content;
 

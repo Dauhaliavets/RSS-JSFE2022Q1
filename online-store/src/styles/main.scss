@@ -1,5 +1,8 @@
 .main__container {
   padding: 20px 0px 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
 }
 
 .cards__container {

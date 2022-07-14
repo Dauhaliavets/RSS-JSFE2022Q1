@@ -30,9 +30,9 @@ export class Card extends Control<HTMLElement> {
 
     this.price = new Control(this.node, 'div', 'card__item-price');
     if (data.discount) {
-      const priceWithDiscount = Number(data.price - (data.price / 100) * data.discount).toFixed(2);
+      const priceWithoutDiscount = Number(data.price + (data.price / 100) * data.discount).toFixed(2);
       this.oldPrice = new Control(this.node, 'span', 'card__item-price-old', `${data.price} BYN`);
-      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${priceWithDiscount} BYN`);
+      this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${priceWithoutDiscount} BYN`);
       this.price.node.append(this.oldPrice.node, this.newPrice.node);
     } else {
       this.newPrice = new Control(this.node, 'span', 'card__item-price-new', `${data.price} BYN`);

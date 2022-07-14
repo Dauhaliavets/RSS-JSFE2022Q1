@@ -7,6 +7,9 @@ const initialState: AppState = {
   cart: [],
   isOnCart: false,
   sortSettings: '',
+  filters: {
+    category: []
+  }
 };
 
 export class Model {
