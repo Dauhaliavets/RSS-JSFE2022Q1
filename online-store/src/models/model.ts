@@ -3,8 +3,10 @@ import { AppState, Product } from './model.types';
 
 const initialState: AppState = {
   products: [],
+  visible: [],
   cart: [],
   isOnCart: false,
+  sortSettings: '',
 };
 
 export class Model {

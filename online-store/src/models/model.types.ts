@@ -26,6 +26,8 @@ export interface Product {
 
 export interface AppState {
   products: Array<Product>;
+  visible: Array<Product>;
   cart: Array<Product>;
   isOnCart: boolean;
+  sortSettings: string;
 }

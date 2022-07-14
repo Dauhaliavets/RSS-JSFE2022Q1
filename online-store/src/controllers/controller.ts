@@ -1,3 +1,4 @@
+// import { SortConfig } from './../models/model.types';
 import { Model } from '../models/model';
 import { Product } from '../models/model.types';
 
@@ -8,18 +9,57 @@ export class Controller {
     this.model = model;
   }
 
-  public getCart(): Array<Product> {
-    const state = this.model.getState();
-    return state.cart;
-  }
-
   public isInCart(card: Product): boolean {
     return this.model.getState().cart.includes(card);
   }
 
+  public sortedItems = (key: string, direction: string): Product[] => {
+    const products = this.model.getState().products;
+
+    let sortableItems = [...products];
+    if (key === 'title') {
+      sortableItems.sort((a, b) => {
+        if (a['title'].toLowerCase() < b['title'].toLowerCase()) {
+          return direction === 'asc' ? -1 : 1;
+        }
+        if (a['title'].toLowerCase() > b['title'].toLowerCase()) {
+          return direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    } else if (key === 'price') {
+      sortableItems.sort((a, b) => {
+        if (a['price'] < b['price']) {
+          return direction === 'asc' ? -1 : 1;
+        }
+        if (a['price'] > b['price']) {
+          return direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+
+    return sortableItems;
+  };
+
+  public sortBy = (config: string) => {
+    const [key, direction] = config.split('_')
+    const sortableItems = this.sortedItems(key, direction);
+
+    this.model.setState({
+      ...this.model.getState(),
+      products: sortableItems,
+      sortSettings: config,
+    });
+  };
+
   public addToCart(card: Product) {
     const state = this.model.getState();
-    this.model.setState({ ...state, cart: [...state.cart, card] });
+    if (state.cart.length < 20) {
+      this.model.setState({ ...state, cart: [...state.cart, card] });
+    } else {
+      alert('Извините, все слоты заполнены');
+    }
   }
 
   public removeFromCart(id: number) {
