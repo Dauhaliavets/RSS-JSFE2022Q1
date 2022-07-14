@@ -5,11 +5,6 @@ enum Url {
   API_KEY = '6b5f1ba0e28a4f0291f348b09b5c667d',
 }
 
-enum RequestMethod {
-  GET = 'GET',
-  POST = 'POST',
-}
-
 enum StatusCodes {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
@@ -17,12 +12,14 @@ enum StatusCodes {
   NOT_FOUND = 404,
 }
 
-type RequestOptionsType = {
+interface RequestOptionsType {
   endpoint: string;
-  options?: {
-    sources?: string;
-  };
-};
+  options?: Options;
+}
+
+interface Options {
+  sources?: string;
+}
 
 type ApiOptionsType = {
   apiKey: string;
@@ -41,12 +38,4 @@ interface ApiResponse {
 
 type CallbackType<T> = { (data: T): void };
 
-export {
-  Url,
-  RequestMethod,
-  StatusCodes,
-  RequestOptionsType,
-  ApiOptionsType,
-  ApiResponse,
-  CallbackType,
-};
+export { Url, StatusCodes, Options, RequestOptionsType, ApiOptionsType, ApiResponse, CallbackType };

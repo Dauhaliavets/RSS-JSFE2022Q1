@@ -13,9 +13,9 @@ class App {
 
   public start(): void {
     (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e: Event) =>
-      this.controller.getNews(e, (data: NewsResponse): void => this.view.drawNews(data)),
+      this.controller.getNews(e, this.view.drawNews),
     );
-    this.controller.getSources((data: SourcesResponse): void => this.view.drawSources(data));
+    this.controller.getSources(this.view.drawSources);
   }
 }
 

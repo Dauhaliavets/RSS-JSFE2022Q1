@@ -4,24 +4,18 @@ import {
   CallbackType,
   RequestOptionsType,
   ApiOptionsType,
-  RequestMethod,
   StatusCodes,
+  Options,
 } from './controller.types';
 
 class Loader {
-  private baseLink: string;
-  readonly options: ApiOptionsType;
-
-  constructor(baseLink: string, options: ApiOptionsType) {
-    this.baseLink = baseLink;
-    this.options = options;
-  }
+  constructor(private baseLink: string, readonly options: ApiOptionsType) {}
 
   protected getResp(
     { endpoint, options = {} }: RequestOptionsType,
-    callback: CallbackType<NewsResponse | SourcesResponse> = () => console.error('No callback for GET response'),
+    callback: CallbackType<NewsResponse | SourcesResponse> = () => console.error('No callback for GET response')
   ): void {
-    this.load(RequestMethod.GET, endpoint, callback, options);
+    this.load('GET', endpoint, callback, options);
   }
 
   private errorHandler(res: ApiResponse): ApiResponse | never {
@@ -35,7 +29,7 @@ class Loader {
     return res;
   }
 
-  private makeUrl(options: Pick<RequestOptionsType, 'options'>['options'], endpoint: string): string {
+  private makeUrl(options: Options, endpoint: string): string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
     Object.keys(urlOptions).forEach((key: string) => {
@@ -46,10 +40,10 @@ class Loader {
   }
 
   private load(
-    method: RequestMethod.GET | RequestMethod.POST,
+    method: string,
     endpoint: string,
     callback: CallbackType<NewsResponse | SourcesResponse>,
-    options: Pick<RequestOptionsType, 'options'>['options'],
+    options: Options
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)

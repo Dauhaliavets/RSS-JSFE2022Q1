@@ -3,7 +3,7 @@ import { DataSources } from './sources.types';
 
 class Sources {
   private currentPage = 1;
-  readonly itemsOnPage = 8;
+  private itemsOnPage = 8;
   private countPages = 0;
   private data: Readonly<DataSources>[] = [];
 

@@ -1,6 +1,7 @@
 import News from './news/news';
 import Sources from './sources/sources';
 import { NewsResponse, SourcesResponse } from './appView.types';
+import { CallbackType } from '../controller/controller.types';
 
 export class AppView {
   private news: News;
@@ -11,15 +12,15 @@ export class AppView {
     this.sources = new Sources();
   }
 
-  public drawNews(data: NewsResponse): void {
-    const values = data?.articles ? data?.articles : [];
+  public drawNews: CallbackType<NewsResponse> = (data) => {
+    const values = data.articles ? data.articles : [];
     this.news.draw(values);
-  }
+  };
 
-  public drawSources(data: SourcesResponse): void {
+  public drawSources: CallbackType<SourcesResponse> = (data) => {
     const values = data?.sources ? data?.sources : [];
     this.sources.draw(values);
-  }
+  };
 }
 
 export default AppView;

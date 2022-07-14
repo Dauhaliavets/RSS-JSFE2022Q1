@@ -4,10 +4,10 @@ import { DataSources } from './sources/sources.types';
 export interface NewsResponse {
   status: string;
   totalResults?: number;
-  articles?: Array<DataNews>;
+  articles?: DataNews[];
 }
 
 export interface SourcesResponse {
   status: string;
-  sources?: Array<DataSources>;
+  sources?: DataSources[];
 }
