@@ -7,6 +7,7 @@ const initialState: AppState = {
   cart: [],
   isOnCart: false,
   sortSettings: '',
+  searchValue: '',
   defaultFilters: {
     category: ['Laptop', 'Monoblock', 'Smartphone', 'Tablet', 'TV'],
     brand: [

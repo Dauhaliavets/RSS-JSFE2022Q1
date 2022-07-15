@@ -15,7 +15,10 @@
     background-image: url('./assets/logo.png');
   }
 
-  &__input {}
+  &__input {
+    height: 30px;
+    min-width: 200px;
+  }
 
   &__button-cart {
     position: relative;

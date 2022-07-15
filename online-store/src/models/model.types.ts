@@ -46,11 +46,12 @@ export interface Filters {
 }
 
 export interface AppState {
-  products: Array<Product>;
-  visible: Array<Product>;
-  cart: Array<Product>;
+  products: Product[];
+  visible: Product[];
+  cart: Product[];
   isOnCart: boolean;
   sortSettings: string;
+  searchValue: string;
   defaultFilters: Filters;
   filters: Filters;
 }

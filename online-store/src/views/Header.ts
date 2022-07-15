@@ -5,7 +5,7 @@ import { AppState } from '../models/model.types';
 export class Header extends Control<HTMLElement> {
   container: Control<HTMLElement>;
   logo: Control<HTMLElement>;
-  searchInput: Control<HTMLElement>;
+  searchInput: Control<HTMLInputElement>;
   cartBtn: Control<HTMLElement>;
   cartIcon: Control<HTMLElement>;
   cartCount: Control<HTMLElement>;
@@ -15,6 +15,12 @@ export class Header extends Control<HTMLElement> {
     this.container = new Control(this.node, 'div', 'header__container container');
     this.logo = new Control(this.container.node, 'div', 'header__logo');
     this.searchInput = new Control(this.container.node, 'input', 'header__input');
+    this.searchInput.node.value = data.searchValue;
+    this.searchInput.node.placeholder = 'Поиск товара...';
+    this.searchInput.node.autocomplete = 'off';
+    this.searchInput.node.focus();
+    this.searchInput.node.oninput = () => controller.setSearchValue(this.searchInput.node.value);
+
     this.cartBtn = new Control(this.container.node, 'div', 'header__button-cart');
     this.cartIcon = new Control(this.cartBtn.node, 'div', 'header__button-cart-icon');
     this.cartCount = new Control(this.cartBtn.node, 'div', 'header__button-cart-count', `${data.cart.length}`);

@@ -13,25 +13,46 @@ export class Controller {
     return this.model.getState().cart.includes(card);
   }
 
-  private isAnyFilters() {
+  private hasAnyFilters() {
     const filters = this.model.getState().filters;
     const filterTypes = Object.values(filters);
     return !!filterTypes.filter((filterTypes) => filterTypes.length).length;
   }
 
-  public sortItems = (key: string, direction: string): Product[] => {
-    const isAnyFilters = this.isAnyFilters();
-    let sortableItems: Product[];
+  private searchItems() {
+    let products = [...this.model.getState().products];
+    const hasAnyFilters = this.hasAnyFilters();
 
-    if (isAnyFilters) {
-      sortableItems = this.model.getState().visible;
-    } else {
-      sortableItems = this.model.getState().products;
+    if (hasAnyFilters) {
+      products = this.filterItems();
     }
 
-    let newSortableItems = [...sortableItems];
+    return products.filter((item) => item.title.toLowerCase().includes(this.model.getState().searchValue));
+  }
+
+  public setSearchValue(inputValue: string) {
+    this.model.setState({
+      ...this.model.getState(),
+      searchValue: inputValue,
+    });
+
+    const foundItems = this.searchItems();
+    const fountAfterSort = this.sortItems(this.model.getState().sortSettings, foundItems);
+
+    this.model.setState({
+      ...this.model.getState(),
+      visible: fountAfterSort,
+    });
+  }
+
+  public sortItems = (config: string, products: Product[]): Product[] => {
+    const [key, direction] = config.split('_');
+    let sortableItems: Product[];
+
+    sortableItems = [...products];
+
     if (key === 'title') {
-      newSortableItems.sort((a, b) => {
+      sortableItems.sort((a, b) => {
         if (a['title'].toLowerCase() < b['title'].toLowerCase()) {
           return direction === 'asc' ? -1 : 1;
         }
@@ -41,15 +62,19 @@ export class Controller {
         return 0;
       });
     } else if (key === 'price') {
-      newSortableItems.sort((a, b) => (direction === 'asc' ? a.price - b.price : b.price - a.price));
+      sortableItems.sort((a, b) => (direction === 'asc' ? a.price - b.price : b.price - a.price));
     }
 
-    return newSortableItems;
+    return sortableItems;
   };
 
   public sortBy = (config: string) => {
-    const [key, direction] = config.split('_');
-    const sortableItems = this.sortItems(key, direction);
+    let sortableItems: Product[];
+    if (!this.model.getState().visible.length) {
+      sortableItems = this.sortItems(config, this.model.getState().products);
+    } else {
+      sortableItems = this.sortItems(config, this.model.getState().visible);
+    }
 
     this.model.setState({
       ...this.model.getState(),
@@ -58,19 +83,21 @@ export class Controller {
     });
   };
 
-  public filteredItems(filtersCategory: Category[], filtersBrand: Brand[]): Product[] {
-    const products = this.model.getState().products;
+  public filterItems(): Product[] {
+    const filters = this.model.getState().filters;
+    const [category, brand] = Object.keys(filters);
+    const products = [...this.model.getState().products];
 
     return products.filter((product) => {
-      if (filtersCategory.length && filtersBrand.length) {
+      if (filters[category].length && filters[brand].length) {
         return (
-          filtersCategory.find((filter) => Object.values(product).includes(filter)) &&
-          filtersBrand.find((filter) => Object.values(product).includes(filter))
+          (filters[category] as Category[]).find((filter) => Object.values(product).includes(filter)) &&
+          (filters[brand] as Brand[]).find((filter) => Object.values(product).includes(filter))
         );
-      } else if (filtersCategory.length) {
-        return filtersCategory.find((filter) => Object.values(product).includes(filter));
-      } else if (filtersBrand.length) {
-        return filtersBrand.find((filter) => Object.values(product).includes(filter));
+      } else if (filters[category].length) {
+        return (filters[category] as Category[]).find((filter) => Object.values(product).includes(filter));
+      } else if (filters[brand].length) {
+        return (filters[brand] as Brand[]).find((filter) => Object.values(product).includes(filter));
       }
     });
   }
@@ -96,15 +123,20 @@ export class Controller {
       }
     }
 
-    const filterableItems = this.filteredItems(newFiltersCategory, newFiltersBrand);
-
     this.model.setState({
       ...this.model.getState(),
-      visible: filterableItems,
       filters: {
         category: newFiltersCategory,
         brand: newFiltersBrand,
       },
+    });
+
+    const foundItems = this.searchItems();
+    const sortedItems = this.sortItems(this.model.getState().sortSettings, foundItems);
+
+    this.model.setState({
+      ...this.model.getState(),
+      visible: sortedItems,
     });
   }
 
