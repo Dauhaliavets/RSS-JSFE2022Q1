@@ -13,12 +13,25 @@ export class Controller {
     return this.model.getState().cart.includes(card);
   }
 
-  public sortedItems = (key: string, direction: string): Product[] => {
-    const products = this.model.getState().products;
+  private isAnyFilters() {
+    const filters = this.model.getState().filters;
+    const filterTypes = Object.values(filters);
+    return !!filterTypes.filter((filterTypes) => filterTypes.length).length;
+  }
 
-    let sortableItems = [...products];
+  public sortItems = (key: string, direction: string): Product[] => {
+    const isAnyFilters = this.isAnyFilters();
+    let sortableItems: Product[];
+
+    if (isAnyFilters) {
+      sortableItems = this.model.getState().visible;
+    } else {
+      sortableItems = this.model.getState().products;
+    }
+
+    let newSortableItems = [...sortableItems];
     if (key === 'title') {
-      sortableItems.sort((a, b) => {
+      newSortableItems.sort((a, b) => {
         if (a['title'].toLowerCase() < b['title'].toLowerCase()) {
           return direction === 'asc' ? -1 : 1;
         }
@@ -28,19 +41,19 @@ export class Controller {
         return 0;
       });
     } else if (key === 'price') {
-      sortableItems.sort((a, b) => (direction === 'asc' ? a.price - b.price : b.price - a.price));
+      newSortableItems.sort((a, b) => (direction === 'asc' ? a.price - b.price : b.price - a.price));
     }
 
-    return sortableItems;
+    return newSortableItems;
   };
 
   public sortBy = (config: string) => {
     const [key, direction] = config.split('_');
-    const sortableItems = this.sortedItems(key, direction);
+    const sortableItems = this.sortItems(key, direction);
 
     this.model.setState({
       ...this.model.getState(),
-      products: sortableItems,
+      visible: sortableItems,
       sortSettings: config,
     });
   };
