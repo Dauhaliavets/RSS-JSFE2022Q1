@@ -1,5 +1,4 @@
-import { Category } from './../models/model.types';
-// import { SortConfig } from './../models/model.types';
+import { Brand, Category } from './../models/model.types';
 import { Model } from '../models/model';
 import { Product } from '../models/model.types';
 
@@ -46,33 +45,52 @@ export class Controller {
     });
   };
 
-  public filteredItems(filters: string[]): Product[] {
+  public filteredItems(filtersCategory: Category[], filtersBrand: Brand[]): Product[] {
     const products = this.model.getState().products;
 
     return products.filter((product) => {
-      return filters.find((filter) => Object.values(product).includes(filter));
+      if (filtersCategory.length && filtersBrand.length) {
+        return (
+          filtersCategory.find((filter) => Object.values(product).includes(filter)) &&
+          filtersBrand.find((filter) => Object.values(product).includes(filter))
+        );
+      } else if (filtersCategory.length) {
+        return filtersCategory.find((filter) => Object.values(product).includes(filter));
+      } else if (filtersBrand.length) {
+        return filtersBrand.find((filter) => Object.values(product).includes(filter));
+      }
     });
   }
 
-  public changeFilters(event: MouseEvent) {
+  public changeFilters(event: MouseEvent, filter: string) {
     const checked = (event.target as HTMLInputElement).checked;
-    const idCategoryFilter = (event.target as HTMLElement).id;
+    const idFilter = (event.target as HTMLElement).id;
     const filters = this.model.getState().filters;
-    let newFiltersCategory: Category[] = [];
+    let newFiltersCategory: Category[] = filters.category;
+    let newFiltersBrand: Brand[] = filters.brand;
 
     if (checked) {
-      newFiltersCategory = [...filters.category, idCategoryFilter as Category];
+      if (filter === 'category') {
+        newFiltersCategory = [...filters.category, idFilter as Category];
+      } else if (filter === 'brand') {
+        newFiltersBrand = [...filters.brand, idFilter as Brand];
+      }
     } else {
-      newFiltersCategory = filters.category.filter((cat) => cat !== idCategoryFilter);
+      if (filter === 'category') {
+        newFiltersCategory = filters.category.filter((cat) => cat !== idFilter);
+      } else if (filter === 'brand') {
+        newFiltersBrand = filters.brand.filter((cat) => cat !== idFilter);
+      }
     }
 
-    const filterableItems = this.filteredItems(newFiltersCategory);
+    const filterableItems = this.filteredItems(newFiltersCategory, newFiltersBrand);
 
     this.model.setState({
       ...this.model.getState(),
       visible: filterableItems,
       filters: {
         category: newFiltersCategory,
+        brand: newFiltersBrand,
       },
     });
   }

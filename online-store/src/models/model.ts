@@ -8,10 +8,33 @@ const initialState: AppState = {
   isOnCart: false,
   sortSettings: '',
   defaultFilters: {
-    category: ['Laptop', 'Monoblock', 'Printer', 'SmartWatch', 'Smartphone', 'Tablet', 'TV'],
+    category: ['Laptop', 'Monoblock', 'Smartphone', 'Tablet', 'TV'],
+    brand: [
+      'Asus',
+      'Lenovo',
+      'IRBIS',
+      'Haier',
+      'Acer',
+      'Echips',
+      'Poco',
+      'realme',
+      'ZTE',
+      'Xiaomi',
+      'Vivo',
+      'Samsung',
+      'Horizont',
+      'KIVI',
+      'HP',
+      'MSI',
+      'Dell',
+      'Huawei',
+      'Realme',
+      'KIWI',
+    ],
   },
   filters: {
     category: [],
+    brand: [],
   },
 };
 
@@ -27,7 +50,7 @@ export class Model {
   private async loadData() {
     await fetch('../DB/db.json')
       .then((res) => res.json())
-      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData.slice(0, 80) }))
+      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData }))
       .catch((error) => alert(`Ошибка ${error}`));
   }
 

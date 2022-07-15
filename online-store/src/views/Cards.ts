@@ -40,7 +40,7 @@ export class Cards extends Control<HTMLElement> {
 
     this.cardsWrapper = new Control(this.node, 'div', 'cards__wrapper');
 
-    if (data.filters?.category.length) {
+    if (data.filters?.category.length || data.filters?.brand.length) {
       data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
     } else {
       data.products.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
