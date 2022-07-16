@@ -1,5 +1,5 @@
 import { Signal } from '../controllers/Signal';
-import { AppState, Product } from './model.types';
+import { AppState, Filters, Product } from './model.types';
 
 const initialState: AppState = {
   products: [],
@@ -48,10 +48,35 @@ export class Model {
     this.loadData();
   }
 
+  private saveStorage() {
+    const { filters, sortSettings, cart, visible } = this._state;
+    localStorage.setItem('filters', JSON.stringify(filters));
+    localStorage.setItem('sortSettings', JSON.stringify(sortSettings));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('visible', JSON.stringify(visible));
+  }
+
+  private getStorage() {
+    const filters: Filters = JSON.parse(localStorage.getItem('filters') || '{"category": [], "brand": []}');
+    const sortSettings: string = JSON.parse(localStorage.getItem('sortSettings') || '""');
+    const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const visible: Product[] = JSON.parse(localStorage.getItem('visible') || '[]');
+
+    return { filters, sortSettings, cart, visible };
+  }
+
+  public clearStorage() {
+    localStorage.clear()
+  }
+
   private async loadData() {
+    const { filters, sortSettings, cart, visible } = this.getStorage();
+
     await fetch('../DB/db.json')
       .then((res) => res.json())
-      .then((productsData: Array<Product>) => this.setState({ ...this._state, products: productsData }))
+      .then((productsData: Product[]) =>
+        this.setState({ ...this.getState(), products: productsData, filters, sortSettings, cart, visible })
+      )
       .catch((error) => alert(`Ошибка ${error}`));
   }
 
@@ -59,8 +84,10 @@ export class Model {
     return this._state;
   }
 
-  public setState(newState: AppState) {
+  public setState(newState: Partial<AppState>) {
     this._state = { ...this.getState(), ...newState };
+    this.saveStorage();
+    console.log('STATE: ', this._state);
     this.events.emit(this._state);
   }
 }

@@ -9,17 +9,31 @@ export class Controller {
     this.model = model;
   }
 
-  public isInCart(card: Product): boolean {
-    return this.model.getState().cart.includes(card);
+  public clearStorage(): void {
+    this.model.clearStorage();
   }
 
-  private hasAnyFilters() {
+  public resetFilters(): void {
+    this.model.setState({
+      sortSettings: '',
+      filters: {
+        category: [],
+        brand: [],
+      }
+    })
+  }
+
+  public isInCart(card: Product): boolean {
+    return !!this.model.getState().cart.find((cartItem) => cartItem.id === card.id);
+  }
+
+  private hasAnyFilters(): boolean {
     const filters = this.model.getState().filters;
     const filterTypes = Object.values(filters);
     return !!filterTypes.filter((filterTypes) => filterTypes.length).length;
   }
 
-  private searchItems() {
+  private searchItems(): Product[] {
     let products = [...this.model.getState().products];
     const hasAnyFilters = this.hasAnyFilters();
 

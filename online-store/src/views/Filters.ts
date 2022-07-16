@@ -8,11 +8,21 @@ export class Filters extends Control<HTMLElement> {
   filterItem: Control<HTMLElement> | undefined;
   label: Control<HTMLLabelElement> | undefined;
   checkbox: Control<HTMLInputElement> | undefined;
+  clearBtns: Control<HTMLElement>;
+  clearStorageBtn: Control<HTMLElement>;
+  resetFilterBtn: Control<HTMLElement>;
 
   constructor(parentElement: HTMLElement, data: AppState, controller: Controller) {
     super(parentElement, 'div', 'filters__container');
 
     this.filtersTitle = new Control(this.node, 'h3', 'filters__title', 'Фильтры');
+
+    this.clearBtns = new Control(this.node, 'div', 'filter-buttons');
+    this.resetFilterBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__reset-filters', 'Reset Filters');
+    this.resetFilterBtn.node.onclick = () => controller.resetFilters();
+    this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__clear-storage', 'Clear Storage');
+    this.clearStorageBtn.node.onclick = () => controller.clearStorage();
+
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Категории');
     data.defaultFilters.category.forEach((item) => this.createFilterItem('category', item as never, data, controller));
 
