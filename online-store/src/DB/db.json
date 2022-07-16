@@ -13,7 +13,7 @@
     },
     "price": 983.7,
     "isPopular": true,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6260084541.jpg",
     "count": 4
@@ -51,7 +51,7 @@
     },
     "price": 1470.90,
     "isPopular": true,
-    "year": 2019,
+    "year": 2017,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6074115303.jpg",
     "count": 1
@@ -70,10 +70,10 @@
     },
     "price": 520.45,
     "isPopular": false,
-    "year": 5,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6162374076.jpg",
-    "count": 1
+    "count": 19
   },
   {
     "id": 4,
@@ -108,10 +108,10 @@
     },
     "price": 1214.79,
     "isPopular": false,
-    "year": 2019,
+    "year": 2017,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6026640582.jpg",
-    "count": 1
+    "count": 19
   },
   {
     "id": 6,
@@ -127,7 +127,7 @@
     },
     "price": 1572.06,
     "isPopular": true,
-    "year": 5,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6155684538.jpg",
     "count": 6
@@ -165,7 +165,7 @@
     },
     "price": 1678.72,
     "isPopular": false,
-    "year": 5,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-v/wc250/6255408727.jpg",
     "count": 1
@@ -203,7 +203,7 @@
     },
     "price": 349.97,
     "isPopular": true,
-    "year": 2019,
+    "year": 2017,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-1/c250/6267878017.jpg",
     "count": 6
@@ -244,7 +244,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/c250/6139525522.jpg",
-    "count": 1
+    "count": 19
   },
   {
     "id": 13,
@@ -260,7 +260,7 @@
     },
     "price": 404.83,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/c250/6019317963.jpg",
     "count": 4
@@ -279,7 +279,7 @@
     },
     "price": 597.79,
     "isPopular": true,
-    "year": 2019,
+    "year": 2017,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/c250/6239851884.jpg",
     "count": 1
@@ -301,7 +301,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/c250/6132871498.jpg",
-    "count": 1
+    "count": 18
   },
   {
     "id": 17,
@@ -358,7 +358,7 @@
     "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6068304352.jpg",
-    "count": 1
+    "count": 18
   },
   {
     "id": 24,
@@ -434,7 +434,7 @@
     "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6212814500.jpg",
-    "count": 1
+    "count": 18
   },
   {
     "id": 29,
@@ -450,7 +450,7 @@
     },
     "price": 1300.62,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6150281176.jpg",
     "count": 6
@@ -488,7 +488,7 @@
     },
     "price": 1553.33,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-n/wc250/6284066015.jpg",
     "count": 17
@@ -545,7 +545,7 @@
     },
     "price": 1328.94,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-d/wc250/6226669909.jpg",
     "count": 1
@@ -602,7 +602,7 @@
     },
     "price": 3931.63,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6225637325.jpg",
     "count": 17
@@ -640,7 +640,7 @@
     },
     "price": 2067.08,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6271338706.jpg",
     "count": 17
@@ -681,7 +681,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6154651179.jpg",
-    "count": 1
+    "count": 18
   },
   {
     "id": 87,
@@ -697,10 +697,10 @@
     },
     "price": 1380.33,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6156161388.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 99,
@@ -757,7 +757,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-v/wc250/6127007059.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 120,
@@ -773,7 +773,7 @@
     },
     "price": 3437.44,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6157361965.jpg",
     "count": 1
@@ -795,7 +795,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-8/wc250/6246083480.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 122,
@@ -814,7 +814,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-k/wc250/6286475672.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 123,
@@ -830,7 +830,7 @@
     },
     "price": 2721.57,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-9/wc250/6100505133.jpg",
     "count": 1
@@ -871,7 +871,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-7/wc250/6100505131.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 141,
@@ -906,7 +906,7 @@
     },
     "price": 1646.54,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6285931033.jpg",
     "count": 1
@@ -928,7 +928,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6260594498.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 153,
@@ -966,7 +966,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6238625910.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 155,
@@ -985,7 +985,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-g/wc250/6151218664.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 156,
@@ -1001,7 +1001,7 @@
     },
     "price": 6040.32,
     "isPopular": true,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-o/wc250/6237211728.jpg",
     "count": 17
@@ -1042,7 +1042,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6018077739.jpg",
-    "count": 1
+    "count": 15
   },
   {
     "id": 169,
@@ -1080,7 +1080,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6201785633.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 179,
@@ -1096,7 +1096,7 @@
     },
     "price": 5229.95,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6283916092.jpg",
     "count": 1
@@ -1115,7 +1115,7 @@
     },
     "price": 2520.8,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6018077739.jpg",
     "count": 17
@@ -1134,7 +1134,7 @@
     },
     "price": 1924.42,
     "isPopular": true,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6275346542.jpg",
     "count": 1
@@ -1172,10 +1172,10 @@
     },
     "price": 1541.89,
     "isPopular": true,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-z/wc250/6223669655.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 260,
@@ -1210,10 +1210,10 @@
     },
     "price": 958.05,
     "isPopular": true,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6258838239.jpg",
-    "count": 1
+    "count": 8
   },
   {
     "id": 262,
@@ -1232,7 +1232,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6078067256.jpg",
-    "count": 1
+    "count": 15
   },
   {
     "id": 263,
@@ -1286,7 +1286,7 @@
     },
     "price": 1307.12,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6059122994.jpg",
     "count": 1
@@ -1308,7 +1308,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-u/wc250/6274237302.jpg",
-    "count": 1
+    "count": 8
   },
   {
     "id": 282,
@@ -1346,7 +1346,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6132871498.jpg",
-    "count": 1
+    "count": 8
   },
   {
     "id": 289,
@@ -1362,7 +1362,7 @@
     },
     "price": 355.39,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6267877832.jpg",
     "count": 1
@@ -1384,7 +1384,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-s/wc250/6058807396.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 301,
@@ -1419,7 +1419,7 @@
     },
     "price": 400.43,
     "isPopular": true,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6019317963.jpg",
     "count": 1
@@ -1476,10 +1476,10 @@
     },
     "price": 709.2,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-g/wc250/6070253980.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 306,
@@ -1495,7 +1495,7 @@
     },
     "price": 1024.75,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6129266553.jpg",
     "count": 1
@@ -1533,10 +1533,10 @@
     },
     "price": 788.08,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6067361230.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 320,
@@ -1552,7 +1552,7 @@
     },
     "price": 392.27,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6181633642.jpg",
     "count": 17
@@ -1571,7 +1571,7 @@
     },
     "price": 684.9,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-m/wc250/6156663166.jpg",
     "count": 17
@@ -1631,7 +1631,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6087202690.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 325,
@@ -1647,7 +1647,7 @@
     },
     "price": 464.13,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6083457482.jpg",
     "count": 4
@@ -1666,10 +1666,10 @@
     },
     "price": 464.13,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-j/wc250/6083457343.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 327,
@@ -1688,7 +1688,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6274226343.jpg",
-    "count": 1
+    "count": 8
   },
   {
     "id": 328,
@@ -1704,7 +1704,7 @@
     },
     "price": 265.65,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6274226353.jpg",
     "count": 4
@@ -1726,7 +1726,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6029269166.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 330,
@@ -1761,7 +1761,7 @@
     },
     "price": 368.09,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6274226298.jpg",
     "count": 1
@@ -1780,7 +1780,7 @@
     },
     "price": 253.03,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-s/wc250/6017179300.jpg",
     "count": 4
@@ -1799,10 +1799,10 @@
     },
     "price": 444.33,
     "isPopular": false,
-    "year": 2019,
+    "year": 2018,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-b/wc250/6071955551.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 341,
@@ -1837,7 +1837,7 @@
     },
     "price": 552.84,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-z/wc250/6161379035.jpg",
     "count": 1
@@ -1856,7 +1856,7 @@
     },
     "price": 492.49,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-5/wc250/6152190545.jpg",
     "count": 1
@@ -1878,7 +1878,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6094679784.jpg",
-    "count": 1
+    "count": 14
   },
   {
     "id": 424,
@@ -1897,7 +1897,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6043391217.jpg",
-    "count": 1
+    "count": 16
   },
   {
     "id": 425,
@@ -1913,10 +1913,10 @@
     },
     "price": 512.73,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-k/wc250/6015968504.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 426,
@@ -1932,7 +1932,7 @@
     },
     "price": 374.04,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-n/wc250/6019317155.jpg",
     "count": 1
@@ -1970,7 +1970,7 @@
     },
     "price": 2190.7,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6150976410.jpg",
     "count": 4
@@ -1992,7 +1992,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6172756440.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 465,
@@ -2008,10 +2008,10 @@
     },
     "price": 696.5,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6213069662.jpg",
-    "count": 1
+    "count": 16
   },
   {
     "id": 470,
@@ -2027,7 +2027,7 @@
     },
     "price": 1814.72,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6212814500.jpg",
     "count": 1
@@ -2068,7 +2068,7 @@
     "year": 2019,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6271462964.jpg",
-    "count": 1
+    "count": 12
   },
   {
     "id": 473,
@@ -2084,10 +2084,10 @@
     },
     "price": 1969.15,
     "isPopular": false,
-    "year": 2019,
+    "year": 2016,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6064893432.jpg",
-    "count": 1
+    "count": 16
   },
   {
     "id": 474,
@@ -2103,7 +2103,7 @@
     },
     "price": 2384.49,
     "isPopular": true,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6068304352.jpg",
     "count": 4
