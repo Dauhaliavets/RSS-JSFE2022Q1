@@ -45,6 +45,19 @@
       height: 130px;
     }
 
+    &-categiry {
+
+    }
+    &-star {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      background: url('./assets//like.svg') transparent 0px 0px / 0px no-repeat;
+      background-size: contain;
+    }
+
     &-price {
       color: #333333;
       font-size: 20px;
@@ -61,7 +74,7 @@
       background: #ffffff;
       border: 2px solid #ff2701;
       border-radius: 50px;
-      padding: 8px 50px;
+      padding: 5px 25px;
       color: #ff2701;
       font-size: 14px;
       line-height: 18px;
@@ -73,10 +86,10 @@
 
     .button__add {
       cursor: pointer;
-      background: url('./assets//shopping-cart-icon-blue.svg') #ffffff 18px 8px / 18px no-repeat;
+      background: url('./assets//shopping-cart-icon-blue.svg') #ffffff 10px 7px / 17px no-repeat;
       border: 2px solid #0156FF;
       border-radius: 50px;
-      padding: 8px 20px 8px 50px;
+      padding: 5px 15px 5px 34px;
       color: #0156FF;
       font-size: 14px;
       line-height: 18px;
