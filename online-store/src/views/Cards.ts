@@ -40,11 +40,18 @@ export class Cards extends Control<HTMLElement> {
 
     this.cardsWrapper = new Control(this.node, 'div', 'cards__wrapper');
 
-    if (data.filters?.category.length || data.filters?.brand.length || data.sortSettings.length || data.searchValue.length) {
-      if(!!data.visible.length) {
+    if (
+      data.filters?.category.length ||
+      data.filters?.brand.length ||
+      data.sortSettings.length ||
+      data.searchValue.length ||
+      (data.ranges?.count[0] !== 0 && data.ranges?.count[1] !== 20) ||
+      (data.ranges?.year[0] !== 2015 && data.ranges?.year[1] !== 2022)
+    ) {
+      if (!!data.visible.length) {
         data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
       } else {
-        this.cardsWrapper.node.textContent = 'Извините, совпадений по всем критериям поиска и фильтров не обнаружено'
+        this.cardsWrapper.node.textContent = 'Извините, совпадений по всем критериям поиска и фильтров не обнаружено';
       }
     } else {
       data.products.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));

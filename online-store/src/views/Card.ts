@@ -7,12 +7,14 @@ export class Card extends Control<HTMLElement> {
   image: Control<HTMLImageElement>;
   price: Control<HTMLElement>;
   brand: Control<HTMLElement>;
-  description: Control<HTMLElement>;
+  // description: Control<HTMLElement>;
   buttonRemove: Control<HTMLElement> | undefined;
   buttonAdd: Control<HTMLElement> | undefined;
   oldPrice: Control<HTMLElement> | undefined;
   buttons: Control<HTMLElement>;
   indicator: Control<HTMLElement> | undefined;
+  year: Control<HTMLElement>;
+  count: Control<HTMLElement>;
 
   constructor(parentElement: HTMLElement, data: Product, controller: Controller) {
     super(parentElement, 'div', 'card__item');
@@ -21,11 +23,14 @@ export class Card extends Control<HTMLElement> {
     this.image.node.src = data.img;
     this.brand = new Control(this.node, 'span', 'card__item-brand', data.brand);
     this.title = new Control(this.node, 'h3', 'card__item-title', data.title);
-    this.description = new Control(this.node, 'div', 'card__item-description');
+    // this.description = new Control(this.node, 'div', 'card__item-description');
 
-    for (const key in data.description) {
-      new Control(this.description.node, 'p', 'card__item-description__item', `${key}${data.description[key]}`);
-    }
+    // for (const key in data.description) {
+    //   new Control(this.description.node, 'p', 'card__item-description__item', `${key}${data.description[key]}`);
+    // }
+
+    this.year = new Control(this.node, 'div', 'card__item-year', `Год выпуска: ${data.year}`)
+    this.count = new Control(this.node, 'div', 'card__item-count', `Количество: ${data.count}`)
 
     this.price = new Control(this.node, 'div', 'card__item-price', `${data.price} BYN`);
     this.buttons = new Control(this.node, 'div', 'card__item-buttons-container');

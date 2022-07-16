@@ -1,5 +1,5 @@
 import { Signal } from '../controllers/Signal';
-import { AppState, Filters, Product } from './model.types';
+import { AppState, Filters, Product, Ranges } from './model.types';
 
 const initialState: AppState = {
   products: [],
@@ -37,6 +37,10 @@ const initialState: AppState = {
     category: [],
     brand: [],
   },
+  ranges: {
+    count: [],
+    year: [],
+  },
 };
 
 export class Model {
@@ -46,48 +50,47 @@ export class Model {
   constructor(state: AppState = initialState) {
     this._state = state;
     this.loadData();
+    this.downloadStorage();
   }
 
-  private saveStorage() {
-    const { filters, sortSettings, cart, visible } = this._state;
+  public getState(): AppState {
+    return this._state;
+  }
+
+  public setState(newState: Partial<AppState>): void {
+    this._state = { ...this.getState(), ...newState };
+    this.events.emit(this._state);
+    this.saveStorage();
+  }
+
+  private async loadData() {
+    await fetch('../DB/db.json')
+      .then((res) => res.json())
+      .then((productsData: Product[]) => this.setState({ ...this.getState(), products: productsData }))
+      .catch((error) => alert(`Ошибка ${error}`));
+  }
+
+  private saveStorage(): void {
+    const { filters, ranges, sortSettings, cart, visible } = this.getState();
     localStorage.setItem('filters', JSON.stringify(filters));
+    localStorage.setItem('ranges', JSON.stringify(ranges));
     localStorage.setItem('sortSettings', JSON.stringify(sortSettings));
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('visible', JSON.stringify(visible));
   }
 
-  private getStorage() {
+  private downloadStorage(): void {
     const filters: Filters = JSON.parse(localStorage.getItem('filters') || '{"category": [], "brand": []}');
+    const ranges: Ranges = JSON.parse(localStorage.getItem('ranges') || '{"count": [0,20], "year": [2015,2022]}');
     const sortSettings: string = JSON.parse(localStorage.getItem('sortSettings') || '""');
     const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const visible: Product[] = JSON.parse(localStorage.getItem('visible') || '[]');
 
-    return { filters, sortSettings, cart, visible };
+    this.setState({ filters, ranges, sortSettings, cart, visible });
   }
 
-  public clearStorage() {
-    localStorage.clear()
+  public clearStorage(): void {
+    localStorage.clear();
   }
 
-  private async loadData() {
-    const { filters, sortSettings, cart, visible } = this.getStorage();
-
-    await fetch('../DB/db.json')
-      .then((res) => res.json())
-      .then((productsData: Product[]) =>
-        this.setState({ ...this.getState(), products: productsData, filters, sortSettings, cart, visible })
-      )
-      .catch((error) => alert(`Ошибка ${error}`));
-  }
-
-  public getState() {
-    return this._state;
-  }
-
-  public setState(newState: Partial<AppState>) {
-    this._state = { ...this.getState(), ...newState };
-    this.saveStorage();
-    console.log('STATE: ', this._state);
-    this.events.emit(this._state);
-  }
 }

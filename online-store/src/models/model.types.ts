@@ -37,12 +37,19 @@ export interface Product {
   currency: string;
   img: string;
   count: number;
+  [key: string]: number | string | boolean | ProductDescription;
 }
 
 export interface Filters {
   category: Category[];
   brand: Brand[];
   [key: string]: Category[] | Brand[];
+}
+
+export interface Ranges {
+  count: number[];
+  year: number[];
+  [key: string]: number[];
 }
 
 export interface AppState {
@@ -54,4 +61,5 @@ export interface AppState {
   searchValue: string;
   defaultFilters: Filters;
   filters: Filters;
+  ranges: Ranges;
 }

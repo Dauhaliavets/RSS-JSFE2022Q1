@@ -1,3 +1,5 @@
+@import 'nouislider/dist/nouislider.css';
+
 .filters {
   &__container {
     padding: 10px;
@@ -6,9 +8,11 @@
     min-width: 200px;
     gap: 5px;
   }
+
   &__title {
     font-size: 18px;
   }
+
   &__subtitle {
     font-size: 14px;
   }
@@ -20,4 +24,44 @@
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
+}
+
+// Slider range year
+.range-slider-year,
+.range-slider-quantity {
+  margin: 5px 0px 20px 0px;
+}
+
+.noUi-target {
+  background-color: #eef0f7;
+}
+
+.noUi-horizontal {
+  height: 5px;
+}
+
+.noUi-connect {
+  background-color: #0156FF;
+}
+
+.noUi-handle.noUi-handle-lower,
+.noUi-handle.noUi-handle-upper {
+  width: 15px;
+  height: 15px;
+  right: -8px;
+  top: -6px;
+  border-radius: 50%;
+}
+
+.noUi-handle::before,
+.noUi-handle::after {
+  display: none;
+}
+
+.noUi-horizontal .noUi-tooltip {
+  left: 50%;
+  bottom: -142%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }

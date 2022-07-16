@@ -14,13 +14,20 @@ export class Controller {
   }
 
   public resetFilters(): void {
+    const config = this.model.getState().sortSettings;
+    const products = this.model.getState().products;
+    const sortedItems = this.sortItems(config, products);
     this.model.setState({
-      sortSettings: '',
+      visible: sortedItems,
       filters: {
         category: [],
         brand: [],
-      }
-    })
+      },
+      ranges: {
+        count: [0, 20],
+        year: [2015, 2022],
+      },
+    });
   }
 
   public isInCart(card: Product): boolean {
@@ -36,12 +43,17 @@ export class Controller {
   private searchItems(): Product[] {
     let products = [...this.model.getState().products];
     const hasAnyFilters = this.hasAnyFilters();
+    const searchValue = this.model.getState().searchValue;
 
     if (hasAnyFilters) {
       products = this.filterItems();
     }
 
-    return products.filter((item) => item.title.toLowerCase().includes(this.model.getState().searchValue));
+    if (!!searchValue) {
+      products = products.filter((item) => item.title.toLowerCase().includes(searchValue));
+    }
+
+    return products;
   }
 
   public setSearchValue(inputValue: string) {
@@ -152,6 +164,35 @@ export class Controller {
       ...this.model.getState(),
       visible: sortedItems,
     });
+  }
+
+  public changeRanges(idRange: string, values: number[]) {
+    const newRanges = { ...this.model.getState().ranges };
+
+    for (const key in newRanges) {
+      if (idRange === key) {
+        newRanges[idRange] = values;
+      }
+    }
+
+    this.model.setState({
+      ...this.model.getState(),
+      ranges: newRanges,
+    });
+
+    console.log(this.model.getState().visible);
+
+    const foundItems = this.searchItems().filter(
+      (product) => product[idRange] >= values[0] && product[idRange] <= values[1]
+    );
+    const sortedItems = this.sortItems(this.model.getState().sortSettings, foundItems);
+
+    this.model.setState({
+      ...this.model.getState(),
+      visible: sortedItems,
+    });
+
+    console.log(this.model.getState().visible);
   }
 
   public addToCart(card: Product) {
