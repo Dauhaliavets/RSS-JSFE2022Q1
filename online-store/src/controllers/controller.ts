@@ -76,6 +76,10 @@ export class Controller {
     });
   }
 
+  public clearSearchValue() {
+    this.model.setState({ searchValue: '' });
+  }
+
   public sortItems = (config: string, products: Product[]): Product[] => {
     const [key, direction] = config.split('_');
     const sortableItems = [...products];

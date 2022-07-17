@@ -24,9 +24,9 @@ export class Filters extends Control<HTMLElement> {
     this.filtersTitle = new Control(this.node, 'h3', 'filters__title', 'Фильтры');
 
     this.clearBtns = new Control(this.node, 'div', 'filter-buttons');
-    this.resetFilterBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__reset-filters', 'Reset Filters');
+    this.resetFilterBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item filter-buttons__reset-filters', 'Reset Filters');
     this.resetFilterBtn.node.onclick = () => controller.resetFilters();
-    this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__clear-storage', 'Clear Storage');
+    this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item filter-buttons__clear-storage', 'Clear Storage');
     this.clearStorageBtn.node.onclick = () => controller.clearStorage();
 
     this.sliderWrapper = new Control(this.node, 'div', 'range-slider-quantity');

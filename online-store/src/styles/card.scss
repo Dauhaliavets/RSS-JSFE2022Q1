@@ -45,9 +45,8 @@
       height: 130px;
     }
 
-    &-categiry {
+    &-categiry {}
 
-    }
     &-star {
       position: absolute;
       top: 5px;
@@ -98,5 +97,19 @@
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.14);
       }
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .card {
+    &__item {
+      &-image {
+        margin: 0;
+      }
+      &-buttons-container {
+        justify-content: flex-end;
+      }
+    }
+
   }
 }

@@ -2,7 +2,7 @@
 
 .filters {
   &__container {
-    padding: 15px;
+    padding: 0px 15px 15px 15px;
     display: flex;
     flex-direction: column;
     min-width: 240px;
@@ -30,6 +30,47 @@
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
+  transition: .3s;
+
+
+  &-label {
+    &:hover {
+      cursor: pointer;
+      transition: .3s;
+    }
+  }
+
+  &-input {
+    &:hover {
+      cursor: pointer;
+      transition: .3s;
+    }
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #CACDD8;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 210%;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    transition: .3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: #a3a4a7;
+      transition: .3s;
+    }
+  }
 }
 
 // Slider range year
@@ -57,6 +98,7 @@
   top: -6px;
   border-radius: 50%;
 }
+
 .noUi-handle.noUi-handle-upper {
   width: 15px;
   height: 15px;

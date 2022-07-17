@@ -53,7 +53,7 @@ export class Cards extends Control<HTMLElement> {
       if (data.visible.length) {
         data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
       } else {
-        this.cardsWrapper.node.textContent = 'Извините, совпадений по всем критериям поиска и фильтров не обнаружено';
+        this.cardsWrapper.node.textContent = 'Извините, совпадений не обнаружено';
       }
     } else {
       data.products.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
