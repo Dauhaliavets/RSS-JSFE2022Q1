@@ -9,6 +9,7 @@ const initialState: AppState = {
   sortSettings: '',
   searchValue: '',
   defaultFilters: {
+    isPopul: ['false'],
     category: ['Laptop', 'Monoblock', 'Smartphone', 'Tablet', 'TV'],
     brand: [
       'Asus',
@@ -34,6 +35,7 @@ const initialState: AppState = {
     ],
   },
   filters: {
+    isPopul: ['false'],
     category: [],
     brand: [],
   },
@@ -80,7 +82,7 @@ export class Model {
   }
 
   private downloadStorage(): void {
-    const filters: Filters = JSON.parse(localStorage.getItem('filters') || '{"category": [], "brand": []}');
+    const filters: Filters = JSON.parse(localStorage.getItem('filters') || '{"category": [], "brand": [], "isPopul": ["false"]}');
     const ranges: Ranges = JSON.parse(localStorage.getItem('ranges') || '{"count": [0,20], "year": [2015,2022]}');
     const sortSettings: string = JSON.parse(localStorage.getItem('sortSettings') || '""');
     const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');

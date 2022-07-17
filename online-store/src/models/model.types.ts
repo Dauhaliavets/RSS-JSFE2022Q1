@@ -25,6 +25,8 @@ export type Brand =
   | 'Realme'
   | 'KIWI';
 
+export type IsPopular = true | false;
+
 export interface Product {
   id: number;
   brand: Brand;
@@ -41,9 +43,10 @@ export interface Product {
 }
 
 export interface Filters {
+  isPopul: string[];
   category: Category[];
   brand: Brand[];
-  [key: string]: Category[] | Brand[];
+  [key: string]: Category[] | Brand[] | string[];
 }
 
 export interface Ranges {

@@ -16,6 +16,7 @@ export class Filters extends Control<HTMLElement> {
   sliderWrapper: Control<HTMLElement>;
   rangeSliderYear: API;
   rangeSliderQuantity: API;
+  filterGroup: Control<HTMLElement>;
 
   constructor(parentElement: HTMLElement, data: AppState, controller: Controller) {
     super(parentElement, 'div', 'filters__container');
@@ -74,23 +75,43 @@ export class Filters extends Control<HTMLElement> {
       controller.changeRanges(this.target.id, values as number[]);
     });
 
+    this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Популярные');
+    this.filterGroup = new Control(this.node, 'div', 'filters__group');
+    this.filterItem = new Control(this.filterGroup.node, 'div', 'filter__item');
+    this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', 'Популярные');
+    this.label.node.htmlFor = 'popular';
+    this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
+    this.checkbox.node.type = 'checkbox';
+    this.checkbox.node.id = 'popular';
+
+    if (data.filters.isPopul[0] === 'true') {
+      this.checkbox.node.checked = true;
+    }
+    
+    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isPopul');
+
+
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Категории');
-    data.defaultFilters.category.forEach((item) => this.createFilterItem('category', item as never, data, controller));
+    this.filterGroup = new Control(this.node, 'div', 'filters__group');
+    data.defaultFilters.category.forEach((item) => this.createFilterItem(this.filterGroup.node, 'category', item as never, data, controller));
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Бренды');
-    data.defaultFilters.brand.forEach((item) => this.createFilterItem('brand', item as never, data, controller));
+    this.filterGroup = new Control(this.node, 'div', 'filters__group');
+    data.defaultFilters.brand.forEach((item) => this.createFilterItem(this.filterGroup.node, 'brand', item as never, data, controller));
   }
 
-  private createFilterItem = (filter: string, name: never, data: AppState, controller: Controller) => {
-    this.filterItem = new Control(this.node, 'div', 'filter__item');
+  private createFilterItem = (parentNode: HTMLElement, filter: string, name: never, data: AppState, controller: Controller) => {
+    this.filterItem = new Control(parentNode, 'div', 'filter__item');
     this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', name);
     this.label.node.htmlFor = name;
     this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
     this.checkbox.node.type = 'checkbox';
     this.checkbox.node.id = name;
+
     if (data.filters[filter].includes(name)) {
       this.checkbox.node.checked = true;
     }
+    
     this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, filter);
   };
 }

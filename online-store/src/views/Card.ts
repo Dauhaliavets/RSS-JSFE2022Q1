@@ -7,7 +7,6 @@ export class Card extends Control<HTMLElement> {
   image: Control<HTMLImageElement>;
   price: Control<HTMLElement>;
   brand: Control<HTMLElement>;
-  // description: Control<HTMLElement>;
   buttonRemove: Control<HTMLElement> | undefined;
   buttonAdd: Control<HTMLElement> | undefined;
   oldPrice: Control<HTMLElement> | undefined;
@@ -15,25 +14,27 @@ export class Card extends Control<HTMLElement> {
   indicator: Control<HTMLElement> | undefined;
   year: Control<HTMLElement>;
   count: Control<HTMLElement>;
+  category: Control<HTMLElement>;
+  popular: Control<HTMLElement> | undefined;
 
   constructor(parentElement: HTMLElement, data: Product, controller: Controller) {
     super(parentElement, 'div', 'card__item');
 
     this.image = new Control(this.node, 'img', 'card__item-image');
     this.image.node.src = data.img;
-    this.brand = new Control(this.node, 'span', 'card__item-brand', data.brand);
     this.title = new Control(this.node, 'h3', 'card__item-title', data.title);
-    // this.description = new Control(this.node, 'div', 'card__item-description');
-
-    // for (const key in data.description) {
-    //   new Control(this.description.node, 'p', 'card__item-description__item', `${key}${data.description[key]}`);
-    // }
+    this.category = new Control(this.node, 'span', 'card__item-categiry', `Категория: ${data.category}`);
+    this.brand = new Control(this.node, 'span', 'card__item-brand', `Бренд: ${data.brand}`);
 
     this.year = new Control(this.node, 'div', 'card__item-year', `Год выпуска: ${data.year}`)
     this.count = new Control(this.node, 'div', 'card__item-count', `Количество: ${data.count}`)
 
     this.price = new Control(this.node, 'div', 'card__item-price', `${data.price} BYN`);
     this.buttons = new Control(this.node, 'div', 'card__item-buttons-container');
+
+    if(data.isPopular) {
+      this.popular = new Control(this.node, 'div', 'card__item-star')
+    }
 
     if (controller.isInCart(data)) {
       this.indicator = new Control(this.node, 'span', 'card__item-indicator', 'В корзине');

@@ -43,6 +43,7 @@ export class Cards extends Control<HTMLElement> {
     if (
       data.filters?.category.length ||
       data.filters?.brand.length ||
+      data.filters?.isPopul[0] === 'true' ||
       data.sortSettings.length ||
       data.searchValue.length ||
       (data.ranges?.count[0] !== 0 && data.ranges?.count[1] !== 20) ||
