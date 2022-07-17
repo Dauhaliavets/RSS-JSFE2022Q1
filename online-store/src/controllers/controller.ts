@@ -35,6 +35,13 @@ export class Controller {
     return !!this.model.getState().cart.find((cartItem) => cartItem.id === card.id);
   }
 
+  private isChangedRanges(): boolean {
+    const ranges = this.model.getState().ranges;
+    const isChangedRangeCount = ranges.count[0] !== 0 || ranges.count[1] !== 20;
+    const isChangedRangeYear = ranges.year[0] !== 2015 || ranges.year[1] !== 2022;
+    return isChangedRangeCount || isChangedRangeYear;
+  }
+
   private hasAnyFilters(): boolean {
     const filters = this.model.getState().filters;
     const filterTypes = Object.values(filters);
@@ -45,9 +52,9 @@ export class Controller {
   private searchItems(): Product[] {
     let products = [...this.model.getState().products];
     const hasAnyFilters = this.hasAnyFilters();
+    const isChangedRanges = this.isChangedRanges();
     const searchValue = this.model.getState().searchValue;
-
-    if (hasAnyFilters) {
+    if (hasAnyFilters || isChangedRanges) {
       products = this.filterItems();
     }
 
@@ -113,6 +120,7 @@ export class Controller {
 
   public filterItems(): Product[] {
     const filters = this.model.getState().filters;
+    const ranges = this.model.getState().ranges;
     const [isPopul, category, brand] = Object.keys(filters);
     let filteredItems = [...this.model.getState().products];
 
@@ -131,6 +139,11 @@ export class Controller {
         return (filters[isPopul] as string[]).find((filter) => Object.values(product).includes(!!filter));
       });
     }
+
+    filteredItems = filteredItems.filter(
+      (product) => product.count >= ranges.count[0] && product.count <= ranges.count[1]
+    );
+    filteredItems = filteredItems.filter((product) => product.year >= ranges.year[0] && product.year <= ranges.year[1]);
 
     return filteredItems;
   }
@@ -193,9 +206,7 @@ export class Controller {
       ranges: newRanges,
     });
 
-    const foundItems = this.searchItems().filter(
-      (product) => product[idRange] >= values[0] && product[idRange] <= values[1]
-    );
+    const foundItems = this.searchItems();
     const sortedItems = this.sortItems(this.model.getState().sortSettings, foundItems);
 
     this.model.setState({
