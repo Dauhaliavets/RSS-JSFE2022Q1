@@ -82,10 +82,10 @@ export class Controller {
     if (key === 'title') {
       sortableItems.sort((a, b) => {
         if (a['title'].toLowerCase() < b['title'].toLowerCase()) {
-          return direction === 'asc' ? -1 : 1;
+          return direction === 'asc' ? 1 : -1;
         }
         if (a['title'].toLowerCase() > b['title'].toLowerCase()) {
-          return direction === 'asc' ? 1 : -1;
+          return direction === 'asc' ? -1 : 1;
         }
         return 0;
       });
