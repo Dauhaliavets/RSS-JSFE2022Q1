@@ -15,16 +15,16 @@ export class Cards extends Control<HTMLElement> {
     super(parentElement, 'div', 'cards__container');
     this.select = new Control(this.node, 'select', 'cards__sort');
 
-    this.optionSortByHighPrice = new Control(this.select.node, 'option', '', 'Сорт по убыванию цены');
+    this.optionSortByHighPrice = new Control(this.select.node, 'option', '', 'По убыванию цены');
     this.optionSortByHighPrice.node.id = 'price_desc';
 
-    this.optionSortByLowPrice = new Control(this.select.node, 'option', '', 'Сорт по возрастанию цены');
+    this.optionSortByLowPrice = new Control(this.select.node, 'option', '', 'По возрастанию цены');
     this.optionSortByLowPrice.node.id = 'price_asc';
 
-    this.optionSortByNameAZ = new Control(this.select.node, 'option', '', 'Сорт по названию А-Я');
+    this.optionSortByNameAZ = new Control(this.select.node, 'option', '', 'По названию А-Я');
     this.optionSortByNameAZ.node.id = 'title_desc';
 
-    this.optionSortByNameZA = new Control(this.select.node, 'option', '', 'Сорт по названию Я-А');
+    this.optionSortByNameZA = new Control(this.select.node, 'option', '', 'По названию Я-А');
     this.optionSortByNameZA.node.id = 'title_asc';
 
     for (const node of this.select.node.children) {

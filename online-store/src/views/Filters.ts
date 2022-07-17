@@ -29,6 +29,7 @@ export class Filters extends Control<HTMLElement> {
     this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item filter-buttons__clear-storage', 'Clear Storage');
     this.clearStorageBtn.node.onclick = () => controller.clearStorage();
 
+    this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Количество');
     this.sliderWrapper = new Control(this.node, 'div', 'range-slider-quantity');
     this.sliderWrapper.node.id = 'count';
     this.rangeSliderQuantity = noUiSlider.create(this.sliderWrapper.node, {
@@ -52,6 +53,7 @@ export class Filters extends Control<HTMLElement> {
       controller.changeRanges(this.target.id, values as number[]);
     });
 
+    this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Год выпуска');
     this.sliderWrapper = new Control(this.node, 'div', 'range-slider-year');
     this.sliderWrapper.node.id = 'year';
     this.rangeSliderYear = noUiSlider.create(this.sliderWrapper.node, {
