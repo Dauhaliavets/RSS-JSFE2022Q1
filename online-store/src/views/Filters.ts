@@ -7,9 +7,9 @@ export class Filters extends Control<HTMLElement> {
   filtersTitle: Control<HTMLElement>;
   filtersSubTitle: Control<HTMLElement>;
 
-  filterItem: Control<HTMLElement> | undefined;
-  label: Control<HTMLLabelElement> | undefined;
-  checkbox: Control<HTMLInputElement> | undefined;
+  filterItem: Control<HTMLElement>;
+  label: Control<HTMLLabelElement>;
+  checkbox: Control<HTMLInputElement>;
   clearBtns: Control<HTMLElement>;
   clearStorageBtn: Control<HTMLElement>;
   resetFilterBtn: Control<HTMLElement>;
@@ -84,23 +84,32 @@ export class Filters extends Control<HTMLElement> {
     this.checkbox.node.type = 'checkbox';
     this.checkbox.node.id = 'popular';
 
-    if (data.filters.isPopul[0] === 'true') {
+    if (data.filters.isPopular.length) {
       this.checkbox.node.checked = true;
     }
-    
-    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isPopul');
 
+    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isPopular');
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Категории');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');
-    data.defaultFilters.category.forEach((item) => this.createFilterItem(this.filterGroup.node, 'category', item as never, data, controller));
+    data.defaultFilters.category.forEach((item) =>
+      this.createFilterItem(this.filterGroup.node, 'category', item as never, data, controller),
+    );
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Бренды');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');
-    data.defaultFilters.brand.forEach((item) => this.createFilterItem(this.filterGroup.node, 'brand', item as never, data, controller));
+    data.defaultFilters.brand.forEach((item) =>
+      this.createFilterItem(this.filterGroup.node, 'brand', item as never, data, controller),
+    );
   }
 
-  private createFilterItem = (parentNode: HTMLElement, filter: string, name: never, data: AppState, controller: Controller) => {
+  private createFilterItem = (
+    parentNode: HTMLElement,
+    filter: string,
+    name: never,
+    data: AppState,
+    controller: Controller,
+  ) => {
     this.filterItem = new Control(parentNode, 'div', 'filter__item');
     this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', name);
     this.label.node.htmlFor = name;
@@ -111,7 +120,7 @@ export class Filters extends Control<HTMLElement> {
     if (data.filters[filter].includes(name)) {
       this.checkbox.node.checked = true;
     }
-    
+
     this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, filter);
   };
 }

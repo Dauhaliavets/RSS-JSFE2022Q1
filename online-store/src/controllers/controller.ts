@@ -20,7 +20,7 @@ export class Controller {
     this.model.setState({
       visible: sortedItems,
       filters: {
-        isPopul: [],
+        isPopular: [],
         category: [],
         brand: [],
       },
@@ -44,9 +44,7 @@ export class Controller {
 
   private hasAnyFilters(): boolean {
     const filters = this.model.getState().filters;
-    const filterTypes = Object.values(filters);
-
-    return !!filterTypes.filter((filterTypes) => filterTypes.length).length;
+    return !!Object.values(filters).filter((filterTypes) => filterTypes.length).length;
   }
 
   private searchItems(): Product[] {
@@ -58,7 +56,7 @@ export class Controller {
       products = this.filterItems();
     }
 
-    if (!!searchValue) {
+    if (searchValue) {
       products = products.filter((item) => item.title.toLowerCase().includes(searchValue));
     }
 
@@ -67,7 +65,6 @@ export class Controller {
 
   public setSearchValue(inputValue: string) {
     this.model.setState({
-      ...this.model.getState(),
       searchValue: inputValue,
     });
 
@@ -75,23 +72,20 @@ export class Controller {
     const fountAfterSort = this.sortItems(this.model.getState().sortSettings, foundItems);
 
     this.model.setState({
-      ...this.model.getState(),
       visible: fountAfterSort,
     });
   }
 
   public sortItems = (config: string, products: Product[]): Product[] => {
     const [key, direction] = config.split('_');
-    let sortableItems: Product[];
-
-    sortableItems = [...products];
+    const sortableItems = [...products];
 
     if (key === 'title') {
       sortableItems.sort((a, b) => {
-        if (a['title'].toLowerCase() < b['title'].toLowerCase()) {
+        if (a[key].toLowerCase() < b[key].toLowerCase()) {
           return direction === 'asc' ? 1 : -1;
         }
-        if (a['title'].toLowerCase() > b['title'].toLowerCase()) {
+        if (a[key].toLowerCase() > b[key].toLowerCase()) {
           return direction === 'asc' ? -1 : 1;
         }
         return 0;
@@ -112,7 +106,6 @@ export class Controller {
     }
 
     this.model.setState({
-      ...this.model.getState(),
       visible: sortableItems,
       sortSettings: config,
     });
@@ -121,7 +114,7 @@ export class Controller {
   public filterItems(): Product[] {
     const filters = this.model.getState().filters;
     const ranges = this.model.getState().ranges;
-    const [isPopul, category, brand] = Object.keys(filters);
+    const [isPopular, category, brand] = Object.keys(filters);
     let filteredItems = [...this.model.getState().products];
 
     if (filters[category].length) {
@@ -134,14 +127,12 @@ export class Controller {
         return (filters[brand] as Brand[]).find((filter) => Object.values(product).includes(filter));
       });
     }
-    if (filters[isPopul][0] === 'true') {
-      filteredItems = filteredItems.filter((product) => {
-        return (filters[isPopul] as string[]).find((filter) => Object.values(product).includes(!!filter));
-      });
+    if (filters[isPopular].length) {
+      filteredItems = filteredItems.filter((product) => product.isPopular);
     }
 
     filteredItems = filteredItems.filter(
-      (product) => product.count >= ranges.count[0] && product.count <= ranges.count[1]
+      (product) => product.count >= ranges.count[0] && product.count <= ranges.count[1],
     );
     filteredItems = filteredItems.filter((product) => product.year >= ranges.year[0] && product.year <= ranges.year[1]);
 
@@ -152,12 +143,12 @@ export class Controller {
     const checked = (event.target as HTMLInputElement).checked;
     const idFilter = (event.target as HTMLElement).id;
     const filters = this.model.getState().filters;
-    let newFiltersIsPopular: string[] = filters.isPopul;
+    let newFiltersIsPopular: string[] = filters.isPopular;
     let newFiltersCategory: Category[] = filters.category;
     let newFiltersBrand: Brand[] = filters.brand;
 
     if (checked) {
-      if (filter === 'isPopul') {
+      if (filter === 'isPopular') {
         newFiltersIsPopular = ['true'];
       } else if (filter === 'category') {
         newFiltersCategory = [...filters.category, idFilter as Category];
@@ -165,8 +156,8 @@ export class Controller {
         newFiltersBrand = [...filters.brand, idFilter as Brand];
       }
     } else {
-      if (filter === 'isPopul') {
-        newFiltersIsPopular = ['false'];
+      if (filter === 'isPopular') {
+        newFiltersIsPopular = [];
       } else if (filter === 'category') {
         newFiltersCategory = filters.category.filter((cat) => cat !== idFilter);
       } else if (filter === 'brand') {
@@ -175,9 +166,8 @@ export class Controller {
     }
 
     this.model.setState({
-      ...this.model.getState(),
       filters: {
-        isPopul: newFiltersIsPopular,
+        isPopular: newFiltersIsPopular,
         category: newFiltersCategory,
         brand: newFiltersBrand,
       },
@@ -186,10 +176,7 @@ export class Controller {
     const foundItems = this.searchItems();
     const sortedItems = this.sortItems(this.model.getState().sortSettings, foundItems);
 
-    this.model.setState({
-      ...this.model.getState(),
-      visible: sortedItems,
-    });
+    this.model.setState({ visible: sortedItems });
   }
 
   public changeRanges(idRange: string, values: number[]) {
@@ -201,24 +188,18 @@ export class Controller {
       }
     }
 
-    this.model.setState({
-      ...this.model.getState(),
-      ranges: newRanges,
-    });
+    this.model.setState({ ranges: newRanges });
 
     const foundItems = this.searchItems();
     const sortedItems = this.sortItems(this.model.getState().sortSettings, foundItems);
 
-    this.model.setState({
-      ...this.model.getState(),
-      visible: sortedItems,
-    });
+    this.model.setState({ visible: sortedItems });
   }
 
   public addToCart(card: Product) {
     const state = this.model.getState();
     if (state.cart.length < 20) {
-      this.model.setState({ ...state, cart: [...state.cart, card] });
+      this.model.setState({ cart: [...state.cart, card] });
     } else {
       alert('Извините, все слоты заполнены');
     }
@@ -227,12 +208,12 @@ export class Controller {
   public removeFromCart(id: number) {
     const state = this.model.getState();
     const newCart = state.cart.filter((item) => item.id !== id);
-    this.model.setState({ ...state, cart: newCart });
+    this.model.setState({ cart: newCart });
   }
 
   public toggleIsOnCart() {
     const state = this.model.getState();
     const newValue = !state.isOnCart;
-    this.model.setState({ ...state, isOnCart: newValue });
+    this.model.setState({ isOnCart: newValue });
   }
 }

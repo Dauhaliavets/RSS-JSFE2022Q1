@@ -26,14 +26,14 @@ export class Card extends Control<HTMLElement> {
     this.category = new Control(this.node, 'span', 'card__item-categiry', `Категория: ${data.category}`);
     this.brand = new Control(this.node, 'span', 'card__item-brand', `Бренд: ${data.brand}`);
 
-    this.year = new Control(this.node, 'div', 'card__item-year', `Год выпуска: ${data.year}`)
-    this.count = new Control(this.node, 'div', 'card__item-count', `Количество: ${data.count}`)
+    this.year = new Control(this.node, 'div', 'card__item-year', `Год выпуска: ${data.year}`);
+    this.count = new Control(this.node, 'div', 'card__item-count', `Количество: ${data.count}`);
 
     this.price = new Control(this.node, 'div', 'card__item-price', `${data.price} BYN`);
     this.buttons = new Control(this.node, 'div', 'card__item-buttons-container');
 
-    if(data.isPopular) {
-      this.popular = new Control(this.node, 'div', 'card__item-star')
+    if (data.isPopular) {
+      this.popular = new Control(this.node, 'div', 'card__item-star');
     }
 
     if (controller.isInCart(data)) {

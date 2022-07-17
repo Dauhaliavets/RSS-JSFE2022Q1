@@ -43,7 +43,7 @@ export interface Product {
 }
 
 export interface Filters {
-  isPopul: string[];
+  isPopular: string[];
   category: Category[];
   brand: Brand[];
   [key: string]: Category[] | Brand[] | string[];

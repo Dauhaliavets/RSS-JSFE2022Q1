@@ -1,7 +1,7 @@
 import { Footer } from './Footer';
 import { Controller } from './../controllers/controller';
 import { Cards } from './Cards';
-import { AppState, Product } from '../models/model.types';
+import { AppState } from '../models/model.types';
 import { Header } from './Header';
 import { Cart } from './Cart';
 import { Model } from '../models/model';
@@ -26,11 +26,8 @@ export class View {
     this.header = new Header(this.parentElement, newState, controller);
     this.mainScreen = new Control(this.parentElement, 'main', 'main__container container');
     if (newState.isOnCart) {
-      // const cartScreen = 
       new Cart(this.mainScreen.node, newState, controller);
-      // this.mainScreen.node.append(cartScreen.node);
     } else {
-      // const cardsScreen = 
       const filtersView = new Filters(this.mainScreen.node, newState, controller);
       const cardsView = new Cards(this.mainScreen.node, newState, controller);
       this.mainScreen.node.append(filtersView.node, cardsView.node);

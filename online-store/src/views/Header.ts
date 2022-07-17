@@ -24,8 +24,6 @@ export class Header extends Control<HTMLElement> {
     this.cartBtn = new Control(this.container.node, 'div', 'header__button-cart');
     this.cartIcon = new Control(this.cartBtn.node, 'div', 'header__button-cart-icon');
     this.cartCount = new Control(this.cartBtn.node, 'div', 'header__button-cart-count', `${data.cart.length}`);
-    this.cartBtn.node.onclick = () => {
-      controller.toggleIsOnCart();
-    };
+    this.cartBtn.node.onclick = () => controller.toggleIsOnCart();
   }
 }

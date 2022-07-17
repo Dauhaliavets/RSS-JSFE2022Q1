@@ -5,4 +5,4 @@ import './styles.scss';
 
 const model = new Model();
 const controller = new Controller(model);
-const app = new View(document.body, model, controller);
+new View(document.body, model, controller);

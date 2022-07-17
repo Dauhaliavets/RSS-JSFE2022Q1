@@ -17,7 +17,6 @@ export class Cards extends Control<HTMLElement> {
 
     this.optionSortByHighPrice = new Control(this.select.node, 'option', '', 'Сорт по убыванию цены');
     this.optionSortByHighPrice.node.id = 'price_desc';
-    this.optionSortByHighPrice.node.selected;
 
     this.optionSortByLowPrice = new Control(this.select.node, 'option', '', 'Сорт по возрастанию цены');
     this.optionSortByLowPrice.node.id = 'price_asc';
@@ -43,13 +42,15 @@ export class Cards extends Control<HTMLElement> {
     if (
       data.filters?.category.length ||
       data.filters?.brand.length ||
-      data.filters?.isPopul[0] === 'true' ||
+      data.filters?.isPopular.length ||
       data.sortSettings.length ||
       data.searchValue.length ||
-      (data.ranges?.count[0] !== 0 || data.ranges?.count[1] !== 20) ||
-      (data.ranges?.year[0] !== 2015 || data.ranges?.year[1] !== 2022)
+      data.ranges?.count[0] !== 0 ||
+      data.ranges?.count[1] !== 20 ||
+      data.ranges?.year[0] !== 2015 ||
+      data.ranges?.year[1] !== 2022
     ) {
-      if (!!data.visible.length) {
+      if (data.visible.length) {
         data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
       } else {
         this.cardsWrapper.node.textContent = 'Извините, совпадений по всем критериям поиска и фильтров не обнаружено';

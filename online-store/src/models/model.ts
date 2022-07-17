@@ -9,7 +9,7 @@ const initialState: AppState = {
   sortSettings: '',
   searchValue: '',
   defaultFilters: {
-    isPopul: ['false'],
+    isPopular: [],
     category: ['Laptop', 'Monoblock', 'Smartphone', 'Tablet', 'TV'],
     brand: [
       'Asus',
@@ -35,7 +35,7 @@ const initialState: AppState = {
     ],
   },
   filters: {
-    isPopul: ['false'],
+    isPopular: [],
     category: [],
     brand: [],
   },
@@ -68,7 +68,7 @@ export class Model {
   private async loadData() {
     await fetch('../DB/db.json')
       .then((res) => res.json())
-      .then((productsData: Product[]) => this.setState({ ...this.getState(), products: productsData }))
+      .then((productsData: Product[]) => this.setState({ products: productsData }))
       .catch((error) => alert(`Ошибка ${error}`));
   }
 
@@ -82,7 +82,9 @@ export class Model {
   }
 
   private downloadStorage(): void {
-    const filters: Filters = JSON.parse(localStorage.getItem('filters') || '{"category": [], "brand": [], "isPopul": ["false"]}');
+    const filters: Filters = JSON.parse(
+      localStorage.getItem('filters') || '{"category": [], "brand": [], "isPopular": []}',
+    );
     const ranges: Ranges = JSON.parse(localStorage.getItem('ranges') || '{"count": [0,20], "year": [2015,2022]}');
     const sortSettings: string = JSON.parse(localStorage.getItem('sortSettings') || '""');
     const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -94,5 +96,4 @@ export class Model {
   public clearStorage(): void {
     localStorage.clear();
   }
-
 }
