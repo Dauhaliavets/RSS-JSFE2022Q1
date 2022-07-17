@@ -17,9 +17,9 @@
       position: absolute;
       top: 5px;
       left: 5px;
-      width: 100px;
-      height: 30px;
-      background-color: #78A962;
+      width: 60px;
+      height: 25px;
+      background-color: #0156FF;
       border-radius: 15px;
       font-size: 13px;
       color: #ffffff;
@@ -45,15 +45,13 @@
       height: 130px;
     }
 
-    &-categiry {}
-
     &-star {
       position: absolute;
       top: 5px;
       right: 5px;
-      width: 20px;
-      height: 20px;
-      background: url('./assets//like.svg') transparent 0px 0px / 0px no-repeat;
+      width: 25px;
+      height: 25px;
+      background: url('./assets//star-icon.svg') transparent 0px 0px / 0px no-repeat;
       background-size: contain;
     }
 
@@ -106,6 +104,7 @@
       &-image {
         margin: 0;
       }
+
       &-buttons-container {
         justify-content: flex-end;
       }

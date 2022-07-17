@@ -35,6 +35,7 @@ export interface Product {
   description: ProductDescription;
   price: number;
   isPopular: boolean;
+  isNew: boolean;
   year: number;
   currency: string;
   img: string;
@@ -44,6 +45,7 @@ export interface Product {
 
 export interface Filters {
   isPopular: string[];
+  isNew: string[];
   category: Category[];
   brand: Brand[];
   [key: string]: Category[] | Brand[] | string[];

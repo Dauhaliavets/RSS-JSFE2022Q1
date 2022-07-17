@@ -15,6 +15,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6260084541.jpg",
     "count": 4
   },
@@ -34,6 +35,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-j/wc250/6127326511.jpg",
     "count": 6
   },
@@ -53,6 +55,7 @@
     "isPopular": true,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6074115303.jpg",
     "count": 1
   },
@@ -72,6 +75,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6162374076.jpg",
     "count": 19
   },
@@ -91,6 +95,7 @@
     "isPopular": false,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6141818158.jpg",
     "count": 4
   },
@@ -107,9 +112,10 @@
       "Операционная система: ": "Без системы"
     },
     "price": 1214.79,
-    "isPopular": false,
+    "isPopular": true,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6026640582.jpg",
     "count": 19
   },
@@ -129,6 +135,7 @@
     "isPopular": true,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6155684538.jpg",
     "count": 6
   },
@@ -148,6 +155,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6255363850.jpg",
     "count": 1
   },
@@ -167,6 +175,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-v/wc250/6255408727.jpg",
     "count": 1
   },
@@ -186,6 +195,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/c250/6076061412.jpg",
     "count": 7
   },
@@ -205,6 +215,7 @@
     "isPopular": true,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-1/c250/6267878017.jpg",
     "count": 6
   },
@@ -224,6 +235,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-1/c250/6273969685.jpg",
     "count": 6
   },
@@ -243,6 +255,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/c250/6139525522.jpg",
     "count": 19
   },
@@ -262,6 +275,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/c250/6019317963.jpg",
     "count": 4
   },
@@ -281,6 +295,7 @@
     "isPopular": true,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/c250/6239851884.jpg",
     "count": 1
   },
@@ -300,6 +315,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/c250/6132871498.jpg",
     "count": 18
   },
@@ -319,6 +335,7 @@
     "isPopular": true,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/c250/6057261471.jpg",
     "count": 6
   },
@@ -338,6 +355,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6271462964.jpg",
     "count": 1
   },
@@ -357,6 +375,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6068304352.jpg",
     "count": 18
   },
@@ -376,6 +395,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6064893432.jpg",
     "count": 1
   },
@@ -395,6 +415,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6213069662.jpg",
     "count": 6
   },
@@ -414,6 +435,7 @@
     "isPopular": true,
     "year": 2017,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6212875094.jpg",
     "count": 1
   },
@@ -433,6 +455,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6212814500.jpg",
     "count": 18
   },
@@ -452,6 +475,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6150281176.jpg",
     "count": 6
   },
@@ -471,6 +495,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6148556918.jpg",
     "count": 6
   },
@@ -490,6 +515,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-n/wc250/6284066015.jpg",
     "count": 17
   },
@@ -509,6 +535,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6014151041.jpg",
     "count": 6
   },
@@ -528,6 +555,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6029889222.jpg",
     "count": 1
   },
@@ -547,6 +575,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-d/wc250/6226669909.jpg",
     "count": 1
   },
@@ -566,6 +595,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-z/wc250/6226670399.jpg",
     "count": 17
   },
@@ -585,6 +615,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6179072125.jpg",
     "count": 17
   },
@@ -601,9 +632,10 @@
       "Операционная система: ": "Windows Home"
     },
     "price": 3931.63,
-    "isPopular": false,
+    "isPopular": true,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6225637325.jpg",
     "count": 17
   },
@@ -623,6 +655,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-9/wc250/6286924617.jpg",
     "count": 4
   },
@@ -642,6 +675,7 @@
     "isPopular": false,
     "year": 2020,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6271338706.jpg",
     "count": 17
   },
@@ -661,6 +695,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6277540854.jpg",
     "count": 1
   },
@@ -680,6 +715,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6154651179.jpg",
     "count": 18
   },
@@ -699,6 +735,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6156161388.jpg",
     "count": 14
   },
@@ -718,6 +755,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-k/wc250/6065112860.jpg",
     "count": 1
   },
@@ -737,6 +775,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6090049374.jpg",
     "count": 1
   },
@@ -756,6 +795,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-v/wc250/6127007059.jpg",
     "count": 12
   },
@@ -775,6 +815,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6157361965.jpg",
     "count": 1
   },
@@ -794,6 +835,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-8/wc250/6246083480.jpg",
     "count": 14
   },
@@ -813,6 +855,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-k/wc250/6286475672.jpg",
     "count": 12
   },
@@ -832,6 +875,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-9/wc250/6100505133.jpg",
     "count": 1
   },
@@ -851,6 +895,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6251839214.jpg",
     "count": 17
   },
@@ -870,6 +915,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-7/wc250/6100505131.jpg",
     "count": 14
   },
@@ -889,6 +935,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6251839214.jpg",
     "count": 1
   },
@@ -908,6 +955,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6285931033.jpg",
     "count": 1
   },
@@ -927,6 +975,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6260594498.jpg",
     "count": 12
   },
@@ -946,6 +995,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-8/wc250/6222588080.jpg",
     "count": 1
   },
@@ -963,8 +1013,9 @@
     },
     "price": 11538.3,
     "isPopular": false,
-    "year": 2019,
+    "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6238625910.jpg",
     "count": 14
   },
@@ -981,9 +1032,10 @@
       "Видеокарта: ": "Intel UHD Graphics 630"
     },
     "price": 11694.22,
-    "isPopular": false,
-    "year": 2019,
+    "isPopular": true,
+    "year": 2022,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-g/wc250/6151218664.jpg",
     "count": 12
   },
@@ -1003,6 +1055,7 @@
     "isPopular": true,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-o/wc250/6237211728.jpg",
     "count": 17
   },
@@ -1020,8 +1073,9 @@
     },
     "price": 6656.91,
     "isPopular": false,
-    "year": 2019,
+    "year": 2020,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6276228826.jpg",
     "count": 1
   },
@@ -1041,6 +1095,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6018077739.jpg",
     "count": 15
   },
@@ -1060,6 +1115,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6090254109.jpg",
     "count": 1
   },
@@ -1079,6 +1135,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6201785633.jpg",
     "count": 12
   },
@@ -1098,6 +1155,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6283916092.jpg",
     "count": 1
   },
@@ -1117,6 +1175,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6018077739.jpg",
     "count": 17
   },
@@ -1136,6 +1195,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-2/wc250/6275346542.jpg",
     "count": 1
   },
@@ -1155,6 +1215,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6018911992.jpg",
     "count": 1
   },
@@ -1174,6 +1235,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-z/wc250/6223669655.jpg",
     "count": 14
   },
@@ -1193,6 +1255,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6125176503.jpg",
     "count": 17
   },
@@ -1212,6 +1275,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6258838239.jpg",
     "count": 8
   },
@@ -1231,6 +1295,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6078067256.jpg",
     "count": 15
   },
@@ -1250,6 +1315,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-7/wc250/6067747435.jpg",
     "count": 17
   },
@@ -1269,6 +1335,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6057261471.jpg",
     "count": 1
   },
@@ -1288,6 +1355,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6059122994.jpg",
     "count": 1
   },
@@ -1307,6 +1375,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-u/wc250/6274237302.jpg",
     "count": 8
   },
@@ -1326,6 +1395,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6139525522.jpg",
     "count": 17
   },
@@ -1345,6 +1415,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6132871498.jpg",
     "count": 8
   },
@@ -1364,6 +1435,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6267877832.jpg",
     "count": 1
   },
@@ -1383,6 +1455,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-s/wc250/6058807396.jpg",
     "count": 14
   },
@@ -1402,6 +1475,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6132871402.jpg",
     "count": 17
   },
@@ -1421,6 +1495,7 @@
     "isPopular": true,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-3/wc250/6019317963.jpg",
     "count": 1
   },
@@ -1440,6 +1515,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-i/wc250/6070253982.jpg",
     "count": 1
   },
@@ -1459,6 +1535,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6159459994.jpg",
     "count": 17
   },
@@ -1478,6 +1555,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-g/wc250/6070253980.jpg",
     "count": 14
   },
@@ -1497,6 +1575,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6129266553.jpg",
     "count": 1
   },
@@ -1516,6 +1595,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-h/wc250/6129266261.jpg",
     "count": 17
   },
@@ -1535,6 +1615,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc250/6067361230.jpg",
     "count": 14
   },
@@ -1554,6 +1635,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6181633642.jpg",
     "count": 17
   },
@@ -1573,6 +1655,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-m/wc250/6156663166.jpg",
     "count": 17
   },
@@ -1592,6 +1675,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-1/wc250/6273969685.jpg",
     "count": 1
   },
@@ -1611,6 +1695,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6084701649.jpg",
     "count": 17
   },
@@ -1630,6 +1715,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc250/6087202690.jpg",
     "count": 14
   },
@@ -1649,6 +1735,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6083457482.jpg",
     "count": 4
   },
@@ -1668,6 +1755,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-j/wc250/6083457343.jpg",
     "count": 12
   },
@@ -1687,6 +1775,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-f/wc250/6274226343.jpg",
     "count": 8
   },
@@ -1706,6 +1795,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc250/6274226353.jpg",
     "count": 4
   },
@@ -1725,6 +1815,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-e/wc250/6029269166.jpg",
     "count": 14
   },
@@ -1744,6 +1835,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6274226282.jpg",
     "count": 4
   },
@@ -1763,6 +1855,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6274226298.jpg",
     "count": 1
   },
@@ -1782,6 +1875,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-s/wc250/6017179300.jpg",
     "count": 4
   },
@@ -1801,6 +1895,7 @@
     "isPopular": false,
     "year": 2018,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-b/wc250/6071955551.jpg",
     "count": 14
   },
@@ -1820,6 +1915,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6274226298.jpg",
     "count": 4
   },
@@ -1839,6 +1935,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-z/wc250/6161379035.jpg",
     "count": 1
   },
@@ -1858,6 +1955,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-5/wc250/6152190545.jpg",
     "count": 1
   },
@@ -1877,6 +1975,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6094679784.jpg",
     "count": 14
   },
@@ -1896,6 +1995,7 @@
     "isPopular": true,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-l/wc250/6043391217.jpg",
     "count": 16
   },
@@ -1915,6 +2015,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-k/wc250/6015968504.jpg",
     "count": 12
   },
@@ -1934,6 +2035,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-n/wc250/6019317155.jpg",
     "count": 1
   },
@@ -1953,6 +2055,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6181744284.jpg",
     "count": 4
   },
@@ -1972,6 +2075,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-6/wc250/6150976410.jpg",
     "count": 4
   },
@@ -1991,6 +2095,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6172756440.jpg",
     "count": 12
   },
@@ -2010,6 +2115,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-q/wc250/6213069662.jpg",
     "count": 16
   },
@@ -2029,6 +2135,7 @@
     "isPopular": false,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6212814500.jpg",
     "count": 1
   },
@@ -2048,6 +2155,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-0/wc250/6023147856.jpg",
     "count": 4
   },
@@ -2067,6 +2175,7 @@
     "isPopular": false,
     "year": 2019,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-w/wc250/6271462964.jpg",
     "count": 12
   },
@@ -2086,6 +2195,7 @@
     "isPopular": false,
     "year": 2016,
     "currency": "BYN",
+    "isNew": false,
     "img": "https://cdn1.ozone.ru/s3/multimedia-c/wc250/6064893432.jpg",
     "count": 16
   },
@@ -2105,6 +2215,7 @@
     "isPopular": true,
     "year": 2021,
     "currency": "BYN",
+    "isNew": true,
     "img": "https://cdn1.ozone.ru/s3/multimedia-4/wc250/6068304352.jpg",
     "count": 4
   }

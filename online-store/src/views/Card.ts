@@ -11,7 +11,7 @@ export class Card extends Control<HTMLElement> {
   buttonAdd: Control<HTMLElement> | undefined;
   oldPrice: Control<HTMLElement> | undefined;
   buttons: Control<HTMLElement>;
-  indicator: Control<HTMLElement> | undefined;
+  new: Control<HTMLElement> | undefined;
   year: Control<HTMLElement>;
   count: Control<HTMLElement>;
   category: Control<HTMLElement>;
@@ -35,9 +35,11 @@ export class Card extends Control<HTMLElement> {
     if (data.isPopular) {
       this.popular = new Control(this.node, 'div', 'card__item-star');
     }
+    if (data.isNew) {
+      this.new = new Control(this.node, 'span', 'card__item-indicator', 'NEW');
+    }
 
     if (controller.isInCart(data)) {
-      this.indicator = new Control(this.node, 'span', 'card__item-indicator', 'В корзине');
       this.buttonRemove = new Control(this.buttons.node, 'button', 'button__remove', 'Remove');
       this.buttonRemove.node.onclick = () => controller.removeFromCart(data.id);
     } else {

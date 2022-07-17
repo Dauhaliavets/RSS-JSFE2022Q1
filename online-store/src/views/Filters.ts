@@ -6,7 +6,6 @@ import noUiSlider, { API } from 'nouislider';
 export class Filters extends Control<HTMLElement> {
   filtersTitle: Control<HTMLElement>;
   filtersSubTitle: Control<HTMLElement>;
-
   filterItem: Control<HTMLElement>;
   label: Control<HTMLLabelElement>;
   checkbox: Control<HTMLInputElement>;
@@ -24,9 +23,19 @@ export class Filters extends Control<HTMLElement> {
     this.filtersTitle = new Control(this.node, 'h3', 'filters__title', 'Фильтры');
 
     this.clearBtns = new Control(this.node, 'div', 'filter-buttons');
-    this.resetFilterBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item filter-buttons__reset-filters', 'Reset Filters');
+    this.resetFilterBtn = new Control(
+      this.clearBtns.node,
+      'button',
+      'filter-buttons__item filter-buttons__reset-filters',
+      'Reset Filters',
+    );
     this.resetFilterBtn.node.onclick = () => controller.resetFilters();
-    this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item filter-buttons__clear-storage', 'Clear Storage');
+    this.clearStorageBtn = new Control(
+      this.clearBtns.node,
+      'button',
+      'filter-buttons__item filter-buttons__clear-storage',
+      'Clear Storage',
+    );
     this.clearStorageBtn.node.onclick = () => controller.clearStorage();
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Количество');
@@ -77,6 +86,19 @@ export class Filters extends Control<HTMLElement> {
       controller.changeRanges(this.target.id, values as number[]);
     });
 
+    this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Новые товары');
+    this.filterGroup = new Control(this.node, 'div', 'filters__group');
+    this.filterItem = new Control(this.filterGroup.node, 'div', 'filter__item');
+    this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', 'NEW');
+    this.label.node.htmlFor = 'new';
+    this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
+    this.checkbox.node.type = 'checkbox';
+    this.checkbox.node.id = 'new';
+    if (data.filters.isNew.length) {
+      this.checkbox.node.checked = true;
+    }
+    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isNew');
+
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Популярные');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');
     this.filterItem = new Control(this.filterGroup.node, 'div', 'filter__item');
@@ -85,11 +107,9 @@ export class Filters extends Control<HTMLElement> {
     this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
     this.checkbox.node.type = 'checkbox';
     this.checkbox.node.id = 'popular';
-
     if (data.filters.isPopular.length) {
       this.checkbox.node.checked = true;
     }
-
     this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isPopular');
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Категории');

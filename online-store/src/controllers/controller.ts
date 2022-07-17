@@ -15,12 +15,13 @@ export class Controller {
 
   public resetFilters(): void {
     const config = this.model.getState().sortSettings;
-    const products = this.model.getState().products;
-    const sortedItems = this.sortItems(config, products);
+    const foundItems = this.searchItems();
+    const sortedItems = this.sortItems(config, foundItems);
     this.model.setState({
       visible: sortedItems,
       filters: {
         isPopular: [],
+        isNew: [],
         category: [],
         brand: [],
       },
@@ -52,10 +53,10 @@ export class Controller {
     const hasAnyFilters = this.hasAnyFilters();
     const isChangedRanges = this.isChangedRanges();
     const searchValue = this.model.getState().searchValue;
+
     if (hasAnyFilters || isChangedRanges) {
       products = this.filterItems();
     }
-
     if (searchValue) {
       products = products.filter((item) => item.title.toLowerCase().includes(searchValue));
     }
@@ -77,7 +78,7 @@ export class Controller {
   }
 
   public clearSearchValue() {
-    this.model.setState({ searchValue: '' });
+    this.setSearchValue('');
   }
 
   public sortItems = (config: string, products: Product[]): Product[] => {
@@ -118,7 +119,7 @@ export class Controller {
   public filterItems(): Product[] {
     const filters = this.model.getState().filters;
     const ranges = this.model.getState().ranges;
-    const [isPopular, category, brand] = Object.keys(filters);
+    const [isPopular, isNew, category, brand] = Object.keys(filters);
     let filteredItems = [...this.model.getState().products];
 
     if (filters[category].length) {
@@ -134,6 +135,9 @@ export class Controller {
     if (filters[isPopular].length) {
       filteredItems = filteredItems.filter((product) => product.isPopular);
     }
+    if (filters[isNew].length) {
+      filteredItems = filteredItems.filter((product) => product.isNew);
+    }
 
     filteredItems = filteredItems.filter(
       (product) => product.count >= ranges.count[0] && product.count <= ranges.count[1],
@@ -148,12 +152,15 @@ export class Controller {
     const idFilter = (event.target as HTMLElement).id;
     const filters = this.model.getState().filters;
     let newFiltersIsPopular: string[] = filters.isPopular;
+    let newFiltersIsNew: string[] = filters.isNew;
     let newFiltersCategory: Category[] = filters.category;
     let newFiltersBrand: Brand[] = filters.brand;
 
     if (checked) {
       if (filter === 'isPopular') {
         newFiltersIsPopular = ['true'];
+      } else if (filter === 'isNew') {
+        newFiltersIsNew = ['true'];
       } else if (filter === 'category') {
         newFiltersCategory = [...filters.category, idFilter as Category];
       } else if (filter === 'brand') {
@@ -162,6 +169,8 @@ export class Controller {
     } else {
       if (filter === 'isPopular') {
         newFiltersIsPopular = [];
+      } else if (filter === 'isNew') {
+        newFiltersIsNew = [];
       } else if (filter === 'category') {
         newFiltersCategory = filters.category.filter((cat) => cat !== idFilter);
       } else if (filter === 'brand') {
@@ -172,6 +181,7 @@ export class Controller {
     this.model.setState({
       filters: {
         isPopular: newFiltersIsPopular,
+        isNew: newFiltersIsNew,
         category: newFiltersCategory,
         brand: newFiltersBrand,
       },
