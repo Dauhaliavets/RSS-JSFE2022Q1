@@ -1,6 +1,6 @@
 import { Controller } from './../controllers/controller';
 import { Control } from '../controllers/Control';
-import { AppState, Product, RangeValues } from '../models/model.types';
+import { AppState, Product } from '../models/model.types';
 import { Card } from './Card';
 
 export class Cards extends Control<HTMLElement> {
