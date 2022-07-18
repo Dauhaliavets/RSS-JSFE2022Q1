@@ -1,14 +1,14 @@
 import { Controller } from './../controllers/controller';
-import { AppState } from './../models/model.types';
+import { AppState, RangeValues } from './../models/model.types';
 import { Control } from '../controllers/Control';
 import noUiSlider, { API } from 'nouislider';
 
 export class Filters extends Control<HTMLElement> {
   filtersTitle: Control<HTMLElement>;
   filtersSubTitle: Control<HTMLElement>;
-  filterItem: Control<HTMLElement>;
-  label: Control<HTMLLabelElement>;
-  checkbox: Control<HTMLInputElement>;
+  filterItem: Control<HTMLElement> | undefined;
+  label: Control<HTMLLabelElement> | undefined;
+  checkbox: Control<HTMLInputElement> | undefined;
   clearBtns: Control<HTMLElement>;
   clearStorageBtn: Control<HTMLElement>;
   resetFilterBtn: Control<HTMLElement>;
@@ -19,23 +19,13 @@ export class Filters extends Control<HTMLElement> {
 
   constructor(parentElement: HTMLElement, data: AppState, controller: Controller) {
     super(parentElement, 'div', 'filters__container');
-
     this.filtersTitle = new Control(this.node, 'h3', 'filters__title', 'Фильтры');
-
     this.clearBtns = new Control(this.node, 'div', 'filter-buttons');
-    this.resetFilterBtn = new Control(
-      this.clearBtns.node,
-      'button',
-      'filter-buttons__item filter-buttons__reset-filters',
-      'Reset Filters',
-    );
+
+    this.resetFilterBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item', 'Reset Filters');
     this.resetFilterBtn.node.onclick = () => controller.resetFilters();
-    this.clearStorageBtn = new Control(
-      this.clearBtns.node,
-      'button',
-      'filter-buttons__item filter-buttons__clear-storage',
-      'Clear Storage',
-    );
+
+    this.clearStorageBtn = new Control(this.clearBtns.node, 'button', 'filter-buttons__item', 'Clear Storage');
     this.clearStorageBtn.node.onclick = () => controller.clearStorage();
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Количество');
@@ -46,8 +36,8 @@ export class Filters extends Control<HTMLElement> {
       connect: true,
       step: 1,
       range: {
-        min: 0,
-        max: 20,
+        min: RangeValues.MIN_COUNT,
+        max: RangeValues.MAX_COUNT,
       },
       format: {
         from: (formattedValue) => Number(formattedValue),
@@ -57,7 +47,6 @@ export class Filters extends Control<HTMLElement> {
         to: (numericValue) => numericValue.toFixed(0),
       },
     });
-
     this.rangeSliderQuantity.on('change', function (values) {
       controller.changeRanges(this.target.id, values as number[]);
     });
@@ -70,8 +59,8 @@ export class Filters extends Control<HTMLElement> {
       connect: true,
       step: 1,
       range: {
-        min: 2015,
-        max: 2022,
+        min: RangeValues.MIN_YEAR,
+        max: RangeValues.MAX_YEAR,
       },
       format: {
         from: (formattedValue) => Number(formattedValue),
@@ -81,36 +70,21 @@ export class Filters extends Control<HTMLElement> {
         to: (numericValue) => numericValue.toFixed(0),
       },
     });
-
     this.rangeSliderYear.on('change', function (values) {
       controller.changeRanges(this.target.id, values as number[]);
     });
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Новые товары');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');
-    this.filterItem = new Control(this.filterGroup.node, 'div', 'filter__item');
-    this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', 'NEW');
-    this.label.node.htmlFor = 'new';
-    this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
-    this.checkbox.node.type = 'checkbox';
-    this.checkbox.node.id = 'new';
-    if (data.filters.isNew.length) {
-      this.checkbox.node.checked = true;
-    }
-    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isNew');
+    data.defaultFilters.isNew.forEach((item) =>
+      this.createFilterItem(this.filterGroup.node, 'isNew', item as never, data, controller),
+    );
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Популярные');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');
-    this.filterItem = new Control(this.filterGroup.node, 'div', 'filter__item');
-    this.label = new Control(this.filterItem.node, 'label', 'filter__item-label', 'Популярные');
-    this.label.node.htmlFor = 'popular';
-    this.checkbox = new Control(this.filterItem.node, 'input', 'filter__item-input');
-    this.checkbox.node.type = 'checkbox';
-    this.checkbox.node.id = 'popular';
-    if (data.filters.isPopular.length) {
-      this.checkbox.node.checked = true;
-    }
-    this.checkbox.node.onclick = (e: MouseEvent) => controller.changeFilters(e, 'isPopular');
+    data.defaultFilters.isPopular.forEach((item) =>
+      this.createFilterItem(this.filterGroup.node, 'isPopular', item as never, data, controller),
+    );
 
     this.filtersSubTitle = new Control(this.node, 'h4', 'filters__subtitle', 'Категории');
     this.filterGroup = new Control(this.node, 'div', 'filters__group');

@@ -1,5 +1,5 @@
 import { Signal } from '../controllers/Signal';
-import { AppState, Filters, Product, Ranges } from './model.types';
+import { AppState, Filters, Product, Ranges, RangeValues } from './model.types';
 
 const initialState: AppState = {
   products: [],
@@ -9,8 +9,8 @@ const initialState: AppState = {
   sortSettings: '',
   searchValue: '',
   defaultFilters: {
-    isPopular: [],
-    isNew: [],
+    isPopular: ['Populary'],
+    isNew: ['New'],
     category: ['Laptop', 'Monoblock', 'Smartphone', 'Tablet', 'TV'],
     brand: [
       'Asus',
@@ -42,8 +42,8 @@ const initialState: AppState = {
     brand: [],
   },
   ranges: {
-    count: [],
-    year: [],
+    count: [RangeValues.MIN_COUNT, RangeValues.MAX_COUNT],
+    year: [RangeValues.MIN_YEAR, RangeValues.MAX_YEAR],
   },
 };
 
@@ -63,8 +63,8 @@ export class Model {
 
   public setState(newState: Partial<AppState>): void {
     this._state = { ...this.getState(), ...newState };
-    this.events.emit(this._state);
     this.saveStorage();
+    this.events.emit(this.getState());
   }
 
   private async loadData() {
@@ -87,7 +87,10 @@ export class Model {
     const filters: Filters = JSON.parse(
       localStorage.getItem('filters') || '{"category": [], "brand": [], "isPopular": [], "isNew": []}',
     );
-    const ranges: Ranges = JSON.parse(localStorage.getItem('ranges') || '{"count": [0,20], "year": [2015,2022]}');
+    const ranges: Ranges = JSON.parse(
+      localStorage.getItem('ranges') ||
+        `{"count": [${RangeValues.MIN_COUNT},${RangeValues.MAX_COUNT}], "year": [${RangeValues.MIN_YEAR},${RangeValues.MAX_YEAR}]}`,
+    );
     const sortSettings: string = JSON.parse(localStorage.getItem('sortSettings') || '""');
     const cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const visible: Product[] = JSON.parse(localStorage.getItem('visible') || '[]');

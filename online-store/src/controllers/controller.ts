@@ -1,4 +1,4 @@
-import { Brand, Category } from './../models/model.types';
+import { Brand, Category, RangeValues } from './../models/model.types';
 import { Model } from '../models/model';
 import { Product } from '../models/model.types';
 
@@ -15,8 +15,8 @@ export class Controller {
 
   public resetFilters(): void {
     const config = this.model.getState().sortSettings;
-    const foundItems = this.searchItems();
-    const sortedItems = this.sortItems(config, foundItems);
+    const products = this.model.getState().products;
+    const sortedItems = this.sortItems(config, products);
     this.model.setState({
       visible: sortedItems,
       filters: {
@@ -26,8 +26,8 @@ export class Controller {
         brand: [],
       },
       ranges: {
-        count: [0, 20],
-        year: [2015, 2022],
+        count: [RangeValues.MIN_COUNT, RangeValues.MAX_COUNT],
+        year: [RangeValues.MIN_YEAR, RangeValues.MAX_YEAR],
       },
     });
   }
@@ -36,10 +36,18 @@ export class Controller {
     return !!this.model.getState().cart.find((cartItem) => cartItem.id === card.id);
   }
 
+  public checkAllSettings(): boolean {
+    const hasAnyFilters = this.hasAnyFilters();
+    const isChangedRanges = this.isChangedRanges();
+    const sortSettings = this.model.getState().sortSettings;
+    const searchValue = this.model.getState().searchValue;
+    return hasAnyFilters || isChangedRanges || !!searchValue.length || !!sortSettings.length;
+  }
+
   private isChangedRanges(): boolean {
     const ranges = this.model.getState().ranges;
-    const isChangedRangeCount = ranges.count[0] !== 0 || ranges.count[1] !== 20;
-    const isChangedRangeYear = ranges.year[0] !== 2015 || ranges.year[1] !== 2022;
+    const isChangedRangeCount = ranges.count[0] !== RangeValues.MIN_COUNT || ranges.count[1] !== RangeValues.MAX_COUNT;
+    const isChangedRangeYear = ranges.year[0] !== RangeValues.MIN_YEAR || ranges.year[1] !== RangeValues.MAX_YEAR;
     return isChangedRangeCount || isChangedRangeYear;
   }
 
@@ -158,9 +166,9 @@ export class Controller {
 
     if (checked) {
       if (filter === 'isPopular') {
-        newFiltersIsPopular = ['true'];
+        newFiltersIsPopular = ['Populary'];
       } else if (filter === 'isNew') {
-        newFiltersIsNew = ['true'];
+        newFiltersIsNew = ['New'];
       } else if (filter === 'category') {
         newFiltersCategory = [...filters.category, idFilter as Category];
       } else if (filter === 'brand') {

@@ -1,6 +1,6 @@
 import { Controller } from './../controllers/controller';
 import { Control } from '../controllers/Control';
-import { AppState, Product } from '../models/model.types';
+import { AppState, Product, RangeValues } from '../models/model.types';
 import { Card } from './Card';
 
 export class Cards extends Control<HTMLElement> {
@@ -39,18 +39,7 @@ export class Cards extends Control<HTMLElement> {
 
     this.cardsWrapper = new Control(this.node, 'div', 'cards__wrapper');
 
-    if (
-      data.filters?.category.length ||
-      data.filters?.brand.length ||
-      data.filters?.isPopular.length ||
-      data.filters?.isNew.length ||
-      data.sortSettings.length ||
-      data.searchValue.length ||
-      data.ranges?.count[0] !== 0 ||
-      data.ranges?.count[1] !== 20 ||
-      data.ranges?.year[0] !== 2015 ||
-      data.ranges?.year[1] !== 2022
-    ) {
+    if (controller.checkAllSettings()) {
       if (data.visible.length) {
         data.visible.map((product: Product) => new Card(this.cardsWrapper.node, product, controller));
       } else {

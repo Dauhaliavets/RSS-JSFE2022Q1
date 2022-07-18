@@ -25,8 +25,6 @@ export type Brand =
   | 'Realme'
   | 'KIWI';
 
-export type IsPopular = true | false;
-
 export interface Product {
   id: number;
   brand: Brand;
@@ -51,10 +49,16 @@ export interface Filters {
   [key: string]: Category[] | Brand[] | string[];
 }
 
+export enum RangeValues {
+  MIN_COUNT = 0,
+  MAX_COUNT = 20,
+  MIN_YEAR = 2015,
+  MAX_YEAR = 2022,
+}
 export interface Ranges {
-  count: number[];
-  year: number[];
-  [key: string]: number[];
+  count: RangeValues[];
+  year: RangeValues[];
+  [key: string]: RangeValues[];
 }
 
 export interface AppState {

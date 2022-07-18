@@ -16,7 +16,6 @@ export class View {
 
   constructor(parentElement: HTMLElement, model: Model, controller: Controller) {
     this.parentElement = parentElement;
-
     this.onUpdate(controller)(model.getState());
     model.events.add(this.onUpdate(controller));
   }
