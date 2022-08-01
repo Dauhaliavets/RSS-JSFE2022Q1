@@ -1,11 +1,13 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useGarageContext } from '../../context/GarageContext';
 import { useCreateCar } from '../../hooks/useCreateCar';
 import s from './CarSettings.module.css';
 
 function CarSetting() {
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState('');
-  const [car, createCar] = useCreateCar();
+  const [createdCar, createCar] = useCreateCar();
+  const { carsContext, setCarsContext, selectedCar, setSelectedCar } = useGarageContext();
 
   const changeCarName = (e: ChangeEvent<HTMLInputElement>) => {
     setCarName(e.target.value);
@@ -15,7 +17,7 @@ function CarSetting() {
     setCarColor(e.target.value);
   };
 
-  const onCreateCar = () => {
+  const onCreateCar = async () => {
     if (carName && carColor) {
       createCar(carName, carColor);
       setCarName('');
@@ -23,11 +25,16 @@ function CarSetting() {
     }
   };
 
+  useEffect(() => {
+    const cars = [...carsContext, createdCar];
+    setCarsContext(cars);
+  }, [createdCar]);
+
   return (
     <div className={s.garage__settings}>
       <div>
-        <input type='text' name='carName' id='' onChange={(e) => changeCarName(e)} />
-        <input type='color' name='carColor' id='' onChange={(e) => changeCarColor(e)} />
+        <input type='text' name='carName' value={carName} onChange={(e) => changeCarName(e)} />
+        <input type='color' name='carColor' value={carColor} onChange={(e) => changeCarColor(e)} />
         <button onClick={() => onCreateCar()}>CREATE</button>
       </div>
       <div>
