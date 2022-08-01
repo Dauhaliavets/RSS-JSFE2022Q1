@@ -1,0 +1,24 @@
+.track {
+  margin-bottom: 20px;
+}
+.car__track {
+  display: flex;
+  position: relative;
+  width: calc(100% - 100px);
+  height: 50px;
+}
+.car {
+  display: flex;
+  position: absolute;
+  left: 0%;
+  transition-property: left;
+  transition-delay: 1s;
+}
+.car.car_animate {
+  left: 100%;
+}
+
+.cover {
+  width: 100%;
+  border-top: 5px dashed black;
+}
