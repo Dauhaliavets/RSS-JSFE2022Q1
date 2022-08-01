@@ -4,10 +4,12 @@ import { ReactComponent as Car } from '../../assets/car.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
 import { useDeleteCar } from '../../hooks/useDeleteCar';
+import { useGarageContext } from '../../context/GarageContext';
 
 function Track({ id, name, color }: ICar) {
   const [engine, getEngine] = useChangeEngineMode();
   const [deleteCar] = useDeleteCar();
+  const { carsContext, setCarsContext } = useGarageContext();
   const [isAnimate, setIsAnimate] = useState<boolean>(false);
   const car = useRef<HTMLDivElement>(null);
 
@@ -35,11 +37,14 @@ function Track({ id, name, color }: ICar) {
   const onStart = () => getEngine(id, EngineMode.started);
   const onStop = () => getEngine(id, EngineMode.stopped);
   const onDeleteCar = () => deleteCar(id);
+  const onSelectCar = () => {};
 
   return (
     <div className={s.track}>
       <div className={s.track__btns}>
-        <button className={s.btn}>SELECT</button>
+        <button className={s.btn} onClick={onSelectCar}>
+          SELECT
+        </button>
         <button className={s.btn} onClick={onDeleteCar}>
           REMOVE
         </button>

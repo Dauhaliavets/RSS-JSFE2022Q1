@@ -6,7 +6,7 @@ import s from './CarSettings.module.css';
 function CarSetting() {
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState('');
-  const [createdCar, createCar] = useCreateCar();
+  const { createCar } = useCreateCar();
   const { carsContext, setCarsContext, selectedCar, setSelectedCar } = useGarageContext();
 
   const changeCarName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -17,18 +17,13 @@ function CarSetting() {
     setCarColor(e.target.value);
   };
 
-  const onCreateCar = async () => {
+  const onCreateCar = () => {
     if (carName && carColor) {
       createCar(carName, carColor);
       setCarName('');
       setCarColor('');
     }
   };
-
-  useEffect(() => {
-    const cars = [...carsContext, createdCar];
-    setCarsContext(cars);
-  }, [createdCar]);
 
   return (
     <div className={s.garage__settings}>

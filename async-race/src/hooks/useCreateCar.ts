@@ -1,28 +1,26 @@
-import { useState } from 'react';
-import { ICar, Methods } from '../models';
+import { useGarageContext } from '../context/GarageContext';
+import { Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useCreateCar = () => {
-  const [car, setCar] = useState<ICar>({ id: 0, name: '', color: '' });
+  const { carsContext, setCarsContext } = useGarageContext();
 
   const createCar = async (name: string, color: string) => {
-    await fetch(`${BASE_URL}/garage`, {
+    const response = await fetch(`${BASE_URL}/garage`, {
       method: Methods.Post,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name,
         color,
       }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data: ICar) => setCar(data));
+    });
+    if (response.ok) {
+      const newCar = await response.json();
+      setCarsContext([...carsContext, newCar]);
+    }
   };
 
-  return [car, createCar] as const;
+  return { carsContext, createCar };
 };
 
 export { useCreateCar };
