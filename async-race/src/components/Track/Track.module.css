@@ -1,6 +1,13 @@
 .track {
   margin-bottom: 20px;
 }
+.track__btns {
+  display: flex;
+  gap: 5px;
+}
+.btn {
+  width: 70px;
+}
 .car__track {
   display: flex;
   position: relative;

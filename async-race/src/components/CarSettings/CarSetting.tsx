@@ -45,17 +45,17 @@ const CarSetting: FC = () => {
 
   return (
     <div className={s.garage__settings}>
-      <div>
+      <div className={s.setting__wrapper}>
         <input type='text' name='carName' value={carName} onChange={(e) => changeCarName(e)} />
         <input type='color' name='carColor' value={carColor} onChange={(e) => changeCarColor(e)} />
         <button onClick={onCreateCar}>CREATE</button>
       </div>
-      <div>
+      <div className={s.setting__wrapper}>
         <input type='text' name='carNameUpdated' value={carNameUpdated} onChange={(e) => updateCarName(e)} />
         <input type='color' name='carColorUpdated' value={carColorUpdated} onChange={(e) => updateCarColor(e)} />
         <button onClick={onUpdateCar}>UPDATE</button>
       </div>
-      <div>
+      <div className={s.setting__wrapper}>
         <button>RACE</button>
         <button>RESET</button>
         <button>GENERATE CARS</button>

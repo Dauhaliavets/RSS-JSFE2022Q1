@@ -1,2 +1,17 @@
 .garage__settings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.setting__wrapper {
+  max-width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.setting__wrapper button {
+  padding: 3px 10px;
+}
+.setting__wrapper button:hover {
+  cursor: pointer;
 }

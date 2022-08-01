@@ -10,29 +10,29 @@ function Track({ id, name, color }: ICar) {
   const [engine, getEngine] = useChangeEngineMode();
   const [deleteCar] = useDeleteCar();
   const { setSelectedCar } = useGarageContext();
-  // const [isAnimate, setIsAnimate] = useState<boolean>(false);
-  // const car = useRef<HTMLDivElement>(null);
+  const [isAnimate, setIsAnimate] = useState<boolean>(false);
+  const car = useRef<HTMLDivElement>(null);
 
-  // const onAnimate = () => {
-  //   if (engine.distance > 0) {
-  //     const duration = engine.distance / 2000 / engine.velocity;
-  //     if (car && car.current) {
-  //       car.current!.style.transitionDuration = `${duration}s`;
-  //       setIsAnimate(true);
-  //       car.current.ontransitionstart = () => {
-  //         // console.log('animation start');
-  //       };
-  //       car.current.ontransitionend = () => {
-  //         // console.log('animation end');
-  //         setIsAnimate(false);
-  //       };
-  //     }
-  //   }
-  // };
+  const onAnimate = () => {
+    if (engine.distance > 0) {
+      const duration = engine.distance / 2000 / engine.velocity;
+      if (car && car.current) {
+        car.current!.style.transitionDuration = `${duration}s`;
+        setIsAnimate(true);
+        car.current.ontransitionstart = () => {
+          // console.log('animation start');
+        };
+        car.current.ontransitionend = () => {
+          // console.log('animation end');
+          setIsAnimate(false);
+        };
+      }
+    }
+  };
 
-  // useEffect(() => {
-  //   onAnimate();
-  // }, [engine, isAnimate]);
+  useEffect(() => {
+    onAnimate();
+  }, [engine, isAnimate]);
 
   const onStart = () => getEngine(id, EngineMode.started);
   const onStop = () => getEngine(id, EngineMode.stopped);
@@ -48,7 +48,6 @@ function Track({ id, name, color }: ICar) {
         <button className={s.btn} onClick={onDeleteCar}>
           REMOVE
         </button>
-        <span className={s.car__name}>{name}</span>
         <button className={s.btn} onClick={() => onStart()}>
           START
         </button>
@@ -56,9 +55,12 @@ function Track({ id, name, color }: ICar) {
           STOP
         </button>
       </div>
+      <div className={s.track__info}>
+        <span className={s.car__name}>{name}</span>
+      </div>
       <div className={s.car__track}>
-        {/* <div className={isAnimate ? `${s.car} ${s.car_animate}` : s.car} ref={car}> */}
-        <div className={s.car_animate}>
+        <div className={isAnimate ? `${s.car} ${s.car_animate}` : s.car} ref={car}>
+          {/* <div className={s.car_animate}> */}
           <Car fill={color} />
         </div>
       </div>
