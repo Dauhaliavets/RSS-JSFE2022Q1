@@ -3,7 +3,7 @@ import { Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useCreateCar = () => {
-  const { carsContext, setCarsContext } = useGarageContext();
+  const { cars, setCars } = useGarageContext();
 
   const createCar = async (name: string, color: string) => {
     const response = await fetch(`${BASE_URL}/garage`, {
@@ -16,7 +16,7 @@ const useCreateCar = () => {
     });
     if (response.ok) {
       const newCar = await response.json();
-      setCarsContext([...carsContext, newCar]);
+      setCars([...cars, newCar]);
     }
   };
 

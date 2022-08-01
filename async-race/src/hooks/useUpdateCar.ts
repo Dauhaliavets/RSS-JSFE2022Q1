@@ -3,7 +3,7 @@ import { Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useUpdateCar = () => {
-  const { carsContext, setCarsContext } = useGarageContext();
+  const { cars, setCars } = useGarageContext();
 
   const updateCar = async (id: number, name: string, color: string) => {
     const response = await fetch(`${BASE_URL}/garage/${id}`, {
@@ -16,8 +16,8 @@ const useUpdateCar = () => {
     });
     if (response.ok) {
       const updatedCar = await response.json();
-      const updatedCars = [...carsContext].map((car) => (car.id === id ? { ...car, ...updatedCar } : car));
-      setCarsContext(updatedCars);
+      const updatedCars = [...cars].map((car) => (car.id === id ? { ...car, ...updatedCar } : car));
+      setCars(updatedCars);
     }
   };
 

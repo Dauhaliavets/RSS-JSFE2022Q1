@@ -2,15 +2,15 @@ import { createContext, useContext } from 'react';
 import { ICar } from '../models';
 
 export type GarageContent = {
-  carsContext: ICar[];
-  setCarsContext: (cars: ICar[]) => void;
+  cars: ICar[];
+  setCars: (cars: ICar[]) => void;
   selectedCar: ICar | null;
   setSelectedCar: (car: ICar | null) => void;
 };
 
 export const GarageContext = createContext<GarageContent>({
-  carsContext: [],
-  setCarsContext: () => {},
+  cars: [],
+  setCars: () => {},
   selectedCar: null,
   setSelectedCar: () => {},
 });

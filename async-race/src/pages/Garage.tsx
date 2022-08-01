@@ -4,11 +4,11 @@ import Track from '../components/Track/Track';
 import { GarageContext } from '../context/GarageContext';
 import { useGetCars } from '../hooks/useGetCars';
 import { ICar } from '../models';
-import style from './Garage.module.css';
+import s from './Garage.module.css';
 
 const Garage: FC = () => {
-  const [cars, getCars] = useGetCars();
-  const [carsContext, setCarsContext] = useState<ICar[]>([]);
+  const { receivedCars, getCars } = useGetCars();
+  const [cars, setCars] = useState<ICar[]>([]);
   const [selectedCar, setSelectedCar] = useState<ICar | null>(null);
 
   useEffect(() => {
@@ -16,19 +16,17 @@ const Garage: FC = () => {
   }, []);
 
   useEffect(() => {
-    setCarsContext(cars);
-  }, [cars]);
+    setCars(receivedCars);
+  }, [receivedCars]);
 
   return (
-    <GarageContext.Provider value={{ carsContext, setCarsContext, selectedCar, setSelectedCar }}>
-      <div className={style.garage}>
+    <GarageContext.Provider value={{ cars, setCars, selectedCar, setSelectedCar }}>
+      <div className={s.garage}>
         <CarSetting />
-        <div className={style.garage__main}>
-          <h2 className={style.garage__main_title}>Garage {cars.length}</h2>
-          <h3 className={style.garage__main_subtitle}>Page #9</h3>
-          <div className={style.garage__tracks}>
-            {carsContext.length && carsContext.map((car) => <Track key={car.id} {...car} />)}
-          </div>
+        <div className={s.garage__main}>
+          <h2 className={s.garage__main_title}>Garage {cars.length}</h2>
+          <h3 className={s.garage__main_subtitle}>Page #9</h3>
+          <div className={s.garage__tracks}>{cars.length && cars.map((car) => <Track key={car.id} {...car} />)}</div>
         </div>
       </div>
     </GarageContext.Provider>
