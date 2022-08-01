@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useGarageContext } from '../../context/GarageContext';
 import { useCreateCar } from '../../hooks/useCreateCar';
+import { useGenerateCars } from '../../hooks/useGenerateCars';
 import { useUpdateCar } from '../../hooks/useUpdateCar';
 import { BASE_COLOR } from '../../utils/constants';
 import s from './CarSettings.module.css';
@@ -8,6 +9,7 @@ import s from './CarSettings.module.css';
 const CarSetting: FC = () => {
   const { createCar } = useCreateCar();
   const { updateCar } = useUpdateCar();
+  const { generateCars } = useGenerateCars();
   const { selectedCar, setSelectedCar } = useGarageContext();
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState(BASE_COLOR);
@@ -58,7 +60,7 @@ const CarSetting: FC = () => {
       <div className={s.setting__wrapper}>
         <button>RACE</button>
         <button>RESET</button>
-        <button>GENERATE CARS</button>
+        <button onClick={generateCars}>GENERATE CARS</button>
       </div>
     </div>
   );
