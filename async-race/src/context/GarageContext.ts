@@ -4,8 +4,8 @@ import { ICar } from '../models';
 export type GarageContent = {
   carsContext: ICar[];
   setCarsContext: (cars: ICar[]) => void;
-  selectedCar: number | null;
-  setSelectedCar: (id: number) => void;
+  selectedCar: ICar | null;
+  setSelectedCar: (car: ICar | null) => void;
 };
 
 export const GarageContext = createContext<GarageContent>({

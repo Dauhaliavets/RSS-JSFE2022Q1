@@ -9,7 +9,7 @@ import style from './Garage.module.css';
 const Garage: FC = () => {
   const [cars, getCars] = useGetCars();
   const [carsContext, setCarsContext] = useState<ICar[]>([]);
-  const [selectedCar, setSelectedCar] = useState<number | null>(null);
+  const [selectedCar, setSelectedCar] = useState<ICar | null>(null);
 
   useEffect(() => {
     getCars();

@@ -20,7 +20,7 @@ const useCreateCar = () => {
     }
   };
 
-  return { carsContext, createCar };
+  return { createCar };
 };
 
 export { useCreateCar };
