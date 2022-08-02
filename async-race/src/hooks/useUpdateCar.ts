@@ -9,10 +9,7 @@ const useUpdateCar = () => {
     const response = await fetch(`${BASE_URL}/garage/${id}`, {
       method: Methods.Put,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name,
-        color,
-      }),
+      body: JSON.stringify({ name, color }),
     });
     if (response.ok) {
       const updatedCar = await response.json();

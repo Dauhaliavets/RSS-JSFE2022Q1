@@ -48,10 +48,10 @@ function Track({ id, name, color }: ICar) {
         <button className={s.btn} onClick={onDeleteCar}>
           REMOVE
         </button>
-        <button className={s.btn} onClick={() => onStart()}>
+        <button className={s.btn} onClick={onStart}>
           START
         </button>
-        <button className={s.btn} onClick={() => onStop()}>
+        <button className={s.btn} onClick={onStop}>
           STOP
         </button>
       </div>

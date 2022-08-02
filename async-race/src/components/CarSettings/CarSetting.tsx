@@ -10,7 +10,7 @@ const CarSetting: FC = () => {
   const { createCar } = useCreateCar();
   const { updateCar } = useUpdateCar();
   const { generateCars } = useGenerateCars();
-  const { selectedCar, setSelectedCar } = useGarageContext();
+  const { cars, setCars, selectedCar, setSelectedCar } = useGarageContext();
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState(BASE_COLOR);
   const [carNameUpdated, setCarNameUpdated] = useState('');
@@ -19,9 +19,10 @@ const CarSetting: FC = () => {
   const changeCarName = (e: ChangeEvent<HTMLInputElement>) => setCarName(e.target.value);
   const changeCarColor = (e: ChangeEvent<HTMLInputElement>) => setCarColor(e.target.value);
 
-  const onCreateCar = () => {
+  const onCreateCar = async () => {
     if (carName && carColor) {
-      createCar(carName, carColor);
+      const newCar = await createCar(carName, carColor);
+      setCars([...cars, newCar]);
       setCarName('');
       setCarColor(BASE_COLOR);
     }
