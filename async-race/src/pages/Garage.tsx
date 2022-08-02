@@ -30,18 +30,24 @@ const Garage: FC = () => {
         <CarSetting />
         <div className={s.garage__main}>
           <h2 className={s.garage__main_title}>Garage {cars.length}</h2>
-          <h3 className={s.garage__main_subtitle}>Page #{page}</h3>
-          <div className={s.garage__tracks}>
-            {cars.length && cars.slice(firstIndex, lastIndex).map((car) => <Track key={car.id} {...car} />)}
-          </div>
-          <div className={s.pagination}>
-            <button disabled={page === 1} onClick={prevPage}>
-              Prev
-            </button>
-            <button disabled={page === pageCount} onClick={nextPage}>
-              Next
-            </button>
-          </div>
+          {cars.length && (
+            <div>
+              <h3 className={s.garage__main_subtitle}>Page #{page}</h3>
+              <div className={s.garage__tracks}>
+                {cars.slice(firstIndex, lastIndex).map((car) => (
+                  <Track key={car.id} {...car} />
+                ))}
+              </div>
+              <div className={s.pagination}>
+                <button disabled={page === 1} onClick={prevPage}>
+                  Prev
+                </button>
+                <button disabled={page === pageCount} onClick={nextPage}>
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </GarageContext.Provider>

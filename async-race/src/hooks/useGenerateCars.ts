@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useGarageContext } from '../context/GarageContext';
 import { ICar } from '../models';
 import { CAR_BRANDS, CAR_MODELS } from '../utils/constants';
@@ -16,7 +15,6 @@ const useGenerateCars = () => {
       const randomModelInd = Math.floor(Math.random() * CAR_MODELS.length);
       const name = `${CAR_BRANDS[randomBrandInd]} ${CAR_MODELS[randomModelInd]}`;
       const color = getRandomHEXColor();
-
       const car = await createCar(name, color);
       newCars.push(car);
     }

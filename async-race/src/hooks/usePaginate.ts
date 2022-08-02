@@ -8,20 +8,8 @@ const usePaginate: UsePagination = ({ contentPerPage, count }) => {
   const lastIndex = page * contentPerPage;
   const firstIndex = lastIndex - contentPerPage;
 
-  const prevPage = () =>
-    setPage((state) => {
-      if (state === 1) {
-        return state;
-      }
-      return state - 1;
-    });
-  const nextPage = () =>
-    setPage((state) => {
-      if (state === pageCount) {
-        return state;
-      }
-      return state + 1;
-    });
+  const prevPage = () => setPage((state) => (state === 1 ? state : state - 1));
+  const nextPage = () => setPage((state) => (state === pageCount ? state : state + 1));
 
   return { page, pageCount, firstIndex, lastIndex, prevPage, nextPage };
 };
