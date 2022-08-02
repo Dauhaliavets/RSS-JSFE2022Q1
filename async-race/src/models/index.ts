@@ -22,3 +22,18 @@ export enum EngineMode {
   stopped = 'stopped',
   drive = 'drive',
 }
+
+interface UsePaginationProps {
+  contentPerPage: number;
+  count: number;
+}
+interface IUsePagination {
+  page: number;
+  pageCount: number;
+  firstIndex: number;
+  lastIndex: number;
+  nextPage: () => void;
+  prevPage: () => void;
+}
+
+export type UsePagination = (props: UsePaginationProps) => IUsePagination;
