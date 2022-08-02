@@ -1,13 +1,19 @@
 import { createContext, useContext } from 'react';
 
 export type GlobalContent = {
-  route: string;
-  setRoute: (c: string) => void;
+  isGaragePage: boolean;
+  setIsGaragePage: (c: boolean) => void;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 };
 
-export const GlobalContext = createContext<GlobalContent>({
-  route: 'garage',
-  setRoute: () => {},
-});
+const defaultState = {
+  isGaragePage: true,
+  setIsGaragePage: () => {},
+  currentPage: 1,
+  setCurrentPage: () => {},
+};
+
+export const GlobalContext = createContext<GlobalContent>(defaultState);
 
 export const useGlobalContext = () => useContext(GlobalContext);

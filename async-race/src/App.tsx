@@ -6,13 +6,14 @@ import Garage from './pages/Garage';
 import Winners from './pages/Winners';
 
 const App: FC = () => {
-  const [route, setRoute] = useState<string>('garage');
+  const [isGaragePage, setIsGaragePage] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(2);
 
   return (
-    <GlobalContext.Provider value={{ route, setRoute }}>
+    <GlobalContext.Provider value={{ isGaragePage, setIsGaragePage, currentPage, setCurrentPage }}>
       <div className='app-container'>
         <Navigate />
-        {route === 'garage' ? <Garage /> : route === 'winners' ? <Winners /> : 'Not Found'}
+        {isGaragePage ? <Garage /> : <Winners />}
       </div>
     </GlobalContext.Provider>
   );

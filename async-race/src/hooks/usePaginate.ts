@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useGlobalContext } from '../context/GlobalContext';
 import { UsePagination } from '../models';
 
 const usePaginate: UsePagination = ({ contentPerPage, count }) => {
-  const [page, setPage] = useState<number>(1);
+  const { currentPage, setCurrentPage } = useGlobalContext();
+  const [page, setPage] = useState<number>(currentPage || 1);
 
   const pageCount = Math.ceil(count / contentPerPage);
   const lastIndex = page * contentPerPage;
@@ -11,7 +13,11 @@ const usePaginate: UsePagination = ({ contentPerPage, count }) => {
   const prevPage = () => setPage((state) => (state === 1 ? state : state - 1));
   const nextPage = () => setPage((state) => (state === pageCount ? state : state + 1));
 
-  return { page, pageCount, firstIndex, lastIndex, prevPage, nextPage };
+  useEffect(() => {
+    setCurrentPage(page);
+  }, [page]);
+
+  return { pageCount, firstIndex, lastIndex, prevPage, nextPage };
 };
 
 export { usePaginate };

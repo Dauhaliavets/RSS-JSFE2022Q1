@@ -28,7 +28,6 @@ interface UsePaginationProps {
   count: number;
 }
 interface IUsePagination {
-  page: number;
   pageCount: number;
   firstIndex: number;
   lastIndex: number;

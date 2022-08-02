@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 const Navigate: FC = () => {
-  const { setRoute } = useGlobalContext();
+  const { setIsGaragePage } = useGlobalContext();
   return (
     <div>
-      <button onClick={() => setRoute('garage')}>TO GARAGE</button>
-      <button onClick={() => setRoute('winners')}>TO WINNERS</button>
+      <button onClick={() => setIsGaragePage(true)}>TO GARAGE</button>
+      <button onClick={() => setIsGaragePage(false)}>TO WINNERS</button>
     </div>
   );
 };
