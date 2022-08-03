@@ -7,7 +7,7 @@ import Winners from './pages/Winners';
 
 const App: FC = () => {
   const [isGaragePage, setIsGaragePage] = useState<boolean>(true);
-  const [currentPage, setCurrentPage] = useState<number>(2);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   return (
     <GlobalContext.Provider value={{ isGaragePage, setIsGaragePage, currentPage, setCurrentPage }}>

@@ -1,31 +1,36 @@
-.track {
+.racetrack {
   margin-bottom: 20px;
 }
-.track__btns {
+.racetrack__btns {
   display: flex;
   gap: 5px;
 }
 .btn {
   width: 70px;
 }
-.car__track {
+.track {
   display: flex;
   position: relative;
-  width: calc(100% - 100px);
-  height: 50px;
+  width: 100%;
+  height: 40px;
 }
-.car {
+.track__car {
   display: flex;
-  position: absolute;
-  left: 0%;
-  transition-property: left;
-  transition-delay: 1s;
 }
-.car.car_animate {
-  left: 100%;
+.track__flag {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  background-image: url('../../assets/flag-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 50px;
 }
 
-.cover {
+.track__cover {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   border-top: 5px dashed black;
 }
