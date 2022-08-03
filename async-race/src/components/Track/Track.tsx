@@ -1,72 +1,83 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { EngineMode, ICar } from '../../models';
+import React, { FC, useRef } from 'react';
+import { EngineMode, IAnimateProps, ICar } from '../../models';
 import { ReactComponent as Car } from '../../assets/car.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
 import { useDeleteCar } from '../../hooks/useDeleteCar';
 import { useGarageContext } from '../../context/GarageContext';
 
-function Track({ id, name, color }: ICar) {
-  const [engine, getEngine] = useChangeEngineMode();
+const Track: FC<ICar> = ({ id, name, color }) => {
+  const { changeEngine, changeEngineDrive } = useChangeEngineMode();
   const [deleteCar] = useDeleteCar();
   const { setSelectedCar } = useGarageContext();
-  const [isAnimate, setIsAnimate] = useState<boolean>(false);
   const car = useRef<HTMLDivElement>(null);
+  let animateId: number;
 
-  const onAnimate = () => {
-    if (engine.distance > 0) {
-      const duration = engine.distance / 2000 / engine.velocity;
-      if (car && car.current) {
-        car.current!.style.transitionDuration = `${duration}s`;
-        setIsAnimate(true);
-        car.current.ontransitionstart = () => {
-          // console.log('animation start');
-        };
-        car.current.ontransitionend = () => {
-          // console.log('animation end');
-          setIsAnimate(false);
-        };
+  const onAnimate = ({ velocity, distance }: IAnimateProps): void => {
+    const endX = car.current!.parentElement!.clientWidth - 80;
+    let curX = car.current!.offsetLeft;
+    const time = distance / velocity;
+    const framesCount = (time / 1000) * 60;
+    const dX = (endX - curX) / framesCount;
+
+    function animate() {
+      curX += dX;
+      car.current!.style.transform = `translate(${curX}px, 0px)`;
+
+      if (curX <= endX) {
+        animateId = requestAnimationFrame(animate);
       }
+    }
+
+    animateId = requestAnimationFrame(animate);
+  };
+
+  const onStart = async () => {
+    const engine = await changeEngine(id, EngineMode.started);
+    onAnimate({ ...engine });
+    const { success } = await changeEngineDrive(id, EngineMode.drive);
+    if (!success) {
+      cancelAnimationFrame(animateId);
     }
   };
 
-  useEffect(() => {
-    onAnimate();
-  }, [engine, isAnimate]);
+  const onStop = async () => {
+    cancelAnimationFrame(animateId);
+    const engine = await changeEngine(id, EngineMode.stopped);
+    car.current!.style.transform = `translate(${engine.velocity}px, 0px)`;
+  };
 
-  const onStart = () => getEngine(id, EngineMode.started);
-  const onStop = () => getEngine(id, EngineMode.stopped);
   const onDeleteCar = () => deleteCar(id);
   const onSelectCar = () => setSelectedCar({ id, name, color });
 
   return (
-    <div className={s.track}>
-      <div className={s.track__btns}>
+    <div className={s.racetrack}>
+      <div className={s.racetrack__btns}>
         <button className={s.btn} onClick={onSelectCar}>
           SELECT
         </button>
         <button className={s.btn} onClick={onDeleteCar}>
           REMOVE
         </button>
-        <button className={s.btn} onClick={onStart}>
+        <button className={s.btn} onClick={() => onStart()}>
           START
         </button>
-        <button className={s.btn} onClick={onStop}>
+        <button className={s.btn} onClick={() => onStop()}>
           STOP
         </button>
       </div>
-      <div className={s.track__info}>
+      <div className={s.racetrack__info}>
         <span className={s.car__name}>{name}</span>
       </div>
-      <div className={s.car__track}>
-        <div className={isAnimate ? `${s.car} ${s.car_animate}` : s.car} ref={car}>
-          {/* <div className={s.car_animate}> */}
+      <div className={s.track}>
+        <div className={s.track__car} ref={car}>
           <Car fill={color} />
         </div>
+        <div className={s.track__flag}></div>
+        <div className={s.track__cover}></div>
       </div>
-      <div className={s.cover}></div>
     </div>
   );
-}
+};
 
 export default Track;

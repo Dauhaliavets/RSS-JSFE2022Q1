@@ -8,6 +8,9 @@ export interface IEngine {
   velocity: number;
   distance: number;
 }
+export type EngineState = {
+  success: boolean;
+};
 
 export enum Methods {
   Get = 'GET',
@@ -36,3 +39,8 @@ interface IUsePagination {
 }
 
 export type UsePagination = (props: UsePaginationProps) => IUsePagination;
+
+export interface IAnimateProps {
+  velocity: number;
+  distance: number;
+}
