@@ -1,4 +1,4 @@
-import { useGarageContext } from '../context/GarageContext';
+import { GarageContent, useGarageContext } from '../context/GarageContext';
 import { ICar } from '../models';
 import { CAR_BRANDS, CAR_MODELS } from '../utils/constants';
 import { getRandomHEXColor } from '../utils/getRandomHEXColor';
@@ -6,7 +6,7 @@ import { useCreateCar } from './useCreateCar';
 
 const useGenerateCars = () => {
   const { createCar } = useCreateCar();
-  const { cars, setCars } = useGarageContext();
+  const { cars, setCars } = useGarageContext() as GarageContent;
 
   const generateCars = async () => {
     const newCars: ICar[] = [];

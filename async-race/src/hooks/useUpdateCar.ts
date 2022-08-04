@@ -1,9 +1,9 @@
-import { useGarageContext } from '../context/GarageContext';
+import { GarageContent, useGarageContext } from '../context/GarageContext';
 import { Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useUpdateCar = () => {
-  const { cars, setCars } = useGarageContext();
+  const { cars, setCars } = useGarageContext() as GarageContent;
 
   const updateCar = async (id: number, name: string, color: string) => {
     const response = await fetch(`${BASE_URL}/garage/${id}`, {

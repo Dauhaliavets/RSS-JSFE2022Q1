@@ -12,6 +12,10 @@ export type EngineState = {
   success: boolean;
 };
 
+export type CarSettingsProps = {
+  handlerStartRace: () => void;
+};
+
 export enum Methods {
   Get = 'GET',
   Post = 'POST',
@@ -43,4 +47,21 @@ export type UsePagination = (props: UsePaginationProps) => IUsePagination;
 export interface IAnimateProps {
   velocity: number;
   distance: number;
+}
+
+export type TrackResult = {
+  id: number;
+  name: string;
+  time: number;
+  success: boolean;
+};
+
+export type TrackProps = {
+  data: ICar;
+  saveResult: (result: TrackResult) => void;
+};
+export interface IWinner {
+  id: number;
+  wins: number;
+  time: number;
 }
