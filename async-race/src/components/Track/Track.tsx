@@ -1,22 +1,21 @@
-import React, { FC, useRef } from 'react';
-import { EngineMode, IAnimateProps, ICar } from '../../models';
+import React, { FC, useEffect, useRef } from 'react';
+import { EngineMode, TrackProps } from '../../models';
 import { ReactComponent as Car } from '../../assets/car.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
 import { useDeleteCar } from '../../hooks/useDeleteCar';
-import { useGarageContext } from '../../context/GarageContext';
+import { GarageContent, useGarageContext } from '../../context/GarageContext';
 
-const Track: FC<ICar> = ({ id, name, color }) => {
+const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   const { changeEngine, changeEngineDrive } = useChangeEngineMode();
   const [deleteCar] = useDeleteCar();
-  const { setSelectedCar } = useGarageContext();
+  const { isRace, setSelectedCar } = useGarageContext() as GarageContent;
   const car = useRef<HTMLDivElement>(null);
-  let animateId: number;
+  const animateIdRef = useRef<number>();
 
-  const onAnimate = ({ velocity, distance }: IAnimateProps): void => {
+  const onAnimate = (time: number): void => {
     const endX = car.current!.parentElement!.clientWidth - 80;
     let curX = car.current!.offsetLeft;
-    const time = distance / velocity;
     const framesCount = (time / 1000) * 60;
     const dX = (endX - curX) / framesCount;
 
@@ -25,30 +24,40 @@ const Track: FC<ICar> = ({ id, name, color }) => {
       car.current!.style.transform = `translate(${curX}px, 0px)`;
 
       if (curX <= endX) {
-        animateId = requestAnimationFrame(animate);
+        animateIdRef.current = requestAnimationFrame(animate);
       }
     }
 
-    animateId = requestAnimationFrame(animate);
+    animateIdRef.current = requestAnimationFrame(animate);
   };
 
   const onStart = async () => {
-    const engine = await changeEngine(id, EngineMode.started);
-    onAnimate({ ...engine });
+    const { distance, velocity } = await changeEngine(id, EngineMode.started);
+    const time = Math.round(distance / velocity);
+    onAnimate(time);
     const { success } = await changeEngineDrive(id, EngineMode.drive);
+    saveResult({ id, name, time, success });
     if (!success) {
-      cancelAnimationFrame(animateId);
+      cancelAnimationFrame(animateIdRef.current!);
     }
   };
 
   const onStop = async () => {
-    cancelAnimationFrame(animateId);
+    cancelAnimationFrame(animateIdRef.current!);
     const engine = await changeEngine(id, EngineMode.stopped);
     car.current!.style.transform = `translate(${engine.velocity}px, 0px)`;
   };
 
   const onDeleteCar = () => deleteCar(id);
   const onSelectCar = () => setSelectedCar({ id, name, color });
+
+  useEffect(() => {
+    if (isRace) {
+      onStart();
+    } else {
+      onStop();
+    }
+  }, [isRace]);
 
   return (
     <div className={s.racetrack}>
@@ -59,7 +68,7 @@ const Track: FC<ICar> = ({ id, name, color }) => {
         <button className={s.btn} onClick={onDeleteCar}>
           REMOVE
         </button>
-        <button className={s.btn} onClick={() => onStart()}>
+        <button className={s.btn} onClick={onStart}>
           START
         </button>
         <button className={s.btn} onClick={() => onStop()}>
