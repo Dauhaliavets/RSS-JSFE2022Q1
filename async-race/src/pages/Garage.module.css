@@ -9,3 +9,23 @@
 .garage__main_subtitle {
   margin: 10px 0px;
 }
+
+.garage__tracks {
+  position: relative;
+}
+.notify__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notify__text {
+  font-weight: 700;
+  font-size: 32px;
+  top: calc(50% - 16px);
+  left: 50%;
+}
