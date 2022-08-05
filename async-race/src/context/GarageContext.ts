@@ -3,7 +3,7 @@ import { ICar } from '../models';
 
 export type GarageContent = {
   cars: ICar[];
-  setCars: (cars: ICar[]) => void;
+  setCars: (cars: ICar[] | ((prevCars: ICar[]) => ICar[])) => void;
   isRace: boolean;
   setIsRace: (value: boolean | ((prevVar: boolean) => boolean)) => void;
   selectedCar: ICar | null;
