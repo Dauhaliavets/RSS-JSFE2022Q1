@@ -31,11 +31,15 @@ export enum EngineMode {
 }
 
 interface UsePaginationProps {
+  defaultPage: number;
   count: number;
   countPerPage: number;
 }
 interface IUsePagination {
-  pageCount: number;
+  page: number;
+  countPage: number;
+  firstIndex: number;
+  lastIndex: number;
   nextPage: () => void;
   prevPage: () => void;
 }
@@ -66,5 +70,4 @@ export interface IWinner {
 
 export interface IResponseGetCars {
   cars: ICar[];
-  totalCount: number;
 }

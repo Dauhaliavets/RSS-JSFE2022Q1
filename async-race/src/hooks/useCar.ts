@@ -3,7 +3,7 @@ import { Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useCar = () => {
-  const { cars, setCars } = useGarageContext() as GarageContent;
+  const { cars, setCars, setTotalCars } = useGarageContext() as GarageContent;
 
   const getCar = async (id: number) => {
     const response = await fetch(`${BASE_URL}/garage/${id}`);
@@ -21,6 +21,7 @@ const useCar = () => {
     if (response.ok) {
       const createdCar = await response.json();
       setCars((prevState) => [...prevState, createdCar]);
+      setTotalCars((prevState) => prevState + 1);
     }
   };
 
@@ -29,6 +30,7 @@ const useCar = () => {
     if (response.ok) {
       const newCars = [...cars].filter((item) => item.id !== id);
       setCars(newCars);
+      setTotalCars((prevState) => prevState - 1);
     }
   };
 

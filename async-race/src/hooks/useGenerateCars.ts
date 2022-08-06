@@ -6,7 +6,7 @@ const useGenerateCars = () => {
   const { createCar } = useCar();
 
   const generateCars = async () => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
       const randomBrandInd = Math.floor(Math.random() * CAR_BRANDS.length);
       const randomModelInd = Math.floor(Math.random() * CAR_MODELS.length);
       const name = `${CAR_BRANDS[randomBrandInd]} ${CAR_MODELS[randomModelInd]}`;
