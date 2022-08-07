@@ -123,3 +123,6 @@ export const CAR_MODELS = [
   'Z4',
   'Z8',
 ];
+
+export const COUNT_VIEW_CARS = 7;
+export const COUNT_VIEW_WINS = 10;

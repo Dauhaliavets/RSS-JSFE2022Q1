@@ -1,13 +1,16 @@
-import { IResponseGetCars } from './../models/index';
+// import { IResponseGetCars } from './../models/index';
+import { ICar } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useGetCars = () => {
-  const getCars = async (): Promise<IResponseGetCars | undefined> => {
+  const getCars = async (): Promise<ICar[] | undefined> => {
     try {
       const response = await fetch(`${BASE_URL}/garage`);
-      return { cars: await response.json() };
+      return await response.json();
     } catch (error) {
-      console.error(error);
+      if (error) {
+        console.error(error);
+      }
     }
   };
 

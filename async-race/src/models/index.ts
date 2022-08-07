@@ -62,12 +62,3 @@ export type TrackProps = {
   data: ICar;
   saveResult: (result: TrackResult) => void;
 };
-export interface IWinner {
-  id: number;
-  wins: number;
-  time: number;
-}
-
-export interface IResponseGetCars {
-  cars: ICar[];
-}

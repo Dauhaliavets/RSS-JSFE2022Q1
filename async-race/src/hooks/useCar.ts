@@ -1,16 +1,15 @@
+import { useCallback } from 'react';
 import { GarageContent, useGarageContext } from '../context/GarageContext';
-import { Methods } from '../models';
+import { ICar, Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
 
 const useCar = () => {
   const { cars, setCars, setTotalCars } = useGarageContext() as GarageContent;
 
-  const getCar = async (id: number) => {
+  const getCar = useCallback(async (id: number): Promise<ICar> => {
     const response = await fetch(`${BASE_URL}/garage/${id}`);
-    if (response.ok) {
-      return response.json();
-    }
-  };
+    return response.json();
+  }, []);
 
   const createCar = async (name: string, color: string) => {
     const response = await fetch(`${BASE_URL}/garage`, {

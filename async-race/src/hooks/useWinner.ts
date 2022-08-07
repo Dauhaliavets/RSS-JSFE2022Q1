@@ -1,4 +1,5 @@
-import { IWinner, Methods } from '../models';
+import { Methods } from '../models';
+import { IWinner } from '../models/winner';
 import { BASE_URL } from '../utils/constants';
 
 const useWinner = () => {
