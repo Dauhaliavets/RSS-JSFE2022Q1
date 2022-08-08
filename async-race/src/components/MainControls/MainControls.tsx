@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
-import { GarageContent, useGarageContext } from '../../context/GarageContext';
+import { useGlobalContext } from '../../context/GlobalContext';
 import { useCar } from '../../hooks/useCar';
 import { useGenerateCars } from '../../hooks/useGenerateCars';
 import { BASE_COLOR } from '../../utils/constants';
@@ -8,7 +8,7 @@ import s from './MainControls.module.css';
 const MainControls: FC = () => {
   const { createCar, updateCar } = useCar();
   const { generateCars } = useGenerateCars();
-  const { isRace, setIsRace, selectedCar } = useGarageContext() as GarageContent;
+  const { isRace, setIsRace, selectedCar } = useGlobalContext();
   const [nameForCreate, setNameForCreate] = useState('');
   const [colorForCreate, setColorForCreate] = useState(BASE_COLOR);
   const [nameForUpdate, setNameForUpdate] = useState('');
@@ -56,10 +56,10 @@ const MainControls: FC = () => {
         <button onClick={onUpdateCar}>UPDATE</button>
       </div>
       <div className={s.setting__wrapper}>
-        <button disabled={isRace} onClick={() => setIsRace((prevState) => !prevState)}>
+        <button disabled={isRace} onClick={() => setIsRace(true)}>
           RACE
         </button>
-        <button disabled={!isRace} onClick={() => setIsRace((prevState) => !prevState)}>
+        <button disabled={!isRace} onClick={() => setIsRace(false)}>
           RESET
         </button>
         <button onClick={generateCars}>GENERATE CARS</button>

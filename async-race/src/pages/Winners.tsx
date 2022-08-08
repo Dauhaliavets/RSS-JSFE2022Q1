@@ -61,7 +61,7 @@ function Winners() {
               <tbody>
                 {winners.map((item, index) => (
                   <tr key={item.id}>
-                    <td>{index + 1 + (currentPageWinners - 1) * 10}</td>
+                    <td>{index + 1 + (currentPageWinners - 1) * COUNT_VIEW_WINS}</td>
                     <td>{'#' + item.id}</td>
                     <td>
                       <Car fill={item.color} />
