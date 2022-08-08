@@ -1,4 +1,5 @@
-import { EngineMode, EngineState, Methods } from '../models';
+import { Methods } from '../models';
+import { EngineMode, EngineState } from '../models/car';
 import { BASE_URL } from '../utils/constants';
 
 const useChangeEngineMode = () => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGlobalContext } from '../context/GlobalContext';
-import { TrackResult } from '../models';
+import { TrackResult } from '../models/car';
 import { useWinner } from './useWinner';
 
 const useResults = () => {

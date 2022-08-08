@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useGlobalContext } from '../context/GlobalContext';
-import { ICar, Methods } from '../models';
+import { Methods } from '../models';
+import { ICar } from '../models/car';
 import { BASE_URL } from '../utils/constants';
 import { useGetCars } from './useGetCars';
 import { useWinner } from './useWinner';
@@ -26,7 +27,7 @@ const useCar = () => {
         getCars(currentPageGarage);
       }
     },
-    [getCars],
+    [getCars, currentPageGarage],
   );
 
   const deleteCar = useCallback(
@@ -37,7 +38,7 @@ const useCar = () => {
         deleteWinner(id);
       }
     },
-    [getCars],
+    [getCars, currentPageGarage, deleteWinner],
   );
 
   const updateCar = useCallback(
@@ -51,7 +52,7 @@ const useCar = () => {
         getCars(currentPageGarage);
       }
     },
-    [getCars],
+    [getCars, currentPageGarage],
   );
 
   return { getCar, createCar, deleteCar, updateCar };

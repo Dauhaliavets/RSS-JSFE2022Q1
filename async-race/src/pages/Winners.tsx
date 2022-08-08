@@ -4,10 +4,11 @@ import { ReactComponent as Car } from '../assets/carForWinners.svg';
 import s from './Winners.module.css';
 import { useGlobalContext } from '../context/GlobalContext';
 import { COUNT_VIEW_WINS } from '../utils/constants';
+import { OrderTypes, SortTypes } from '../models';
 
 function Winners() {
-  const [sortBy, setSortBy] = useState<'wins' | 'time'>('wins');
-  const [orderBy, setOrderBy] = useState<'ASC' | 'DESC'>('ASC');
+  const [sortBy, setSortBy] = useState<SortTypes>(SortTypes.wins);
+  const [orderBy, setOrderBy] = useState<OrderTypes>(OrderTypes.asc);
 
   const { currentPageWinners, setCurrentPageWinners } = useGlobalContext();
   const { winners, countWins, getWinners } = useWinners();
@@ -24,19 +25,19 @@ function Winners() {
   }, [getWinners, currentPageWinners, sortBy, orderBy]);
 
   const sortByWins = () => {
-    setSortBy('wins');
-    if (orderBy === 'ASC') {
-      setOrderBy('DESC');
+    setSortBy(SortTypes.wins);
+    if (orderBy === OrderTypes.asc) {
+      setOrderBy(OrderTypes.desc);
     } else {
-      setOrderBy('ASC');
+      setOrderBy(OrderTypes.asc);
     }
   };
   const sortByTime = () => {
-    setSortBy('time');
-    if (orderBy === 'ASC') {
-      setOrderBy('DESC');
+    setSortBy(SortTypes.time);
+    if (orderBy === OrderTypes.asc) {
+      setOrderBy(OrderTypes.desc);
     } else {
-      setOrderBy('ASC');
+      setOrderBy(OrderTypes.asc);
     }
   };
 

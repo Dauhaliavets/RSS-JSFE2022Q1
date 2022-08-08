@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import './App.css';
 import Navigate from './components/Navigate/Navigate';
 import { GlobalContext } from './context/GlobalContext';
-import { ICar } from './models';
+import { ICar } from './models/car';
 import { Garage } from './pages/Garage';
 import { Winners } from './pages/Winners';
 
