@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import './App.css';
+import { Footer } from './components/Footer/Footer';
 import Navigate from './components/Navigate/Navigate';
 import { GlobalContext } from './context/GlobalContext';
 import { ICar } from './models/car';
@@ -40,6 +41,7 @@ const App: FC = () => {
       <div className='app-container'>
         <Navigate />
         {isGaragePage ? <Garage /> : <Winners />}
+        <Footer />
       </div>
     </GlobalContext.Provider>
   );

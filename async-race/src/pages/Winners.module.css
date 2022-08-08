@@ -1,3 +1,6 @@
+.winners__main {
+  flex-grow: 1;
+}
 .winners__main_title {
   margin: 5px 0px;
 }
@@ -7,6 +10,15 @@
 }
 thead tr th {
   padding: 5px 10px;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+thead tr th:nth-last-child(1):hover,
+thead tr th:nth-last-child(2):hover {
+  cursor: pointer;
+  background-color: #a3a3a3cc;
+  transition: 0.3s;
 }
 
 tbody tr td {
