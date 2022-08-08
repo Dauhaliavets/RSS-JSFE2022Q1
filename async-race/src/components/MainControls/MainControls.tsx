@@ -29,8 +29,8 @@ const MainControls: FC = () => {
   const updateCarColor = (e: ChangeEvent<HTMLInputElement>) => setColorForUpdate(e.target.value);
 
   const onUpdateCar = () => {
-    if (nameForUpdate && colorForUpdate) {
-      updateCar(selectedCar!.id, nameForUpdate, colorForUpdate);
+    if (nameForUpdate && colorForUpdate && selectedCar) {
+      updateCar(selectedCar.id, nameForUpdate, colorForUpdate);
       setNameForUpdate('');
       setColorForUpdate(BASE_COLOR);
     }

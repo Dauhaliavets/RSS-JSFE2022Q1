@@ -1,35 +1,18 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { EngineMode, TrackProps } from '../../models/car';
 import { ReactComponent as Car } from '../../assets/carForGarage.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
 import { useCar } from '../../hooks/useCar';
 import { useGlobalContext } from '../../context/GlobalContext';
+import { useAnimate } from '../../hooks/useAnimate';
 
 const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   const { changeEngine, changeEngineDrive } = useChangeEngineMode();
   const { deleteCar } = useCar();
   const { isRace, setIsRace, isFinish, setIsFinish, setSelectedCar } = useGlobalContext();
   const [isInStart, setIsInStart] = useState(true);
-  const car = useRef<HTMLDivElement>(null);
-  const animateIdRef = useRef<number>();
-
-  const onAnimate = (time: number): void => {
-    const endX = car.current!.parentElement!.clientWidth - 80;
-    let curX = car.current!.offsetLeft;
-    const framesCount = (time / 1000) * 60;
-    const dX = (endX - curX) / framesCount;
-
-    function animate() {
-      curX += dX;
-      car.current!.style.transform = `translate(${curX}px, 0px)`;
-      if (curX <= endX) {
-        animateIdRef.current = requestAnimationFrame(animate);
-      }
-    }
-
-    animateIdRef.current = requestAnimationFrame(animate);
-  };
+  const { car, animateIdRef, onAnimate } = useAnimate();
 
   const onStart = useCallback(async () => {
     const { distance, velocity } = await changeEngine(id, EngineMode.started);
@@ -37,13 +20,15 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
     onAnimate(time);
     const { success } = await changeEngineDrive(id, EngineMode.drive);
     saveResult({ id, name, time, success });
-    if (!success) {
-      cancelAnimationFrame(animateIdRef.current!);
+    if (!success && animateIdRef.current) {
+      cancelAnimationFrame(animateIdRef.current);
     }
   }, [changeEngine, changeEngineDrive, id, name, saveResult]);
 
   const onStop = useCallback(async () => {
-    cancelAnimationFrame(animateIdRef.current!);
+    if (animateIdRef.current) {
+      cancelAnimationFrame(animateIdRef.current);
+    }
     const engine = await changeEngine(id, EngineMode.stopped);
     if (car.current) {
       car.current.style.transform = `translate(${engine.velocity}px, 0px)`;

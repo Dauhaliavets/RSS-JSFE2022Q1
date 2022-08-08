@@ -17,7 +17,9 @@ const Garage: FC = () => {
 
   useEffect(() => {
     let isSubscribed = true;
-    getCars(currentPageGarage);
+    if (isSubscribed) {
+      getCars(currentPageGarage);
+    }
     return () => {
       isSubscribed = false;
     };

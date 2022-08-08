@@ -18,20 +18,16 @@ const useWinners = () => {
 
   const getWinners = useCallback(
     async (page: number, sort: string, order: string) => {
-      try {
-        const response = await fetchWinners(page, sort, order);
-        Promise.all(
-          response.data.map(async (win) => {
-            const respCar = await getCar(win.id);
-            return { ...win, ...respCar };
-          }),
-        ).then((data) => {
-          setCountWins(+response.count);
-          setWinners(data);
-        });
-      } catch (error) {
-        console.error(error);
-      }
+      const response = await fetchWinners(page, sort, order);
+      Promise.all(
+        response.data.map(async (win) => {
+          const respCar = await getCar(win.id);
+          return { ...win, ...respCar };
+        }),
+      ).then((data) => {
+        setCountWins(+response.count);
+        setWinners(data);
+      });
     },
     [getCar],
   );

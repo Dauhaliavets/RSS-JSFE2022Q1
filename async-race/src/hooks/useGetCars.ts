@@ -16,15 +16,9 @@ const useGetCars = () => {
 
   const getCars = useCallback(
     async (page: number) => {
-      try {
-        const response = await fetchCars(page);
-        setCountCars(+response.count);
-        setCars(response.data);
-      } catch (error) {
-        if (error) {
-          console.error(error);
-        }
-      }
+      const response = await fetchCars(page);
+      setCountCars(+response.count);
+      setCars(response.data);
     },
     [fetchCars],
   );

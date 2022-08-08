@@ -18,7 +18,9 @@ function Winners() {
 
   useEffect(() => {
     let isSubscribed = true;
-    getWinners(currentPageWinners, sortBy, orderBy);
+    if (isSubscribed) {
+      getWinners(currentPageWinners, sortBy, orderBy);
+    }
     return () => {
       isSubscribed = false;
     };
