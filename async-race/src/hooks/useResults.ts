@@ -6,7 +6,7 @@ import { useWinner } from './useWinner';
 const useResults = () => {
   const [currentWinner, setCurrentWinner] = useState<TrackResult | null>(null);
   const { getWinner, createWinner, updateWinner } = useWinner();
-  const { cars } = useGlobalContext();
+  const { cars, setIsFinish } = useGlobalContext();
 
   const results: TrackResult[] = [];
 
@@ -25,6 +25,7 @@ const useResults = () => {
         createWinner(winResult.id, 1, convertedTime);
       }
       setCurrentWinner({ id: winResult.id, name: winResult.name, time: convertedTime, success: winResult.success });
+      setIsFinish(true);
     }
   };
 

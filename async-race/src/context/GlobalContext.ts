@@ -14,6 +14,8 @@ const defaultGlobalState = {
   setCountCars: () => {},
   isRace: false,
   setIsRace: () => {},
+  isFinish: false,
+  setIsFinish: () => {},
   selectedCar: null,
   setSelectedCar: () => {},
 };

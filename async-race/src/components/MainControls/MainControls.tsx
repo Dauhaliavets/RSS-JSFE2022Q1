@@ -8,7 +8,7 @@ import s from './MainControls.module.css';
 const MainControls: FC = () => {
   const { createCar, updateCar } = useCar();
   const { generateCars } = useGenerateCars();
-  const { isRace, setIsRace, selectedCar } = useGlobalContext();
+  const { isRace, setIsRace, setIsFinish, selectedCar } = useGlobalContext();
   const [nameForCreate, setNameForCreate] = useState('');
   const [colorForCreate, setColorForCreate] = useState(BASE_COLOR);
   const [nameForUpdate, setNameForUpdate] = useState('');
@@ -59,7 +59,13 @@ const MainControls: FC = () => {
         <button disabled={isRace} onClick={() => setIsRace(true)}>
           RACE
         </button>
-        <button disabled={!isRace} onClick={() => setIsRace(false)}>
+        <button
+          disabled={!isRace}
+          onClick={() => {
+            setIsFinish(false);
+            setIsRace(false);
+          }}
+        >
           RESET
         </button>
         <button onClick={generateCars}>GENERATE CARS</button>

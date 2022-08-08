@@ -13,6 +13,8 @@ export type GlobalContent = {
   setCountCars: (count: number | ((prevCount: number) => number)) => void;
   isRace: boolean;
   setIsRace: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+  isFinish: boolean;
+  setIsFinish: (value: boolean | ((prevVar: boolean) => boolean)) => void;
   selectedCar: ICar | null;
   setSelectedCar: (car: ICar | null) => void;
 };

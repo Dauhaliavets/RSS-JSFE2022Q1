@@ -8,7 +8,7 @@ import { COUNT_VIEW_CARS } from '../utils/constants';
 import s from './Garage.module.css';
 
 const Garage: FC = () => {
-  const { cars, countCars, currentPageGarage, setCurrentPageGarage, isRace } = useGlobalContext();
+  const { cars, countCars, currentPageGarage, setCurrentPageGarage, isRace, isFinish } = useGlobalContext();
   const { getCars } = useGetCars();
   const { saveResult, currentWinner } = useResults();
 
@@ -32,7 +32,7 @@ const Garage: FC = () => {
           <div>
             <h3 className={s.garage__main_subtitle}>Page #{currentPageGarage}</h3>
             <div className={s.garage__tracks}>
-              {isRace && currentWinner && (
+              {isRace && isFinish && currentWinner && (
                 <div className={s.notify__wrapper}>
                   <span className={s.notify__text}>
                     {currentWinner.success && `${currentWinner.name} went first [time: ${currentWinner.time}s]`}
