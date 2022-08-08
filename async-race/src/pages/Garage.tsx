@@ -8,13 +8,12 @@ import { COUNT_VIEW_CARS } from '../utils/constants';
 import s from './Garage.module.css';
 
 const Garage: FC = () => {
-  const { cars, countCars, currentPageGarage, setCurrentPageGarage } = useGlobalContext();
+  const { cars, countCars, currentPageGarage, setCurrentPageGarage, isRace } = useGlobalContext();
   const { getCars } = useGetCars();
+  const { saveResult, currentWinner } = useResults();
 
   const numberFirstPage = 1;
   const numberLastPage = Math.ceil(countCars / COUNT_VIEW_CARS);
-
-  const { saveResult, currentWinner } = useResults(countCars);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -29,17 +28,17 @@ const Garage: FC = () => {
       <MainControls />
       <div className={s.garage__main}>
         <h2 className={s.garage__main_title}>Garage {countCars}</h2>
-        {cars.length && (
+        {countCars && (
           <div>
             <h3 className={s.garage__main_subtitle}>Page #{currentPageGarage}</h3>
             <div className={s.garage__tracks}>
-              {/* {isRace && currentWinner && (
-                  <div className={s.notify__wrapper}>
-                    <span className={s.notify__text}>
-                      {currentWinner.success && `${currentWinner.name} went first [time: ${currentWinner.time}s]`}
-                    </span>
-                  </div>
-                )} */}
+              {isRace && currentWinner && (
+                <div className={s.notify__wrapper}>
+                  <span className={s.notify__text}>
+                    {currentWinner.success && `${currentWinner.name} went first [time: ${currentWinner.time}s]`}
+                  </span>
+                </div>
+              )}
               {cars.map((car) => (
                 <Track key={car.id} data={car} saveResult={saveResult} />
               ))}

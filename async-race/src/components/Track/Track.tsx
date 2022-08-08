@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { EngineMode, TrackProps } from '../../models';
-import { ReactComponent as Car } from '../../assets/car.svg';
+import { ReactComponent as Car } from '../../assets/carForGarage.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
-import { useDeleteCar } from '../../hooks/useDeleteCar';
-import { GarageContent, useGarageContext } from '../../context/GarageContext';
+import { useCar } from '../../hooks/useCar';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   const { changeEngine, changeEngineDrive } = useChangeEngineMode();
-  const [deleteCar] = useDeleteCar();
-  const { isRace, setSelectedCar } = useGarageContext() as GarageContent;
+  const { deleteCar } = useCar();
+  const { isRace, setIsRace, setSelectedCar } = useGlobalContext();
+  const [isInStart, setIsInStart] = useState(true);
   const car = useRef<HTMLDivElement>(null);
   const animateIdRef = useRef<number>();
 
@@ -22,7 +23,6 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
     function animate() {
       curX += dX;
       car.current!.style.transform = `translate(${curX}px, 0px)`;
-
       if (curX <= endX) {
         animateIdRef.current = requestAnimationFrame(animate);
       }
@@ -52,26 +52,40 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   const onSelectCar = () => setSelectedCar({ id, name, color });
 
   useEffect(() => {
-    if (isRace) {
+    if (isRace && isInStart) {
       onStart();
     } else {
       onStop();
     }
-  }, [isRace]);
+  }, [isRace, setIsRace]);
 
   return (
     <div className={s.racetrack}>
       <div className={s.racetrack__btns}>
-        <button className={s.btn} onClick={onSelectCar}>
+        <button className={s.btn} disabled={isRace && isInStart} onClick={onSelectCar}>
           SELECT
         </button>
-        <button className={s.btn} onClick={onDeleteCar}>
+        <button className={s.btn} disabled={isRace && isInStart} onClick={onDeleteCar}>
           REMOVE
         </button>
-        <button className={s.btn} onClick={onStart}>
+        <button
+          className={s.btn}
+          disabled={isRace || !isInStart}
+          onClick={() => {
+            onStart();
+            setIsInStart(false);
+          }}
+        >
           START
         </button>
-        <button className={s.btn} onClick={() => onStop()}>
+        <button
+          className={s.btn}
+          disabled={!isRace && isInStart}
+          onClick={() => {
+            onStop();
+            setIsInStart(true);
+          }}
+        >
           STOP
         </button>
       </div>
