@@ -78,12 +78,14 @@ function Winners() {
 
           <div className={s.pagination}>
             <button
+              className={s.btn}
               disabled={currentPageWinners === numberFirstPage}
               onClick={() => setCurrentPageWinners(currentPageWinners - 1)}
             >
               Prev
             </button>
             <button
+              className={s.btn}
               disabled={currentPageWinners === numberLastPage}
               onClick={() => setCurrentPageWinners(currentPageWinners + 1)}
             >

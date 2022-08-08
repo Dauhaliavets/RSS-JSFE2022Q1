@@ -46,20 +46,37 @@ const MainControls: FC = () => {
   return (
     <div className={s.garage__settings}>
       <div className={s.setting__wrapper}>
-        <input type='text' name='carName' value={nameForCreate} onChange={(e) => changeCarName(e)} />
+        <input
+          className={s.setting__input_text}
+          type='text'
+          name='carName'
+          value={nameForCreate}
+          onChange={(e) => changeCarName(e)}
+        />
         <input type='color' name='carColor' value={colorForCreate} onChange={(e) => changeCarColor(e)} />
-        <button onClick={onCreateCar}>CREATE</button>
+        <button className={s.setting__btn} onClick={onCreateCar}>
+          CREATE
+        </button>
       </div>
       <div className={s.setting__wrapper}>
-        <input type='text' name='carNameUpdated' value={nameForUpdate} onChange={(e) => updateCarName(e)} />
+        <input
+          className={s.setting__input_text}
+          type='text'
+          name='carNameUpdated'
+          value={nameForUpdate}
+          onChange={(e) => updateCarName(e)}
+        />
         <input type='color' name='colorForUpdate' value={colorForUpdate} onChange={(e) => updateCarColor(e)} />
-        <button onClick={onUpdateCar}>UPDATE</button>
+        <button className={s.setting__btn} onClick={onUpdateCar}>
+          UPDATE
+        </button>
       </div>
       <div className={s.setting__wrapper}>
-        <button disabled={isRace} onClick={() => setIsRace(true)}>
+        <button className={s.setting__btn} disabled={isRace} onClick={() => setIsRace(true)}>
           RACE
         </button>
         <button
+          className={s.setting__btn}
           disabled={!isRace}
           onClick={() => {
             setIsFinish(false);
@@ -68,7 +85,9 @@ const MainControls: FC = () => {
         >
           RESET
         </button>
-        <button onClick={generateCars}>GENERATE CARS</button>
+        <button className={s.setting__btn} onClick={generateCars}>
+          GENERATE CARS
+        </button>
       </div>
     </div>
   );

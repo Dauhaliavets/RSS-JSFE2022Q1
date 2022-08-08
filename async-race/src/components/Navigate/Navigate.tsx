@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import { useGlobalContext } from '../../context/GlobalContext';
+import s from './Navigate.module.css';
 
 const Navigate: FC = () => {
-  const { setIsGaragePage, setIsRace } = useGlobalContext();
+  const { isGaragePage, setIsGaragePage, setIsRace } = useGlobalContext();
   return (
-    <div>
+    <div className={s.navigate__btns}>
       <button
+        className={isGaragePage ? s.nav__btn_active : s.nav__btn}
         onClick={() => {
           setIsRace(false);
           setIsGaragePage(true);
@@ -14,6 +16,7 @@ const Navigate: FC = () => {
         TO GARAGE
       </button>
       <button
+        className={isGaragePage ? s.nav__btn : s.nav__btn_active}
         onClick={() => {
           setIsRace(false);
           setIsGaragePage(false);

@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useGlobalContext } from '../context/GlobalContext';
-import { ICar, ICarsResponse } from '../models';
+import { ICarsResponse } from '../models/car';
 import { BASE_URL } from '../utils/constants';
 
 const useGetCars = () => {
@@ -14,17 +14,20 @@ const useGetCars = () => {
     };
   };
 
-  const getCars = async (page: number) => {
-    try {
-      const response = await fetchCars(page);
-      setCountCars(+response.count);
-      setCars(response.data);
-    } catch (error) {
-      if (error) {
-        console.error(error);
+  const getCars = useCallback(
+    async (page: number) => {
+      try {
+        const response = await fetchCars(page);
+        setCountCars(+response.count);
+        setCars(response.data);
+      } catch (error) {
+        if (error) {
+          console.error(error);
+        }
       }
-    }
-  };
+    },
+    [fetchCars],
+  );
 
   return { cars, countCars, getCars };
 };

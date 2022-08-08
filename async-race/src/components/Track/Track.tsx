@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { EngineMode, TrackProps } from '../../models';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { EngineMode, TrackProps } from '../../models/car';
 import { ReactComponent as Car } from '../../assets/carForGarage.svg';
 import s from './Track.module.css';
 import { useChangeEngineMode } from '../../hooks/useChangeEngineMode';
@@ -9,7 +9,7 @@ import { useGlobalContext } from '../../context/GlobalContext';
 const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   const { changeEngine, changeEngineDrive } = useChangeEngineMode();
   const { deleteCar } = useCar();
-  const { isRace, setIsRace, setSelectedCar } = useGlobalContext();
+  const { isRace, setIsRace, isFinish, setIsFinish, setSelectedCar } = useGlobalContext();
   const [isInStart, setIsInStart] = useState(true);
   const car = useRef<HTMLDivElement>(null);
   const animateIdRef = useRef<number>();
@@ -31,7 +31,7 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
     animateIdRef.current = requestAnimationFrame(animate);
   };
 
-  const onStart = async () => {
+  const onStart = useCallback(async () => {
     const { distance, velocity } = await changeEngine(id, EngineMode.started);
     const time = Math.round(distance / velocity);
     onAnimate(time);
@@ -40,13 +40,15 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
     if (!success) {
       cancelAnimationFrame(animateIdRef.current!);
     }
-  };
+  }, [changeEngine, changeEngineDrive, id, name, saveResult]);
 
-  const onStop = async () => {
+  const onStop = useCallback(async () => {
     cancelAnimationFrame(animateIdRef.current!);
     const engine = await changeEngine(id, EngineMode.stopped);
-    car.current!.style.transform = `translate(${engine.velocity}px, 0px)`;
-  };
+    if (car.current) {
+      car.current.style.transform = `translate(${engine.velocity}px, 0px)`;
+    }
+  }, [changeEngine, id]);
 
   const onDeleteCar = () => deleteCar(id);
   const onSelectCar = () => setSelectedCar({ id, name, color });
@@ -54,7 +56,9 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
   useEffect(() => {
     if (isRace && isInStart) {
       onStart();
-    } else {
+    } else if (isFinish) {
+      onStop();
+    } else if (!isRace && !isFinish) {
       onStop();
     }
   }, [isRace, setIsRace]);
@@ -84,6 +88,7 @@ const Track: FC<TrackProps> = ({ data: { id, name, color }, saveResult }) => {
           onClick={() => {
             onStop();
             setIsInStart(true);
+            setIsFinish(false);
           }}
         >
           STOP

@@ -27,10 +27,12 @@ const Garage: FC = () => {
     <div className={s.garage}>
       <MainControls />
       <div className={s.garage__main}>
-        <h2 className={s.garage__main_title}>Garage {countCars}</h2>
+        <h2 className={s.garage__main_title}>
+          Garage {countCars}
+          {countCars ? <span className={s.garage__main_subtitle}>Page #{currentPageGarage}</span> : ''}
+        </h2>
         {countCars && (
           <div>
-            <h3 className={s.garage__main_subtitle}>Page #{currentPageGarage}</h3>
             <div className={s.garage__tracks}>
               {isRace && isFinish && currentWinner && (
                 <div className={s.notify__wrapper}>
@@ -45,12 +47,14 @@ const Garage: FC = () => {
             </div>
             <div className={s.pagination}>
               <button
+                className={s.btn}
                 disabled={currentPageGarage === numberFirstPage}
                 onClick={() => setCurrentPageGarage(currentPageGarage - 1)}
               >
                 Prev
               </button>
               <button
+                className={s.btn}
                 disabled={currentPageGarage === numberLastPage}
                 onClick={() => setCurrentPageGarage(currentPageGarage + 1)}
               >
