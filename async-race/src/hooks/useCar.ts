@@ -1,50 +1,58 @@
 import { useCallback } from 'react';
-import { GarageContent, useGarageContext } from '../context/GarageContext';
+import { useGlobalContext } from '../context/GlobalContext';
 import { ICar, Methods } from '../models';
 import { BASE_URL } from '../utils/constants';
+import { useGetCars } from './useGetCars';
+import { useWinner } from './useWinner';
 
 const useCar = () => {
-  const { cars, setCars, setTotalCars } = useGarageContext() as GarageContent;
+  const { currentPageGarage } = useGlobalContext();
+  const { getCars } = useGetCars();
+  const { deleteWinner } = useWinner();
 
   const getCar = useCallback(async (id: number): Promise<ICar> => {
     const response = await fetch(`${BASE_URL}/garage/${id}`);
     return response.json();
   }, []);
 
-  const createCar = async (name: string, color: string) => {
-    const response = await fetch(`${BASE_URL}/garage`, {
-      method: Methods.Post,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, color }),
-    });
-    if (response.ok) {
-      const createdCar = await response.json();
-      setCars((prevState) => [...prevState, createdCar]);
-      setTotalCars((prevState) => prevState + 1);
-    }
-  };
+  const createCar = useCallback(
+    async (name: string, color: string) => {
+      const response = await fetch(`${BASE_URL}/garage`, {
+        method: Methods.Post,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, color }),
+      });
+      if (response.ok) {
+        getCars(currentPageGarage);
+      }
+    },
+    [getCars],
+  );
 
-  const deleteCar = async (id: number) => {
-    const response = await fetch(`${BASE_URL}/garage/${id}`, { method: Methods.Delete });
-    if (response.ok) {
-      const newCars = [...cars].filter((item) => item.id !== id);
-      setCars(newCars);
-      setTotalCars((prevState) => prevState - 1);
-    }
-  };
+  const deleteCar = useCallback(
+    async (id: number) => {
+      const response = await fetch(`${BASE_URL}/garage/${id}`, { method: Methods.Delete });
+      if (response.ok) {
+        getCars(currentPageGarage);
+        deleteWinner(id);
+      }
+    },
+    [getCars],
+  );
 
-  const updateCar = async (id: number, name: string, color: string) => {
-    const response = await fetch(`${BASE_URL}/garage/${id}`, {
-      method: Methods.Put,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, color }),
-    });
-    if (response.ok) {
-      const updatedCar = await response.json();
-      const updatedCars = [...cars].map((car) => (car.id === id ? { ...car, ...updatedCar } : car));
-      setCars(updatedCars);
-    }
-  };
+  const updateCar = useCallback(
+    async (id: number, name: string, color: string) => {
+      const response = await fetch(`${BASE_URL}/garage/${id}`, {
+        method: Methods.Put,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, color }),
+      });
+      if (response.ok) {
+        getCars(currentPageGarage);
+      }
+    },
+    [getCars],
+  );
 
   return { getCar, createCar, deleteCar, updateCar };
 };

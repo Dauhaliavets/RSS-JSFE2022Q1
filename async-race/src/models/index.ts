@@ -4,6 +4,11 @@ export interface ICar {
   color: string;
 }
 
+export interface ICarsResponse {
+  data: ICar[];
+  count: string;
+}
+
 export interface IEngine {
   velocity: number;
   distance: number;
