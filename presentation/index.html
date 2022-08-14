@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/solarized.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <img src="./assets/HTTP_logo.png" width="500" />
+        </section>
+
+        <section>
+          <section>
+            <h2>HTTP</h2>
+            <p class="fragment fade-up">
+              HTTP (Hypertext Transfer Protocol) is an application-layer protocol for transmitting hypermedia documents,
+              such as HTML.
+            </p>
+          </section>
+          <section>
+            <h2>OSI Model</h2>
+            <img src="./assets/osi-model.png" width="500" />
+          </section>
+        </section>
+
+        <section>
+          <h2>History HTTP</h2>
+          <div>
+            <img src="./assets/HTTP-history.png" width="500" class="fragment fade-up" />
+          </div>
+          <ul>
+            <li class="fragment fade-up">HTTP/0.9</li>
+            <li class="fragment fade-up">HTTP/1.0</li>
+            <li class="fragment fade-up">HTTP/1.1</li>
+            <li class="fragment fade-up">HTTP/2.0</li>
+            <li class="fragment fade-up">HTTP/3</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HTTP session</h2>
+          <p>In client-server protocols, like HTTP, sessions consist of three phases:</p>
+          <ul>
+            <li class="fragment fade-up">
+              The client establishes a TCP connection (or the appropriate connection if the transport layer is not TCP).
+            </li>
+            <li class="fragment fade-up">The client sends its request, and waits for the answer.</li>
+            <li class="fragment fade-up">
+              The server processes the request, sending2 back its answer, providing a status code and appropriate data.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HTTP message structure</h2>
+          <img src="./assets/HTTPRequestMessageFormat.png" width="650" class="fragment fade-up" />
+        </section>
+
+        <section>
+          <h2>Starting line</h2>
+
+          <div class="fragment fade-up">
+            <div><span>Request</span></div>
+            <div><img src="./assets/start-line-request.JPG" width="600" /></div>
+          </div>
+          <div class="fragment fade-up">
+            <div><span>Response</span></div>
+            <div><img src="./assets/start-line-response.JPG" width="600" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Request methods</h2>
+          <img src="./assets/methods.JPG" width="800" class="fragment fade-up" />
+        </section>
+
+        <section>
+          <h2>HTTP status codes</h2>
+          <img src="./assets/http-code-status.jpeg" width="800" class="fragment fade-up" />
+        </section>
+
+        <section>
+          <h2>HTTP headers</h2>
+          <img src="./assets/http-headers.JPG" width="800" class="fragment fade-up" />
+        </section>
+
+        <section>
+          <h2>HTTP message body</h2>
+          <img src="./assets/http-message-body.png" width="300" class="fragment fade-up" />
+        </section>
+
+        <section>
+          <h2>Sources</h2>
+          <ul>
+            <li class="fragment fade-up"><a href="https://www.rfc-editor.org/rfc/rfc7230">specification</a></li>
+            <li class="fragment fade-up"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">MDN</a></li>
+            <li class="fragment fade-up"><a href="https://medium.com/@shubhamsharma_51467/in-this-blog-we-will-discuss-the-http-protocol-c667e4f86bbb">technical blogs</a></li>
+            <li class="fragment fade-up">etc</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Thanks for watching</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
