@@ -1,3 +1,3 @@
 - Link to [YouTube video](https://youtu.be/0MZl9mFOeaY).
-- Link to Reveal [presentation's](https://rolling-scopes-school.github.io/dauhaliavets-JSFE2022Q1/shelter/pages/main/) deploy.
+- Link to Reveal [presentation's](https://rolling-scopes-school.github.io/dauhaliavets-JSFE2022Q1/presentation/) deploy.
 - Link to the [transcript](https://docs.google.com/document/d/1mHHvEff-TIkWmLJ3_wL4WXwtoROwFvai_s9y6u1oHT0/edit?usp=sharing) of presentation.
